@@ -5,6 +5,8 @@
  */
 package princetonPlainsboro;
 
+import java.util.List;
+
 /**
  *
  * @author sixtine
@@ -28,15 +30,16 @@ public class Specialite {
 
     }
 
-    public void getNom() {
-
+    public String getNom() {
+        return this.nom;
     }
 
-    public void getSecMed() {
-
+    public SecretaireMedicale getSecMed() {
+        return this.secMed;
     }
 
-    public void getListeMed() {
+    public List<Medecin> getListeMed() {
+        return this.listeMed;
 
     }
 

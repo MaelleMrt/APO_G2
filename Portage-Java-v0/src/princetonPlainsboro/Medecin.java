@@ -7,12 +7,12 @@ class Medecin {
 
     String nom;
     private String prenom;
-    private Specialite specialite;
+    private String specialite;
     private List<Patient> patients;
     private String identifiant;
     private String mdp;
 
-    public Medecin(String nom, String prenom,Specialite specialite, String identifiant,String mdp) {
+    public Medecin(String nom, String prenom,String specialite, String identifiant,String mdp) {
         this.nom = nom;
         this.prenom = prenom;
         this.specialite = specialite;
@@ -24,7 +24,7 @@ class Medecin {
     public void ajouterPatient(Patient p){
         this.patients.add(p);
     }
-    public Specialite getSpecialite() {
+    public String getSpecialite() {
         return specialite;
     }
 

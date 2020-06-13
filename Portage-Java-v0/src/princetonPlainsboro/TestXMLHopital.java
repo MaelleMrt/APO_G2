@@ -17,7 +17,7 @@ public class TestXMLHopital {
     public static void main(String[] args) {
         LectureXMLHop test = new LectureXMLHop("hopital.xml");
         Hospital hop=test.getHospital();
-        System.out.println(hop.getNom());
+        hop.afficherInfos();
     }
     
 }

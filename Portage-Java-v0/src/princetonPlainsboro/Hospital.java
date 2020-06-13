@@ -68,11 +68,11 @@ public class Hospital {
         }
         System.out.println("Medecins : ");
         for(Medecin m:this.medecinsH){
-            System.out.println("Dr " +m);
+            System.out.println(m);
         }
         System.out.println("Patients: ");
         for(Patient p:this.patientsH){
-            System.out.println("Monsieur/Madame" +p);
+            System.out.println("Monsieur/Madame " +p);
         }
         
         

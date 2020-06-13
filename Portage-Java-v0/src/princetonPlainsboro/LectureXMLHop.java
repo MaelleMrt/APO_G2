@@ -34,6 +34,7 @@ public class LectureXMLHop {
             Date date = null;
             List<Specialite> specialites = new ArrayList<Specialite>();
             List<Acte> actes = new Vector<Acte>();
+            List<Medecin> medecins=new ArrayList<Medecin>();
             Patient patientCourant = null;
             Medecin medecinCourant = null;
             Specialite specialiteCourante = null;
@@ -44,6 +45,11 @@ public class LectureXMLHop {
             String donneesCourantes = "";
             String nomCourant = "";
             String prenomCourant = "";
+            String nomSpecialiteCourante="";
+            String nomMedecinCourant="";
+            String prenomMedecinCourant="";
+            
+            
             int secuCourante = 0;
             Date dateNaissanceCourante = null;
             Code codeCourant = null;
@@ -107,11 +113,11 @@ public class LectureXMLHop {
                                         medecinCourant = m;
                                     }
                                 }
-                                if (!presentM) {
-                                    medecinCourant = new Medecin(nomCourant, prenomCourant, specialiteCourante, identifiantCourant, mdpCourant);
+                                if (!presentM){
+                                    medecinCourant = new Medecin(nomMedecinCourant, prenomMedecinCourant, nomSpecialiteCourante, identifiantCourant, mdpCourant);
                                     hospitalCourant.ajouterMedecin(medecinCourant);
                                 }
-                                specialiteCourante.ajouterMedecin(medecinCourant);
+                                
 
                             }
                             if (parser.getLocalName().equals("secretaireMedicale")) {
@@ -139,6 +145,15 @@ public class LectureXMLHop {
                             if (parser.getLocalName().equals("nom")) {
                                 nomCourant = donneesCourantes;
                             }
+                            if (parser.getLocalName().equals("nomS")) {
+                                nomSpecialiteCourante = donneesCourantes;
+                            }
+                            if(parser.getLocalName().equals("nomM")){
+                                nomMedecinCourant = donneesCourantes;
+                            }
+                            if(parser.getLocalName().equals("prenomM")){
+                                prenomMedecinCourant = donneesCourantes;
+                            }
                             if (parser.getLocalName().equals("patient")) {
                                 //on l'ajoute au medecinCourant et on vérifie si il n'est pas déjà dans la liste des patients
                                 boolean present = false;
@@ -150,7 +165,6 @@ public class LectureXMLHop {
                                 }
                                 if (!present) {
                                     patientCourant = new Patient(nomCourant, prenomCourant, secuCourante, dateNaissanceCourante);
-                                    hospitalCourant.ajouterPatient(patientCourant);
                                 }
                                 hospitalCourant.ajouterPatient(patientCourant);
 
@@ -160,6 +174,10 @@ public class LectureXMLHop {
                             }
                             if (parser.getLocalName().equals("specialite")) {
                                 specialiteCourante = new Specialite(nomCourant, secretaireMedicaleCourante);
+                                for(Medecin m:medecins){
+                                    specialiteCourante.ajouterMedecin(medecinCourant);
+                                }
+                                medecins.clear();
                             }
                             break;
                         case XMLStreamConstants.CHARACTERS:
