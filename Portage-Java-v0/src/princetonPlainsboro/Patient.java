@@ -1,12 +1,18 @@
 package princetonPlainsboro;
 
+import java.util.Date;
+
 class Patient {
     private String nom;
     private String prenom;
+    private Date naissance;
+    private Integer numSecu;
     
-    public Patient(String nom, String prenom) {
+    public Patient(String nom, String prenom, Date naissance, Integer numSecu) {
         this.nom = nom;
         this.prenom = prenom;
+        this.naissance=naissance;
+        this.numSecu=numSecu;
         }
     
     public String toString() {
