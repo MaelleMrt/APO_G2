@@ -8,12 +8,26 @@ class Patient {
     private Date naissance;
     private Integer numSecu;
     
-    public Patient(String nom, String prenom, Date naissance, Integer numSecu) {
+    private java.util.ArrayList<FicheDeSoins> DossierMedical;
+    
+    //, Date naissance, Integer numSecu
+    
+    public Patient(String nom, String prenom, Integer secu,Date dateDeNaissance) {
         this.nom = nom;
         this.prenom = prenom;
-        this.naissance=naissance;
-        this.numSecu=numSecu;
+        this.naissance=dateDeNaissance;
+        this.numSecu=secu;
+        this.DossierMedical = new java.util.ArrayList<FicheDeSoins>();
         }
+    public Integer getSecu(){
+        return numSecu;
+    }
+    
+    public void ajouterFicheDeSoins(Patient patient, Medecin medecin, princetonPlainsboro.Date date){
+        FicheDeSoins e = new FicheDeSoins(patient,medecin,date);
+        DossierMedical.add(e);
+        
+    }
     
     public String toString() {
         return prenom + " " + nom;

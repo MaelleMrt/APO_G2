@@ -1,30 +1,60 @@
 package princetonPlainsboro;
 
 class Medecin {
-    private String nom;
+
+    String nom;
     private String prenom;
     private String specialite;
     
+    private String identifiant;
+    private String mdp;
+
     public Medecin(String nom, String prenom, String specialite) {
         this.nom = nom;
         this.prenom = prenom;
         this.specialite = specialite;
-        }
-    
-    public String getSpecialite() { return specialite; }
-    
-    public String toString() {
-        return "Dr " + prenom + " " + nom + ", " + specialite;
-        }
-    
-    public boolean equals(Object o) {
-        if (o instanceof Medecin) {
-            Medecin p = (Medecin)o;
-            return nom.equals(p.nom) && prenom.equals(p.prenom);
-            }
-        else
-            return false;
-        }    
     }
 
+    public String getSpecialite() {
+        return specialite;
+    }
 
+    public String getIdentifiant(){
+        return identifiant;
+    }
+            
+            
+    public String toString() {
+        return "Dr " + prenom + " " + nom + ", " + specialite;
+    }
+
+    public boolean equals(Object o) {
+        if (o instanceof Medecin) {
+            Medecin p = (Medecin) o;
+            return nom.equals(p.nom) && prenom.equals(p.prenom);
+        } else {
+            return false;
+        }
+    }
+    
+    
+    
+//fonctionnalités du médecin
+    
+    //compléter la fiche patient créée par la cecretaire médicale
+    public void completerFicheDeSoin(){
+        
+    }
+    //liste de ses patients uniquement
+    public void afficherListePatients(){
+        
+    }
+    
+    public void imprimerListePatient(){
+        
+    }
+    
+    public void imprimerFicheDeSoin(){ //déjà dans secretaire_med
+        
+    }
+}
