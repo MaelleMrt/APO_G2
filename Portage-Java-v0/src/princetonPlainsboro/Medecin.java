@@ -9,10 +9,12 @@ class Medecin {
     private String identifiant;
     private String mdp;
 
-    public Medecin(String nom, String prenom, String specialite) {
+    public Medecin(String nom, String prenom, String specialite, String identifiant,String mdp) {
         this.nom = nom;
         this.prenom = prenom;
         this.specialite = specialite;
+        this.mdp=mdp;
+        this.identifiant=identifiant;
     }
 
     public String getSpecialite() {
