@@ -21,38 +21,60 @@ public class Hospital {
     private final String nom = "PrincetonBoro"; //nom de l'hôpital
     //private java.util.ArrayList<String> listeSpe; // liste des quantites des spécialités/services 
     private List<Service> listeSpe;
-
+    private List<Patient> patientsH;
+    private List<Medecin> medecinsH;
 
     public Hospital(String nom) {
         nom = this.nom;
-        //this.listeSpe = new java.util.ArrayList<String>();
-        listeSpe = Arrays.asList(Service.values());
-
+        this.listeSpe = Arrays.asList(Service.values());
+        this.medecinsH= new ArrayList<Medecin>();
+        this.patientsH= new ArrayList<Patient>();
     }
 
     public List<Service> getSpecialite() {
         return listeSpe;
     }
 
-    public void ajouterSpecialité() {
+    public void ajouterSpecialité(Specialite s) {
 
     }
 
-    public void ajouterPatient() {
-
+    public void ajouterPatient(Patient p) {
+        this.patientsH.add(p);
     }
 
-    public void ajouterMedecin() {
-
+    public void ajouterMedecin(Medecin m) {
+        this.medecinsH.add(m);
+    }
+    
+    public List<Medecin> getListMedecin(){
+        return this.medecinsH;
+    }
+    
+    public List<Patient> getListPatient(){
+        return this.patientsH;
+    }
+    
+    public String getNom(){
+        return this.nom;
     }
     //vérification bon fonctionnement 
     public void afficherInfos(){
         System.out.println("Nom de l'Hôpital = "+this.nom);
         System.out.println("Liste des spécialités : ");
-        for (Service elem : listeSpe){
+        for (Service elem : this.listeSpe){
             System.out.println(elem);
             
         }
+        System.out.println("Medecins : ");
+        for(Medecin m:this.medecinsH){
+            System.out.println("Dr " +m);
+        }
+        System.out.println("Patients: ");
+        for(Patient p:this.patientsH){
+            System.out.println("Monsieur/Madame" +p);
+        }
+        
         
     }
    

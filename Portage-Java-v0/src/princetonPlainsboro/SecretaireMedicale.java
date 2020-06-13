@@ -12,12 +12,19 @@ package princetonPlainsboro;
 public class SecretaireMedicale {
     private String identifiant;
     private String mdp;
-    private String specialite;
+    private Specialite specialite;
     
-    public SecretaireMedicale(String identifiant,String mdp,String specialite){
+    public SecretaireMedicale(String identifiant,String mdp,Specialite specialite){
         this.identifiant=identifiant;
         this.mdp=mdp;
         this.specialite=specialite;
+    }
+    public String getIdentifiant(){
+        return identifiant;
+    }
+    
+    public String getMdp(){
+        return mdp;
     }
     
 }

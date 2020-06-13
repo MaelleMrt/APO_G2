@@ -18,7 +18,7 @@ enum Code {
     KFB("forfait B", 60.98),
     ORT("orthodontie", 2.15),
     PRO("prothese dentaire", 2.15),
-    CCP("Consultation contraception et prévention", 34.30), 
+    CCP("Consultation contraception et prevention", 34.30), 
     COE("Consultation obligatoire de l'enfant", 50.50),
     CNPSY("Consultation neurophychiatrique/neurologique",52.80),
     CDE("Consultation dermathologie",48.50);

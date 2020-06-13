@@ -1,23 +1,30 @@
 package princetonPlainsboro;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class Medecin {
 
     String nom;
     private String prenom;
-    private String specialite;
-    
+    private Specialite specialite;
+    private List<Patient> patients;
     private String identifiant;
     private String mdp;
 
-    public Medecin(String nom, String prenom, String specialite, String identifiant,String mdp) {
+    public Medecin(String nom, String prenom,Specialite specialite, String identifiant,String mdp) {
         this.nom = nom;
         this.prenom = prenom;
         this.specialite = specialite;
         this.mdp=mdp;
         this.identifiant=identifiant;
+        this.patients=new ArrayList<Patient>();
     }
 
-    public String getSpecialite() {
+    public void ajouterPatient(Patient p){
+        this.patients.add(p);
+    }
+    public Specialite getSpecialite() {
         return specialite;
     }
 

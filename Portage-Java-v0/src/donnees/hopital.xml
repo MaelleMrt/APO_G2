@@ -9,26 +9,25 @@ and open the template in the editor.
 <hopital>
     <nom>PrincetonPlainsboro</nom>
     <secretaireAdministrative>
-        <mdp></mdp>
-        <identifiant></identifiant>
+        <mdp>secA1</mdp>
+        <identifiant>secA1</identifiant>
     </secretaireAdministrative>
     <specialite>
         <secretaireMedicale>
-            <mdp></mdp>
-            <identifiant></identifiant>
+            <mdp>secM1</mdp>
+            <identifiant>secM1</identifiant>
         </secretaireMedicale>
         <nom>cardiologie</nom>
         <medecin>
-            <identifiant></identifiant>
-            <mdp></mdp>
+            <identifiant>med1</identifiant>
+            <mdp>med1</mdp>
             <nom>House</nom>
             <prenom>Patrick</prenom>
-            
             <patient>
                 <nom>Track</nom>
                 <prenom>Pat</prenom>
-                <secu></secu>
-                <dateNaissance></dateNaissance>
+                <secu>12</secu>
+                <dateNaissance>11-07-1999</dateNaissance>
                 <ficheDeSoin>
                     <date>2006-01-06</date>
                     <acte>
@@ -59,8 +58,8 @@ and open the template in the editor.
             <patient>
                 <nom>Deblouze</nom>
                 <prenom>Agathe</prenom>
-                <secu></secu>
-                <dateNaissance></dateNaissance>
+                <secu>13</secu>
+                <dateNaissance>22-01-2001</dateNaissance>
                 <ficheDeSoin>
                     <date>2008-03-10</date>
                     <acte>
@@ -80,20 +79,20 @@ and open the template in the editor.
     </specialite>
     <specialite>
         <secretaireMedicale>
-            <mdp></mdp>
-            <identifiant></identifiant>
+            <mdp>secM2</mdp>
+            <identifiant>secM2</identifiant>
         </secretaireMedicale> 
         <nom>dentaire</nom>
         <medecin>
-            <identifiant></identifiant>
-            <mdp></mdp>
+            <identifiant>med2</identifiant>
+            <mdp>med2</mdp>
             <nom>Richard</nom>
             <prenom>Jean</prenom>
             <patient>
                 <nom>Bole</nom>
                 <prenom>Maggy</prenom>
-                <secu></secu>
-                <dateNaissance></dateNaissance>
+                <secu>16</secu>
+                <dateNaissance>21-08-1996</dateNaissance>
                 <ficheDeSoin>
                     <date>2020-01-06</date>
                     <acte>
@@ -124,8 +123,8 @@ and open the template in the editor.
             <patient>
                 <nom>Heget</nom>
                 <prenom>Yves</prenom>
-                <secu></secu>
-                <dateNaissance></dateNaissance>
+                <secu>10</secu>
+                <dateNaissance>12-08_1960</dateNaissance>
                 <ficheDeSoin>
                     <date>2008-03-10</date>
                     <acte>
@@ -140,8 +139,8 @@ and open the template in the editor.
                 <patient>
                     <nom>Covert</nom>
                     <prenom>Harry</prenom>
-                    <secu></secu>
-                    <dateNaissance></dateNaissance>
+                    <secu>11</secu>
+                    <dateNaissance>21-05-1972</dateNaissance>
                     <ficheDeSoin>
                         <date>2010-03-10</date>
                         <acte>
@@ -151,19 +150,20 @@ and open the template in the editor.
                         <acte>
                             <code>KC</code>
                             <coef>50</coef>
-                        </acte>  
+                        </acte> 
+                    </ficheDeSoin> 
                 </patient>
         </medecin>
         <medecin>
-            <identifiant></identifiant>
-            <mdp></mdp>
+            <identifiant>med3</identifiant>
+            <mdp>med3</mdp>
             <nom>Epi</nom>
             <prenom>Fanie</prenom>
             <patient>
                 <nom>Deblouze</nom>
                 <prenom>Agathe</prenom>
-                <secu></secu>
-                <dateNaissance></dateNaissance>
+                <secu>13</secu>
+                <dateNaissance>15-09-1998</dateNaissance>
                 <ficheDeSoin>
                     <date>2020-01-06</date>
                     <acte>
