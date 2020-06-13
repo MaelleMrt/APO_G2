@@ -9,12 +9,12 @@ package Interface;
  *
  * @author marin
  */
-public class SecrétaireMédicale extends javax.swing.JFrame {
+public class Secrï¿½taireMï¿½dicale extends javax.swing.JFrame {
 
     /**
-     * Creates new form SecrétaireMédicale
+     * Creates new form Secrï¿½taireMï¿½dicale
      */
-    public SecrétaireMédicale() {
+    public Secrï¿½taireMï¿½dicale() {
         initComponents();
     }
 
@@ -43,6 +43,8 @@ public class SecrétaireMédicale extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(500, 380));
+
         jLabel1.setFont(new java.awt.Font("Bell MT", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(222, 31, 31));
         jLabel1.setText("Centre Hospitalier de Princeton Plainshoro");
@@ -56,7 +58,7 @@ public class SecrétaireMédicale extends javax.swing.JFrame {
         });
 
         jTextField2.setFont(new java.awt.Font("Bell MT", 0, 11)); // NOI18N
-        jTextField2.setText("Rechercher un médecin");
+        jTextField2.setText("Rechercher un mÃ©decin");
 
         jList1.setFont(new java.awt.Font("Bell MT", 0, 11)); // NOI18N
         jList1.setModel(new javax.swing.AbstractListModel() {
@@ -75,7 +77,7 @@ public class SecrétaireMédicale extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jList2);
 
         jLabel2.setFont(new java.awt.Font("Bell MT", 0, 11)); // NOI18N
-        jLabel2.setText("Secrétaire médicale");
+        jLabel2.setText("SecrÃ©taire mÃ©dicale");
 
         jLabel3.setFont(new java.awt.Font("Bell MT", 0, 11)); // NOI18N
         jLabel3.setText("Service");
@@ -89,10 +91,10 @@ public class SecrétaireMédicale extends javax.swing.JFrame {
         });
 
         jToggleButton2.setFont(new java.awt.Font("Bell MT", 0, 11)); // NOI18N
-        jToggleButton2.setText("Accès aux fiches de soins");
+        jToggleButton2.setText("AccÃ¨s aux fiches de soins");
 
         jToggleButton3.setFont(new java.awt.Font("Bell MT", 0, 11)); // NOI18N
-        jToggleButton3.setText("Ajouter médecin");
+        jToggleButton3.setText("Ajouter mÃ©decin");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -118,7 +120,7 @@ public class SecrétaireMédicale extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jToggleButton2)
-                        .addContainerGap(88, Short.MAX_VALUE))
+                        .addContainerGap(250, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
@@ -144,7 +146,7 @@ public class SecrétaireMédicale extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jToggleButton1)
                     .addComponent(jToggleButton2)
@@ -158,14 +160,14 @@ public class SecrétaireMédicale extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -197,20 +199,20 @@ public class SecrétaireMédicale extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SecrétaireMédicale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Secrï¿½taireMï¿½dicale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SecrétaireMédicale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Secrï¿½taireMï¿½dicale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SecrétaireMédicale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Secrï¿½taireMï¿½dicale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SecrétaireMédicale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Secrï¿½taireMï¿½dicale.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SecrétaireMédicale().setVisible(true);
+                new Secrï¿½taireMï¿½dicale().setVisible(true);
             }
         });
     }
