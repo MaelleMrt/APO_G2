@@ -35,7 +35,7 @@ public class Hospital {
         return listeSpe;
     }
 
-    public void ajouterSpecialité(Specialite s) {
+    public void ajouterSpecialite(Specialite s) {
 
     }
 
