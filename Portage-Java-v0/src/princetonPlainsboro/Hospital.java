@@ -60,8 +60,8 @@ public class Hospital {
     }
     //vérification bon fonctionnement 
     public void afficherInfos(){
-        System.out.println("Nom de l'Hôpital = "+this.nom);
-        System.out.println("Liste des spécialités : ");
+        System.out.println("Nom de l'Hopital = "+this.nom);
+        System.out.println("Liste des specialites : ");
         for (Service elem : this.listeSpe){
             System.out.println(elem);
             
