@@ -28,7 +28,7 @@ class FicheDeSoins {
         return date;
     }
     
-    public Specialite getService(){
+    public String getService(){
         return medecin.getSpecialite();
     }
 

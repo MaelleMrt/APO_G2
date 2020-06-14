@@ -14,8 +14,8 @@ public class SecretaireAdministrative {
     private String mdp;
     
     public SecretaireAdministrative(String identifiant,String mdp){
-        this.identifiant=identifiant;
-        this.mdp=mdp;
+        this.identifiant = identifiant;
+        this.mdp = mdp;
     }
     
 }

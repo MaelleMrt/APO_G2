@@ -5,20 +5,20 @@ class Patient {
     private String nom;
     private String prenom;
     private Date naissance;
-    private int numSecu;
+    private long numSecu;
     
     private java.util.ArrayList<FicheDeSoins> DossierMedical;
     
     //, Date naissance, Integer numSecu
     
-    public Patient(String nom, String prenom,int secu,Date dateDeNaissance) {
+    public Patient(String nom, String prenom,long secu,Date dateDeNaissance) {
         this.nom = nom;
         this.prenom = prenom;
         this.naissance=dateDeNaissance;
         this.numSecu=secu;
         this.DossierMedical = new java.util.ArrayList<FicheDeSoins>();
         }
-    public int getSecu(){
+    public long getSecu(){
         return numSecu;
     }
     

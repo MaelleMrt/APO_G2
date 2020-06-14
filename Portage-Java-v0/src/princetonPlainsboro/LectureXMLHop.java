@@ -41,7 +41,7 @@ public class LectureXMLHop {
             String mdpCourant = null;
             String identifiantCourant = null;
             SecretaireMedicale secretaireMedicaleCourante = null;
-            SecretaireAdministrative secrtaireAdministrativeCourante = null;
+            SecretaireAdministrative secretaireAdministrativeCourante = null;
             String donneesCourantes = "";
             String nomCourant = "";
             String prenomCourant = "";
@@ -50,7 +50,7 @@ public class LectureXMLHop {
             String prenomMedecinCourant="";
             
             
-            int secuCourante = 0;
+            long secuCourante = 0;
             Date dateNaissanceCourante = null;
             Code codeCourant = null;
             int coefCourant = 0;
@@ -124,10 +124,10 @@ public class LectureXMLHop {
                                 secretaireMedicaleCourante = new SecretaireMedicale(identifiantCourant, mdpCourant, specialiteCourante);
                             }
                             if (parser.getLocalName().equals("secretaireAdministrative")) {
-                                secrtaireAdministrativeCourante = new SecretaireAdministrative(identifiantCourant, mdpCourant);
+                                secretaireAdministrativeCourante = new SecretaireAdministrative(identifiantCourant, mdpCourant);
                             }
                             if (parser.getLocalName().equals("secu")) {
-                                secuCourante = Integer.parseInt(donneesCourantes);
+                                secuCourante = Long.parseLong(donneesCourantes);
                             }
                             if (parser.getLocalName().equals("dateNaissance")) {
                                 int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
