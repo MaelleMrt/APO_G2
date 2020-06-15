@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interface;
+package Interfaces;
+
+import princetonPlainsboro.Medecin;
 
 /**
  *
@@ -11,11 +13,13 @@ package Interface;
  */
 public class FicheMedecin extends javax.swing.JFrame {
 
+    private Medecin medecin ;
     /**
      * Creates new form FicheMedecin
      */
-    public FicheMedecin() {
+    public FicheMedecin(Medecin medecin) {
         initComponents();
+        this.medecin= medecin; 
     }
 
     /**
@@ -55,16 +59,16 @@ public class FicheMedecin extends javax.swing.JFrame {
         jLabel4.setText("Spécialité");
 
         jLabel6.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
-        jLabel6.setText("jLabel6");
+        jLabel6.setText(medecin.getNom());
 
         jLabel5.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
         jLabel5.setText("Numéro de téléphone");
 
         jLabel8.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
-        jLabel8.setText("jLabel8");
+        jLabel8.setText(medecin.getSpecialite());
 
         jLabel9.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
-        jLabel9.setText("jLabel9");
+        jLabel9.setText(Integer.toString(medecin.getTelephone()));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -180,7 +184,7 @@ public class FicheMedecin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FicheMedecin().setVisible(true);
+             //   new FicheMedecin().setVisible(true);
             }
         });
     }
