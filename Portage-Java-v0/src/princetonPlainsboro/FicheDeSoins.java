@@ -63,6 +63,11 @@ public class FicheDeSoins {
         }
         return total;
     }
+    //Pour imprimer, créer un pdf à télécharger
+    public void imprimerFiche(){
+        
+    }
+
 
     
 }
