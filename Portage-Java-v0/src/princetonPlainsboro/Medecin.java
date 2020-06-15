@@ -3,7 +3,7 @@ package princetonPlainsboro;
 import java.util.ArrayList;
 import java.util.List;
 
-class Medecin {
+public class Medecin {
 
     String nom;
     private String prenom;
