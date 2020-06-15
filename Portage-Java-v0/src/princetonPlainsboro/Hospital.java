@@ -24,6 +24,7 @@ public class Hospital {
     private List<Patient> patientsH;
     private List<Medecin> medecinsH;
     private List<SecretaireMedicale> secretairesM;
+    private SecretaireAdministrative sA;
     
     
     public Hospital(String nom) {
@@ -36,6 +37,10 @@ public class Hospital {
 
     public List<Service> getSpecialite() {
         return listeSpe;
+    }
+    
+    public SecretaireAdministrative getSA(){
+        return this.sA;
     }
 
     public void ajouterSpecialite(Specialite s) {

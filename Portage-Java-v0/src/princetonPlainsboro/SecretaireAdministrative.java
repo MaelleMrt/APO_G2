@@ -25,4 +25,12 @@ public class SecretaireAdministrative {
     public void ajouterMedecin(Medecin m){
         this.hospital.ajouterMedecin(m);
     }
+    
+    public String getMdp(){
+        return this.mdp;
+    }
+    
+    public String getIdentifiant(){
+        return this.identifiant;
+    }
 }
