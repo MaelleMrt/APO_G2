@@ -9,24 +9,31 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.util.ArrayList;
 import java.util.List;
 import princetonPlainsboro.Patient;
-import princetonPlainsboro.FicheDeSoins; 
+import princetonPlainsboro.FicheDeSoins;
+import princetonPlainsboro.Hospital;
+import princetonPlainsboro.LectureXMLHop;
+
 /**
  *
  * @author marin
  */
 public class FichePatient extends javax.swing.JFrame implements ActionListener, ComponentListener {
 
-    private Patient patient; 
+    // private Patient patient; 
+    private Hospital hop;
     private List<FicheDeSoins> fiche;
+
     /**
      * Creates new form FichePatient
      */
-    public FichePatient(Patient patient) {
+    public FichePatient(Hospital hop) {
         initComponents();
-        this.patient = patient ; 
-        this.fiche= patient.getDossierMed();
+        //this.patient = patient ; 
+        this.hop = hop;
+        this.fiche = hop.getListPatient().get(1).getDossierMed();
     }
 
     /**
@@ -50,12 +57,8 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,23 +84,7 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
         });
 
         jTable2.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Date de visite", "Specialite consultee"
-            }
-        ));
+        jTable2.setModel(new ListeTest(fiche));
         jTable2.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jTable2PropertyChange(evt);
@@ -119,23 +106,11 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
         jLabel8.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
         jLabel8.setText("N° de Sécurité Sociale");
 
-        jLabel9.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
-        jLabel9.setText(patient.getNom());
-
-        jLabel10.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
-        jLabel10.setText(patient.getPrenom());
-
         jLabel11.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
         jLabel11.setText("jLabel11");
 
-        jLabel12.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
-        jLabel12.setText(patient.getNaissance().toString());
-
         jLabel14.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
         jLabel14.setText("Date de naissance");
-
-        jLabel15.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
-        jLabel15.setText(Long.toString(patient.getSecu()));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -150,37 +125,24 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
                     .addComponent(jLabel5)
                     .addComponent(jLabel14))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel15))
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addComponent(jLabel11)
+                .addContainerGap(186, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel9))
+                .addComponent(jLabel5)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel10))
+                .addComponent(jLabel6)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel12))
+                .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel15))
+                .addComponent(jLabel8)
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
@@ -281,19 +243,19 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               // new FichePatient().setVisible(true);
+                // new FichePatient().setVisible(true);
+                LectureXMLHop test = new LectureXMLHop("hopital.xml");
+                Hospital hop = test.getHospital();
+                   new FichePatient(hop).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -301,7 +263,6 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
