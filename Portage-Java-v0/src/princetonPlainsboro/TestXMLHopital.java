@@ -18,6 +18,12 @@ public class TestXMLHopital {
         LectureXMLHop test = new LectureXMLHop("hopital.xml");
         Hospital hop=test.getHospital();
         hop.afficherInfos();
+        System.out.println("fiches de soins premier patient");
+        System.out.println(hop.getListPatient().get(0).getNom());
+        for(FicheDeSoins fs:hop.getListPatient().get(0).getDossierMed()){
+            System.out.println(fs.getMedecin());
+        }
+        
     }
     
 }

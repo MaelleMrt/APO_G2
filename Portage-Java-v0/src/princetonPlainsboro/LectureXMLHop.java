@@ -35,6 +35,7 @@ public class LectureXMLHop {
             List<Specialite> specialites = new ArrayList<Specialite>();
             List<Acte> actes = new Vector<Acte>();
             List<Medecin> medecins=new ArrayList<Medecin>();
+            List<FicheDeSoins> fiches=new ArrayList<FicheDeSoins>();
             Patient patientCourant = null;
             Medecin medecinCourant = null;
             Specialite specialiteCourante = null;
@@ -91,8 +92,9 @@ public class LectureXMLHop {
 
                                 date = new Date(jour, mois, annee);
                             }
-                            if (parser.getLocalName().equals("ficheDeSoins")) {
-                                FicheDeSoins f = new FicheDeSoins(patientCourant, medecinCourant, date);
+                            if (parser.getLocalName().equals("ficheDeSoin")) {
+ 
+                                FicheDeSoins f = new FicheDeSoins(patientCourant,nomMedecinCourant+" "+prenomMedecinCourant,nomSpecialiteCourante, date);
                                 // ajout des actes
                                 for (int i = 0; i < actes.size(); i++) {
                                     Acte a = (Acte) actes.get(i);
@@ -101,7 +103,7 @@ public class LectureXMLHop {
                                 // effacer tous les actes de la liste
                                 actes.clear();
                                 // ajouter la fiche de soin au patient
-                                patientCourant.ajouterFicheDeSoins(f);
+                                fiches.add(f);
                             }
                             if (parser.getLocalName().equals("medecin")) {
                                 //a chaque fois que le tombe sur un medecin on le met dans le courant
@@ -162,11 +164,20 @@ public class LectureXMLHop {
                                     if (p.getSecu() == secuCourante) {
                                         present = true;
                                         patientCourant = p;
+                                       
                                     }
                                 }
                                 if (!present) {
                                     patientCourant = new Patient(nomCourant, prenomCourant, secuCourante, dateNaissanceCourante);
+                                    
+                                    
                                 }
+                                //on ajoute les fiches de soins courantes
+                                for(FicheDeSoins fs:fiches){
+                                             patientCourant.ajouterFicheDeSoins(fs);
+                                }
+                                //on clear la fiches de soins courantes
+                                fiches.clear();
                                 hospitalCourant.ajouterPatient(patientCourant);
 
                             }

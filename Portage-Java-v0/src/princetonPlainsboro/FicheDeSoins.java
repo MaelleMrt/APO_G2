@@ -5,13 +5,15 @@ import java.util.Vector;
 public class FicheDeSoins {
 
     private Patient patient;
-    private Medecin medecin;
+    private String medecin;
+    private String specialite;
     private Date date;
     private Vector<Acte> actes;       // contient des objets de classe 'Acte'
 
-    public FicheDeSoins(Patient patient, Medecin medecin, Date date) {
+    public FicheDeSoins(Patient patient,String medecin,String specialite, Date date) {
         this.patient = patient;
         this.medecin = medecin;
+        this.specialite=specialite;
         this.date = date;
         actes = new Vector<Acte>();   // liste vide
     }
@@ -20,7 +22,7 @@ public class FicheDeSoins {
         return patient;
     }
 
-    public Medecin getMedecin() {
+    public String getMedecin() {
         return medecin;
     }
 
@@ -29,7 +31,7 @@ public class FicheDeSoins {
     }
     
     public String getService(){
-        return medecin.getSpecialite();
+        return this.specialite;
     }
 
     public void ajouterActe(Acte acte) {

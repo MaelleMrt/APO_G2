@@ -25,13 +25,17 @@ public class Medecin {
         this.patients.add(p);
     }
     public String getSpecialite() {
-        return specialite;
+        return this.specialite;
     }
 
     public String getIdentifiant(){
-        return identifiant;
+        return this.identifiant;
     }
-            
+    
+    public String getNom(){
+        return this.nom+this.prenom;
+    }
+     
             
     public String toString() {
         return "Dr " + prenom + " " + nom + ", " + specialite;

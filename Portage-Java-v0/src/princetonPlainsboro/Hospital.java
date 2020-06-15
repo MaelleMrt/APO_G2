@@ -62,6 +62,10 @@ public class Hospital {
         return this.patientsH;
     }
     
+    public List<SecretaireMedicale> getListSM(){
+        return this.secretairesM;
+    }
+    
     public String getNom(){
         return this.nom;
     }

@@ -9,8 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
-import java.util.ArrayList;
 import java.util.List;
+import princetonPlainsboro.Date;
 import princetonPlainsboro.Patient;
 import princetonPlainsboro.FicheDeSoins;
 import princetonPlainsboro.Hospital;
@@ -22,18 +22,24 @@ import princetonPlainsboro.LectureXMLHop;
  */
 public class FichePatient extends javax.swing.JFrame implements ActionListener, ComponentListener {
 
-    // private Patient patient; 
+    private Patient patient; 
     private Hospital hop;
     private List<FicheDeSoins> fiche;
+    private Date date;
 
     /**
      * Creates new form FichePatient
      */
     public FichePatient(Hospital hop) {
-        initComponents();
-        //this.patient = patient ; 
+        
+        this.patient = hop.getListPatient().get(0) ; 
+        this.date= hop.getListPatient().get(0).getNaissance(); 
         this.hop = hop;
-        this.fiche = hop.getListPatient().get(1).getDossierMed();
+        this.fiche = hop.getListPatient().get(0).getDossierMed();
+        for (FicheDeSoins fs:fiche){
+            System.out.println(fs.getDate());
+        }
+        initComponents();
     }
 
     /**
@@ -51,7 +57,7 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTable2 = new javax.swing.JTable(new ListeTest(fiche));
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -59,6 +65,10 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
         jLabel8 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -84,7 +94,6 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
         });
 
         jTable2.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        jTable2.setModel(new ListeTest(fiche));
         jTable2.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jTable2PropertyChange(evt);
@@ -112,6 +121,18 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
         jLabel14.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
         jLabel14.setText("Date de naissance");
 
+        jLabel9.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
+        jLabel9.setText(patient.getNom());
+
+        jLabel10.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
+        jLabel10.setText(patient.getPrenom());
+
+        jLabel12.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
+        jLabel12.setText(date.toString());
+
+        jLabel15.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
+        jLabel15.setText(Long.toString(patient.getSecu()));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -125,28 +146,41 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
                     .addComponent(jLabel5)
                     .addComponent(jLabel14))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel11)
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel15))
+                .addContainerGap(184, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel5)
+                .addGap(28, 28, 28)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel9))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel10))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel14)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel8)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel15))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/103781896_686381585260019_4196854000429935596_n.png"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon("D:\\Bureau\\Projet APO\\NB\\APO_G2-master\\Portage-Java-v0\\src\\images\\103781896_686381585260019_4196854000429935596_n.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -253,9 +287,12 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -263,6 +300,7 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

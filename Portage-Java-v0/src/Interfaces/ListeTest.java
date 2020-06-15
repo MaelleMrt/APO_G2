@@ -20,18 +20,22 @@ import princetonPlainsboro.FicheDeSoins;
  * @author Maelle
  */
 public class ListeTest extends AbstractTableModel {
-    private final List<FicheDeSoins> ficheSoins;
+    private List<FicheDeSoins> ficheSoins;
  
-    private final String[] entetes = {"Date","Servie"};
+    private final String[] entetes = {"Date","Service"};
  
     public ListeTest(List<FicheDeSoins> fiche) {
       super();
       this.ficheSoins= fiche; 
+//      for(FicheDeSoins fsi: ficheSoins){
+//          this.addFicheSoins(fsi);
+//      }
       
     }
  
     public int getRowCount() {
         return ficheSoins.size();
+        
     }
  
     public int getColumnCount() {
@@ -54,13 +58,13 @@ public class ListeTest extends AbstractTableModel {
         }
 
     }
-     public void addConstante(FicheDeSoins ficheA) {
+     public void addFicheSoins(FicheDeSoins ficheA) {
         ficheSoins.add(ficheA);
  
         fireTableRowsInserted(ficheSoins.size() -1, ficheSoins.size() -1);
     }
  
-    public void removeConstante(int rowIndex) {
+    public void removeFicheSoins(int rowIndex) {
         ficheSoins.remove(rowIndex);
  
         fireTableRowsDeleted(rowIndex, rowIndex);
