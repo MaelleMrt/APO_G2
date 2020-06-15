@@ -1,5 +1,16 @@
 package Interfaces;
 
+import java.util.List;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import javax.swing.ListModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import princetonPlainsboro.Hospital;
+import princetonPlainsboro.LectureXMLHop;
+import princetonPlainsboro.Patient;
+import princetonPlainsboro.Medecin;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,13 +21,40 @@ package Interfaces;
  *
  * @author Maelle
  */
-public class Secretaire_Administrative extends javax.swing.JFrame {
+public class Secretaire_Administrative extends javax.swing.JFrame implements ListSelectionListener {
 
     /**
      * Creates new form SecrÃ©taire_Administrative
-     */
+    */
+        
+    //création de l'hôpital pour pouvoir faire les tests
+    LectureXMLHop test = new LectureXMLHop("hopital.xml");
+    Hospital h = test.getHospital();
+    
     public Secretaire_Administrative() {
-        initComponents();
+        initComponents();      
+        
+        //initialisation de la liste patient (jlist2)
+        DefaultListModel ModeleTest2 = new DefaultListModel();
+        for (Patient p : h.getListPatient()) {
+            ModeleTest2.addElement(p.getNom());
+        }
+        jList2.setModel(ModeleTest2);
+
+        //initialisation de la liste médecin (jlist1)
+        DefaultListModel ModeleTest1 = new DefaultListModel();
+        for (Medecin m : h.getListMedecin()) {
+            ModeleTest1.addElement(m.getNom());
+        }
+        jList1.setModel(ModeleTest1);
+        
+        //actions lorsqu'un élément de la liste est sélectionnée
+        jList1.addListSelectionListener(this);
+        jList2.addListSelectionListener(this);
+
+
+        
+
     }
 
     /**
@@ -166,6 +204,11 @@ public class Secretaire_Administrative extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //méthode permettant de définir l'action pour un élément de la liste sélectionnée
+    public void valueChanged(ListSelectionEvent e){
+
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -204,6 +247,7 @@ public class Secretaire_Administrative extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                Hospital h = new Hospital("PrincetonBoro");
                 new Secretaire_Administrative().setVisible(true);
             }
         });
