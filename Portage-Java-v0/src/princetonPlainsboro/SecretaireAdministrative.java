@@ -12,10 +12,17 @@ package princetonPlainsboro;
 public class SecretaireAdministrative {
     private String identifiant;
     private String mdp;
+    private Hospital hospital;
     
-    public SecretaireAdministrative(String identifiant,String mdp){
+    public SecretaireAdministrative(String identifiant,String mdp,Hospital hospital){
         this.identifiant = identifiant;
         this.mdp = mdp;
+        this.hospital=hospital;
     }
-    
+    public void ajouterPatient(Patient p){
+        this.hospital.ajouterPatient(p);
+    }
+    public void ajouterMedecin(Medecin m){
+        this.hospital.ajouterMedecin(m);
+    }
 }

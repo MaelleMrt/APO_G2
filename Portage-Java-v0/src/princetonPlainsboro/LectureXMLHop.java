@@ -122,9 +122,10 @@ public class LectureXMLHop {
                             }
                             if (parser.getLocalName().equals("secretaireMedicale")) {
                                 secretaireMedicaleCourante = new SecretaireMedicale(identifiantCourant, mdpCourant, specialiteCourante);
+                                hospitalCourant.ajouterSecretaireM(secretaireMedicaleCourante);
                             }
                             if (parser.getLocalName().equals("secretaireAdministrative")) {
-                                secretaireAdministrativeCourante = new SecretaireAdministrative(identifiantCourant, mdpCourant);
+                                secretaireAdministrativeCourante = new SecretaireAdministrative(identifiantCourant, mdpCourant,hospitalCourant);
                             }
                             if (parser.getLocalName().equals("secu")) {
                                 secuCourante = Long.parseLong(donneesCourantes);

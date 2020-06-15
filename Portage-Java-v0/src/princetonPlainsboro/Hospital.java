@@ -23,12 +23,15 @@ public class Hospital {
     private List<Service> listeSpe;
     private List<Patient> patientsH;
     private List<Medecin> medecinsH;
-
+    private List<SecretaireMedicale> secretairesM;
+    
+    
     public Hospital(String nom) {
         nom = this.nom;
         this.listeSpe = Arrays.asList(Service.values());
         this.medecinsH= new ArrayList<Medecin>();
         this.patientsH= new ArrayList<Patient>();
+        this.secretairesM=new ArrayList<SecretaireMedicale>();
     }
 
     public List<Service> getSpecialite() {
@@ -41,6 +44,10 @@ public class Hospital {
 
     public void ajouterPatient(Patient p) {
         this.patientsH.add(p);
+    }
+    
+    public void ajouterSecretaireM(SecretaireMedicale sm){
+        this.secretairesM.add(sm);
     }
 
     public void ajouterMedecin(Medecin m) {
