@@ -27,4 +27,7 @@ public class SecretaireMedicale {
         return mdp;
     }
     
+    public Specialite getSpecialite(){
+        return this.specialite;
+    }
 }
