@@ -30,4 +30,9 @@ public class SecretaireMedicale {
     public Specialite getSpecialite(){
         return this.specialite;
     }
+    public void ajouterFicheDeSoins(Patient patient,String IdentifiantMedecin,String specialite, Date date){     
+        FicheDeSoins fds =new FicheDeSoins(patient,IdentifiantMedecin,specialite,date);
+        patient.ajouterFicheDeSoins(fds);
+        fiches.add(fds);
+        
 }
