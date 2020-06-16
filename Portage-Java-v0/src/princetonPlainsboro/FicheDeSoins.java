@@ -1,6 +1,7 @@
 package princetonPlainsboro;
 
 import java.util.Vector;
+import princetonPlainsboro.Acte;
 
 public class FicheDeSoins {
 
@@ -10,10 +11,10 @@ public class FicheDeSoins {
     private Date date;
     private Vector<Acte> actes;       // contient des objets de classe 'Acte'
 
-    public FicheDeSoins(Patient patient,String IdentifiantMedecin,String specialite, Date date) {
+    public FicheDeSoins(Patient patient, String medecin, String specialite, Date date) {
         this.patient = patient;
-        this.medecin = IdentifiantMedecin;
-        this.specialite=specialite;
+        this.medecin = medecin;
+        this.specialite = specialite;
         this.date = date;
         actes = new Vector<Acte>();   // liste vide
     }
@@ -29,21 +30,32 @@ public class FicheDeSoins {
     public Date getDate() {
         return date;
     }
-    
-    public String getService(){
+
+    public String getService() {
         return this.specialite;
     }
 
     public void ajouterActe(Acte acte) {
         actes.add(acte);
     }
-    
 
+
+
+    public Acte getAct(int i){
+        return actes.get(i); 
+    }
+    
+    public Vector<Acte> getActes(){
+        return actes;
+    }
     public void ajouterActe(Code code, int coefficient) {
         Acte acte = new Acte(code, coefficient);
         actes.add(acte);
     }
-
+    
+    public void setPatient(Patient p){
+        this.patient=p;
+    }
     public void afficher() {
         System.out.println("Fiche de soins du " + date.toString());
         System.out.println("- medecin : " + medecin.toString());
@@ -63,28 +75,6 @@ public class FicheDeSoins {
         }
         return total;
     }
-    
-     //completer la fiche de soin du patient cree par la secretaire medicale
-    public void completerFicheDeSoin(Patient patient, Date date, Acte acte){ 
-        for(FicheDeSoins fs : SecretaireMedicale.fiches){
-            if (fs.patient==patient && fs.date==date && fs.identifiant == this.identifiant && fs.specialite==this.specialite){
-                fs.ajouterActe(acte);
-                    }
-        }
-       
-        
-        
-    }
-    
-    public void imprimerFicheDeSoin(FicheDeSoins fs){ //dÃ©jÃ  dans secretaire_med
-        fs.imprimerFiche();
-    }
-    
-    //pouur imprimer, il faut créer un pdf. (apres une fois qu'on a téléchargé le pdf, l'ordi propose d'imprimer)
-    public void imprimerListePatient(){
-        
-    }
+   
 
-
-    
 }

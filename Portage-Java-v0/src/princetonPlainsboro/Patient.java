@@ -53,6 +53,7 @@ public class Patient {
     public String toString() {
         return prenom + " " + nom;
     }
+    
     public ArrayList<FicheDeSoins> getDossierMed(){
         return DossierMedical; 
     }

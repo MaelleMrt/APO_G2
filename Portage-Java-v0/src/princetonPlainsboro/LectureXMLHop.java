@@ -175,8 +175,10 @@ public class LectureXMLHop {
                                 //on ajoute les fiches de soins courantes
                                 for(FicheDeSoins fs:fiches){
                                              patientCourant.ajouterFicheDeSoins(fs);
+                                             fs.setPatient(patientCourant);
                                 }
                                 //on clear la fiches de soins courantes
+                                
                                 fiches.clear();
                                 hospitalCourant.ajouterPatient(patientCourant);
 

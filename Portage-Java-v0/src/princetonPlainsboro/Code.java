@@ -5,7 +5,6 @@ package princetonPlainsboro;
 // constructeur (arguments entre parentheses apres le nom de chaque valeur).
 // Par exemple, la valeur Code.FP a un attribut 'libelle' contenant la chaine
 // de caracteres "forfait pediatrique" et un attribut 'cout' ayant la valeur 5.0
-
 enum Code {
     // valeurs de l'�num :
     CS("consultation au cabinet", 23.0),
@@ -18,28 +17,40 @@ enum Code {
     KFB("forfait B", 60.98),
     ORT("orthodontie", 2.15),
     PRO("prothese dentaire", 2.15),
-    CCP("Consultation contraception et prevention", 34.30), 
+    CCP("Consultation contraception et prevention", 34.30),
     COE("Consultation obligatoire de l'enfant", 50.50),
-    CNPSY("Consultation neurophychiatrique/neurologique",52.80),
-    CDE("Consultation dermathologie",48.50);
-                             
+    CNPSY("Consultation neurophychiatrique/neurologique", 52.80),
+    CDE("Consultation dermathologie", 48.50);
+
     // attributs de l'�num :
     private String libelle;
     private double cout;
-    
+
     // constructeur :
     private Code(String libelle, double cout) {
         this.libelle = libelle;
         this.cout = cout;
-        }
-    
+    }
+
     // m�thodes :
-    public String toString() {
-        return super.toString() + " : " + libelle + ", cout=" + cout + " euros";
-        }
+//    public String toString() { //afiche nom exam
+//        return super.toString() + " : " +  this.libelle /*+ ", cout=" + cout + " euros"*/;
+//    }
+    public String afficherLibelle(){
+        return this.libelle;
+    }
     
+    public String afficherCode(){
+        return super.toString();
+    }
+    
+
     // calcule le prix pour un coefficient donne :
     public double calculerCout(int coefficient) {
         return coefficient * cout;
-        }
     }
+//
+//    public String getCode() {
+//        return super.toString();
+//    }
+}

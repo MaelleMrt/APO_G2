@@ -21,8 +21,8 @@ public class TestXMLHopital {
         System.out.println("fiches de soins premier patient");
         System.out.println(hop.getListPatient().get(0).getNom());
         for(FicheDeSoins fs:hop.getListPatient().get(0).getDossierMed()){
-            System.out.println(fs.getMedecin());
-        }
+           for(int i=0;i<fs.getActes().size();i++)
+                System.out.println(fs.getActes().get(i).toString());        }
         
     }
     
