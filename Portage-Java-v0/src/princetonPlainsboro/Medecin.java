@@ -52,22 +52,34 @@ public class Medecin {
     
     
     
-//fonctionnalités du médecin
+//fonctionnalitÃ©s du mÃ©decin
     
-    //compléter la fiche patient créée par la cecretaire médicale
-    public void completerFicheDeSoin(){
+    //completer la fiche de soin du patient cree par la secretaire medicale
+    public void completerFicheDeSoin(Patient patient, Date date, Acte acte){ 
+        for(FicheDeSoins fs : SecretaireMedicale.fiches){
+            if (fs.patient==patient && fs.date==date && fs.identifiant == this.identifiant && fs.specialite==this.specialite){
+                fs.ajouterActe(acte);
+                    }
+        }
+       
+        
         
     }
     //liste de ses patients uniquement
     public void afficherListePatients(){
+        System.out.println("Liste des patients du Docteur "+ this.nom);
+        for (Patient pat : patients){
+            System.out.print(pat.getNom() +" ");
+            System.out.println(pat.getPrenom());
+        }
         
     }
-    
+    //pouur imprimer, il faut créer un pdf. (apres une fois qu'on a téléchargé le pdf, l'ordi propose d'imprimer)
     public void imprimerListePatient(){
         
     }
     
-    public void imprimerFicheDeSoin(){ //déjà dans secretaire_med
-        
+    public void imprimerFicheDeSoin(FicheDeSoins fs){ //dÃ©jÃ  dans secretaire_med
+        fs.imprimerFiche();
     }
 }
