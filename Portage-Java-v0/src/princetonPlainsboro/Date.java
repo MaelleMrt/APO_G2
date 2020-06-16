@@ -16,7 +16,7 @@ public class Date implements Comparable {
         }
     
     public String toString() {
-        return jour + "/" + mois + "/" + annee + " à "+ heure +":"+minutes;
+        return jour + "/" + mois + "/" + annee + " a "+ heure +":"+minutes;
         }
     
     public boolean equals(Object o) {
@@ -39,10 +39,10 @@ public class Date implements Comparable {
         // ici on a forcement annee == d.annee et mois == d.mois :
         if (heure != d.heure)
             return heure - d.heure; 
-        // ici on a forcement heure == d.heure, idem pour année et mois
+        // ici on a forcement heure == d.heure, idem pour annee et mois
         if (minutes != d.minutes)
             return minutes - d.minutes; 
-        // ici on a forcement minute == d.minute idem pour heure, année et mois
+        // ici on a forcement minute == d.minute idem pour heure, annee et mois
         
         return jour - d.jour;
         }
