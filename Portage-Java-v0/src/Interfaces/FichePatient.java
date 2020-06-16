@@ -13,6 +13,7 @@ import java.util.List;
 import princetonPlainsboro.Date;
 import princetonPlainsboro.Patient;
 import princetonPlainsboro.FicheDeSoins;
+import princetonPlainsboro.TableauFichesSoins;
 import princetonPlainsboro.Hospital;
 import princetonPlainsboro.LectureXMLHop;
 
@@ -109,13 +110,13 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
         jLabel5.setText("Nom");
 
         jLabel6.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
-        jLabel6.setText("Prénom");
+        jLabel6.setText("PrÃ©nom");
 
         jLabel7.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
         jLabel7.setText("Adresse");
 
         jLabel8.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
-        jLabel8.setText("N° de Sécurité Sociale");
+        jLabel8.setText("NÂ° de SÃ©curitÃ© Sociale");
 
         jLabel11.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
         jLabel11.setText("jLabel11");
