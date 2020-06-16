@@ -19,6 +19,7 @@ and open the template in the editor.
         </secretaireMedicale>
         <nomS>cardiologie</nomS>
         <medecin>
+            <num>0767782227</num>
             <identifiant>med1</identifiant>
             <mdp>med1</mdp>
             <nomM>House</nomM>
@@ -27,9 +28,10 @@ and open the template in the editor.
                 <nom>Track</nom>
                 <prenom>Pat</prenom>
                 <secu>1230974309012</secu>
-                <dateNaissance>1999-07-08</dateNaissance>
+                <dateNaissance>1999-07-08-23-01</dateNaissance>
+                <codeP>38000</codeP>
                 <ficheDeSoin>
-                    <date>2006-01-06</date>
+                    <date>2006-01-06-12-10</date>
                     <acte>
                         <code>CS</code>
                         <coef>1</coef>
@@ -44,7 +46,7 @@ and open the template in the editor.
                     </acte>
                 </ficheDeSoin>
                 <ficheDeSoin>
-                    <date>2010-10-23</date>
+                    <date>2010-10-23-13-44</date>
                     <acte>
                         <code>CSC</code>
                         <coef>1</coef>
@@ -59,9 +61,10 @@ and open the template in the editor.
                 <nom>Deblouze</nom>
                 <prenom>Agathe</prenom>
                 <secu>1349016273894</secu>
-                <dateNaissance>2001-02-21</dateNaissance>
+                <dateNaissance>2001-02-21-22-30</dateNaissance>
+                <codeP>38000</codeP>
                 <ficheDeSoin>
-                    <date>2008-03-10</date>
+                    <date>2008-03-10-00-12</date>
                     <acte>
                         <code>CS</code>
                         <coef>1</coef>
@@ -85,6 +88,7 @@ and open the template in the editor.
         </secretaireMedicale> 
         <nomS>dentaire</nomS>
         <medecin>
+            <num>0767792227</num>
             <identifiant>med2</identifiant>
             <mdp>med2</mdp>
             <nomM>Richard</nomM>
@@ -93,9 +97,10 @@ and open the template in the editor.
                 <nom>Bole</nom>
                 <prenom>Maggy</prenom>
                 <secu>1638495032817</secu>
-                <dateNaissance>1996-08-03</dateNaissance>
+                <dateNaissance>1996-08-03-20-14</dateNaissance>
+                <codeP>38200</codeP>
                 <ficheDeSoin>
-                    <date>2020-01-06</date>
+                    <date>2020-01-06-14-50</date>
                     <acte>
                         <code>ORT</code>
                         <coef>1</coef>
@@ -110,7 +115,7 @@ and open the template in the editor.
                     </acte>
                 </ficheDeSoin>
                 <ficheDeSoin>
-                    <date>2005-10-23</date>
+                    <date>2005-10-23-13-25</date>
                     <acte>
                         <code>CSC</code>
                         <coef>1</coef>
@@ -125,9 +130,10 @@ and open the template in the editor.
                 <nom>Heget</nom>
                 <prenom>Yves</prenom>
                 <secu>1042738109273</secu>
-                <dateNaissance>1960-08-09</dateNaissance>
+                <dateNaissance>1960-08-09-13-04</dateNaissance>
+                <codeP>38400</codeP>
                 <ficheDeSoin>
-                    <date>2008-03-10</date>
+                    <date>2008-03-10-12-20</date>
                     <acte>
                         <code>K</code>
                         <coef>1</coef>
@@ -142,9 +148,10 @@ and open the template in the editor.
                 <nom>Covert</nom>
                 <prenom>Harry</prenom>
                 <secu>11</secu>
-                <dateNaissance>1972-05-07</dateNaissance>
+                <dateNaissance>1972-05-07-22-09</dateNaissance>
+                <codeP>38250</codeP>
                 <ficheDeSoin>
-                    <date>2010-03-10</date>
+                    <date>2010-03-10-12-15</date>
                     <acte>
                         <code>K</code>
                         <coef>1</coef>
@@ -157,6 +164,7 @@ and open the template in the editor.
             </patient>
         </medecin>
         <medecin>
+            <num>0667798227</num>
             <identifiant>med3</identifiant>
             <mdp>med3</mdp>
             <nomM>Epi</nomM>
@@ -165,9 +173,10 @@ and open the template in the editor.
                 <nom>Deblouze</nom>
                 <prenom>Agathe</prenom>
                 <secu>1312037483029</secu>
-                <dateNaissance>1998-09-05</dateNaissance>
+                <dateNaissance>1998-09-05-12-08</dateNaissance>
+                <codeP>38000</codeP>
                 <ficheDeSoin>
-                    <date>2020-01-06</date>
+                    <date>2020-01-06-22-30</date>
                     <acte>
                         <code>ORT</code>
                         <coef>1</coef>
