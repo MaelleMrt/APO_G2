@@ -30,16 +30,17 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
     /**
      * Creates new form FichePatient
      */
-    public FichePatient(Hospital hop) {
+    public FichePatient(Patient p) {
         
-        this.patient = hop.getListPatient().get(0) ; 
-        this.date= hop.getListPatient().get(0).getNaissance();
-        this.hop = hop;
-        this.fiche = hop.getListPatient().get(0).getDossierMed();
-        for (FicheDeSoins fs:fiche){
+        this.patient = p;
+        this.date = p.getNaissance();
+        this.fiche = p.getDossierMed();
+        for(FicheDeSoins fs:fiche){
             System.out.println(fs.getDate());
         }
         initComponents();
+        jToggleButton1.addActionListener(this);
+
     }
 
     /**
@@ -70,6 +71,7 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
         jLabel12 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -180,7 +182,8 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
-        jLabel13.setIcon(new javax.swing.ImageIcon("D:\\Bureau\\Projet APO\\NB\\APO_G2-master\\Portage-Java-v0\\src\\images\\103781896_686381585260019_4196854000429935596_n.png")); // NOI18N
+        jToggleButton1.setFont(new java.awt.Font("Bell MT", 0, 11)); // NOI18N
+        jToggleButton1.setText("Close");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -192,7 +195,9 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(235, 235, 235)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,7 +206,7 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(jLabel2))
         );
         jPanel1Layout.setVerticalGroup(
@@ -213,7 +218,8 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1))
-                    .addComponent(jLabel13))
+                    .addComponent(jLabel13)
+                    .addComponent(jToggleButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -278,9 +284,9 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 // new FichePatient().setVisible(true);
-                LectureXMLHop test = new LectureXMLHop("hopital.xml");
-                Hospital hop = test.getHospital();
-                   new FichePatient(hop).setVisible(true);
+                Date date = new Date(12,12,12);
+                Patient p = new Patient("M","K", 01234567,date);
+                   new FichePatient(p).setVisible(true);
             }
         });
     }
@@ -305,11 +311,14 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //
+        if(jToggleButton1.isSelected()){
+            this.dispose();
+        }
     }
 
     @Override
