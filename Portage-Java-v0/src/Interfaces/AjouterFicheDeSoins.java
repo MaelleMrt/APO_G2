@@ -103,7 +103,7 @@ public class AjouterFicheDeSoins extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Medecin : "medecin.getNomComplet());
+        jLabel5.setText("Medecin : "+medecin.getNomComplet());
 
         jButton1.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jButton1.setText("Valider");
