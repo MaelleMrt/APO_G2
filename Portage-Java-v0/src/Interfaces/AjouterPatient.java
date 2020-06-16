@@ -80,7 +80,7 @@ public class AjouterPatient extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel8.setText("Adresse : ");
+        jLabel8.setText("Code Postal : ");
 
         jLabel9.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);

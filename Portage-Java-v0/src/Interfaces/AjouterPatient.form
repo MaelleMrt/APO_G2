@@ -236,7 +236,7 @@
                   <Font name="Bell MT" size="13" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="Adresse : "/>
+                <Property name="text" type="java.lang.String" value="Code Postal : "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">
