@@ -11,13 +11,15 @@ public class Medecin {
     private List<Patient> patients;
     private String identifiant;
     private String mdp;
+    private int tel; 
 
-    public Medecin(String nom, String prenom, String specialite, String identifiant, String mdp) {
+    public Medecin(String nom, String prenom, String specialite, String identifiant, String mdp, int tel) {
         this.nom = nom;
         this.prenom = prenom;
         this.specialite = specialite;
         this.mdp = mdp;
         this.identifiant = identifiant;
+        this.tel = tel; 
         this.patients = new ArrayList<Patient>();
     }
 
@@ -37,12 +39,24 @@ public class Medecin {
         return this.patients;
     }
 
-    public String getNom() {
+    public String getNomComplet() {
         return "DR. " + this.nom + " " + this.prenom;
     }
+    
+    public String getNom(){
+        return this.nom; 
+    }
 
+    public String getPrenom(){
+        return this.prenom;
+    }
+   
     public String getMdp() {
         return this.mdp;
+    }
+    
+    public int getNumeroTel(){
+        return this.tel;
     }
 
     public String toString() {
