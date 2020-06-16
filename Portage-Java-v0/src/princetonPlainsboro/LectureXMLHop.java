@@ -209,6 +209,7 @@ public class LectureXMLHop {
                             if (!present) {
                                 patientCourant = new Patient(nomCourant, prenomCourant, secuCourante, dateNaissanceCourante,codePCourant);
                                 //on ajoute à la liste de patient de l'hopital
+                                System.out.println("ajout du patient: "+patientCourant.getNom());
                                 hospitalCourant.ajouterPatient(patientCourant);
                             }
                             //on ajoute les fiches de soins courantes
