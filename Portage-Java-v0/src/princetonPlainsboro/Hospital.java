@@ -20,7 +20,8 @@ public class Hospital {
 
     private final String nom = "PrincetonBoro"; //nom de l'hôpital
     //private java.util.ArrayList<String> listeSpe; // liste des quantites des spécialités/services 
-    private List<Service> listeSpe;
+    private List<Specialite> listeSpe;
+    private List<Service> listeSe;
     private List<Patient> patientsH;
     private List<Medecin> medecinsH;
     private List<SecretaireMedicale> secretairesM;
@@ -29,13 +30,14 @@ public class Hospital {
     
     public Hospital(String nom) {
         nom = this.nom;
-        this.listeSpe = Arrays.asList(Service.values());
+        this.listeSe = Arrays.asList(Service.values());
+        this.listeSpe = new ArrayList<Specialite>();
         this.medecinsH= new ArrayList<Medecin>();
         this.patientsH= new ArrayList<Patient>();
         this.secretairesM=new ArrayList<SecretaireMedicale>();
     }
 
-    public List<Service> getSpecialite() {
+    public List<Specialite> getSpecialite() {
         return listeSpe;
     }
     
@@ -44,7 +46,7 @@ public class Hospital {
     }
 
     public void ajouterSpecialite(Specialite s) {
-
+        this.listeSpe.add(s);
     }
 
     public void ajouterPatient(Patient p) {
@@ -78,7 +80,7 @@ public class Hospital {
     public void afficherInfos(){
         System.out.println("Nom de l'Hopital = "+this.nom);
         System.out.println("Liste des specialites : ");
-        for (Service elem : this.listeSpe){
+        for (Specialite elem : this.listeSpe){
             System.out.println(elem);
             
         }

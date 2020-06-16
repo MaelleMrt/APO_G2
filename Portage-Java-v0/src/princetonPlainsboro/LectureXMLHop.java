@@ -21,197 +21,231 @@ import javax.xml.stream.XMLStreamReader;
  * @author Maelle
  */
 public class LectureXMLHop {
+
     private String nomFichier;
-        private final static String repBase = "src/donnees/";
+    private final static String repBase = "src/donnees/";
 
-        // 'nomFichier' est le nom d'un fichier XML se trouvant dans le repertoire 'repBase' a lire :
-        public LectureXMLHop(String nomFichier) {
-            this.nomFichier = nomFichier;
-        }
+    // 'nomFichier' est le nom d'un fichier XML se trouvant dans le repertoire 'repBase' a lire :
+    public LectureXMLHop(String nomFichier) {
+        this.nomFichier = nomFichier;
+    }
 
-        public Hospital getHospital() {
-            Hospital hospitalCourant = null;
-            Date date = null;
-            List<Specialite> specialites = new ArrayList<Specialite>();
-            List<Acte> actes = new Vector<Acte>();
-            List<Medecin> medecins=new ArrayList<Medecin>();
-            List<FicheDeSoins> fiches=new ArrayList<FicheDeSoins>();
-            Patient patientCourant = null;
-            Medecin medecinCourant = null;
-            Specialite specialiteCourante = null;
-            String mdpCourant = null;
-            String identifiantCourant = null;
-            SecretaireMedicale secretaireMedicaleCourante = null;
-            SecretaireAdministrative secretaireAdministrativeCourante = null;
-            String donneesCourantes = "";
-            String nomCourant = "";
-            String prenomCourant = "";
-            String nomSpecialiteCourante="";
-            String nomMedecinCourant="";
-            String prenomMedecinCourant="";
-            
-            
-            long secuCourante = 0;
-            Date dateNaissanceCourante = null;
-            Code codeCourant = null;
-            int coefCourant = 0;
+    public Hospital getHospital() {
+        Hospital hospitalCourant = null;
+        Date date = null;
+        List<Specialite> specialites = new ArrayList<Specialite>();
+        List<Acte> actes = new Vector<Acte>();
+        List<Medecin> medecins = new ArrayList<Medecin>();
+        List<FicheDeSoins> fiches = new ArrayList<FicheDeSoins>();
+        List<Patient> patients = new ArrayList<Patient>();
+        Patient patientCourant = null;
+        Medecin medecinCourant = null;
+        Specialite specialiteCourante = null;
+        String mdpCourant = null;
+        String identifiantCourant = null;
+        SecretaireMedicale secretaireMedicaleCourante = null;
+        SecretaireAdministrative secretaireAdministrativeCourante = null;
+        String donneesCourantes = "";
+        String nomCourant = "";
+        String prenomCourant = "";
+        String nomSpecialiteCourante = "";
+        String nomMedecinCourant = "";
+        String prenomMedecinCourant = "";
+        String mdpCourantSe = "";
+        String identifiantCourantSe = "";
 
-            // analyser le fichier par StAX
-            try {
-                // instanciation du parser
-                InputStream in = new FileInputStream(repBase + nomFichier);
-                XMLInputFactory factory = XMLInputFactory.newInstance();
-                XMLStreamReader parser = factory.createXMLStreamReader(in);
+        long secuCourante = 0;
+        Date dateNaissanceCourante = null;
+        Code codeCourant = null;
+        int coefCourant = 0;
 
-                // lecture des evenements
-                for (int event = parser.next(); event != XMLStreamConstants.END_DOCUMENT; event = parser.next()) {
-                    // traitement selon l'evenement
-                    switch (event) {
-                        case XMLStreamConstants.START_ELEMENT:
-                            if (parser.getLocalName().equals("hopital")) {
-                                hospitalCourant = new Hospital(nomCourant);
+        // analyser le fichier par StAX
+        try {
+            // instanciation du parser
+            InputStream in = new FileInputStream(repBase + nomFichier);
+            XMLInputFactory factory = XMLInputFactory.newInstance();
+            XMLStreamReader parser = factory.createXMLStreamReader(in);
+
+            // lecture des evenements
+            for (int event = parser.next(); event != XMLStreamConstants.END_DOCUMENT; event = parser.next()) {
+                // traitement selon l'evenement
+                switch (event) {
+                    case XMLStreamConstants.START_ELEMENT:
+                        if (parser.getLocalName().equals("hopital")) {
+                            hospitalCourant = new Hospital(nomCourant);
+                        }
+                        break;
+                    case XMLStreamConstants.END_ELEMENT:
+                        if (parser.getLocalName().equals("acte")) {
+                            actes.add(new Acte(codeCourant, coefCourant));
+                        }
+                        if (parser.getLocalName().equals("code")) {
+                            codeCourant = getCode(donneesCourantes);
+                            if (codeCourant == null) {
+                                throw new XMLStreamException("Impossible de trouver le code d'acte = " + donneesCourantes);
                             }
-                            break;
-                        case XMLStreamConstants.END_ELEMENT:
-                            if (parser.getLocalName().equals("acte")) {
-                                actes.add(new Acte(codeCourant, coefCourant));
+                        }
+                        if (parser.getLocalName().equals("coef")) {
+                            coefCourant = Integer.parseInt(donneesCourantes);
+                        }
+                        if (parser.getLocalName().equals("date")) {
+                            int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
+                            int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-') + 1, donneesCourantes.lastIndexOf('-')));
+                            int jour = Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-') + 1, donneesCourantes.length()));
+
+                            date = new Date(jour, mois, annee);
+                        }
+                        if (parser.getLocalName().equals("ficheDeSoin")) {
+
+                            FicheDeSoins f = new FicheDeSoins(patientCourant, nomMedecinCourant + " " + prenomMedecinCourant, nomSpecialiteCourante, date);
+                            // ajout des actes
+                            for (int i = 0; i < actes.size(); i++) {
+                                Acte a = (Acte) actes.get(i);
+                                f.ajouterActe(a);
                             }
-                            if (parser.getLocalName().equals("code")) {
-                                codeCourant = getCode(donneesCourantes);
-                                if (codeCourant == null) {
-                                    throw new XMLStreamException("Impossible de trouver le code d'acte = " + donneesCourantes);
+                            // effacer tous les actes de la liste
+                            actes.clear();
+                            // ajouter la fiche de soin au patient
+                            fiches.add(f);
+                        }
+                        if (parser.getLocalName().equals("medecin")) {
+
+                            //on l'ajoute à la liste du serviceCourant et on vérifie si il n'est pas déjà dans la liste des medecins
+                            boolean presentM = false;
+                            for (Medecin m : hospitalCourant.getListMedecin()) {
+                                if (m.getIdentifiant().equals(identifiantCourant)) {
+                                    presentM = true;
+                                    medecinCourant = m;
+
                                 }
                             }
-                            if (parser.getLocalName().equals("coef")) {
-                                coefCourant = Integer.parseInt(donneesCourantes);
+                            //si il n'est pas present
+                            if (!presentM) {
+                                medecinCourant = new Medecin(nomMedecinCourant, prenomMedecinCourant, nomSpecialiteCourante, identifiantCourant, mdpCourant);
+                                hospitalCourant.ajouterMedecin(medecinCourant);
                             }
-                            if (parser.getLocalName().equals("date")) {
-                                int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
-                                int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-') + 1, donneesCourantes.lastIndexOf('-')));
-                                int jour = Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-') + 1, donneesCourantes.length()));
+                            //on lui ajoute ses patients qu'il n'a pas déjà 
+                            for (Patient p : patients) {
+                                if (!medecinCourant.getListPatient().contains(p)) {
+                                    medecinCourant.ajouterPatient(p);
+                                }
+                            }
+                            patients.clear();
 
-                                date = new Date(jour, mois, annee);
-                            }
-                            if (parser.getLocalName().equals("ficheDeSoin")) {
- 
-                                FicheDeSoins f = new FicheDeSoins(patientCourant,nomMedecinCourant+" "+prenomMedecinCourant,nomSpecialiteCourante, date);
-                                // ajout des actes
-                                for (int i = 0; i < actes.size(); i++) {
-                                    Acte a = (Acte) actes.get(i);
-                                    f.ajouterActe(a);
-                                }
-                                // effacer tous les actes de la liste
-                                actes.clear();
-                                // ajouter la fiche de soin au patient
-                                fiches.add(f);
-                            }
-                            if (parser.getLocalName().equals("medecin")) {
-                                //a chaque fois que le tombe sur un medecin on le met dans le courant
-                                //on l'ajoute à la liste du serviceCourant et on vérifie si il n'est pas déjà dans la liste des medecins
-                                boolean presentM = false;
-                                for (Medecin m : hospitalCourant.getListMedecin()) {
-                                    if (m.getIdentifiant().equals(identifiantCourant)) {
-                                        presentM = true;
-                                        medecinCourant = m;
-                                    }
-                                }
-                                if (!presentM){
-                                    medecinCourant = new Medecin(nomMedecinCourant, prenomMedecinCourant, nomSpecialiteCourante, identifiantCourant, mdpCourant);
-                                    hospitalCourant.ajouterMedecin(medecinCourant);
-                                }
-                                
+                            medecins.add(medecinCourant);
 
-                            }
-                            if (parser.getLocalName().equals("secretaireMedicale")) {
-                                secretaireMedicaleCourante = new SecretaireMedicale(identifiantCourant, mdpCourant, specialiteCourante);
-                                hospitalCourant.ajouterSecretaireM(secretaireMedicaleCourante);
-                            }
-                            if (parser.getLocalName().equals("secretaireAdministrative")) {
-                                secretaireAdministrativeCourante = new SecretaireAdministrative(identifiantCourant, mdpCourant,hospitalCourant);
-                            }
-                            if (parser.getLocalName().equals("secu")) {
-                                secuCourante = Long.parseLong(donneesCourantes);
-                            }
-                            if (parser.getLocalName().equals("dateNaissance")) {
-                                int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
-                                int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-') + 1, donneesCourantes.lastIndexOf('-')));
-                                int jour = Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-') + 1, donneesCourantes.length()));
 
-                                dateNaissanceCourante = new Date(annee, mois, jour);
-                            }
-                            if (parser.getLocalName().equals("mdp")) {
-                                mdpCourant = donneesCourantes;
-                            }
-                            if (parser.getLocalName().equals("identifiant")) {
-                                identifiantCourant = donneesCourantes;
-                            }
-                            if (parser.getLocalName().equals("nom")) {
-                                nomCourant = donneesCourantes;
-                            }
-                            if (parser.getLocalName().equals("nomS")) {
-                                nomSpecialiteCourante = donneesCourantes;
-                            }
-                            if(parser.getLocalName().equals("nomM")){
-                                nomMedecinCourant = donneesCourantes;
-                            }
-                            if(parser.getLocalName().equals("prenomM")){
-                                prenomMedecinCourant = donneesCourantes;
-                            }
-                            if (parser.getLocalName().equals("patient")) {
-                                //on l'ajoute au medecinCourant et on vérifie si il n'est pas déjà dans la liste des patients
-                                boolean present = false;
-                                for (Patient p : hospitalCourant.getListPatient()) {
-                                    if (p.getSecu() == secuCourante) {
-                                        present = true;
-                                        patientCourant = p;
-                                       
-                                    }
+                        }
+                        if (parser.getLocalName().equals("secretaireMedicale")) {
+
+                        }
+                        if (parser.getLocalName().equals("secretaireAdministrative")) {
+                            secretaireAdministrativeCourante = new SecretaireAdministrative(identifiantCourant, mdpCourant, hospitalCourant);
+                        }
+                        if (parser.getLocalName().equals("secu")) {
+                            secuCourante = Long.parseLong(donneesCourantes);
+                        }
+                        if (parser.getLocalName().equals("dateNaissance")) {
+                            int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
+                            int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-') + 1, donneesCourantes.lastIndexOf('-')));
+                            int jour = Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-') + 1, donneesCourantes.length()));
+
+                            dateNaissanceCourante = new Date(annee, mois, jour);
+                        }
+                        if (parser.getLocalName().equals("mdp")) {
+                            mdpCourant = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("identifiant")) {
+                            identifiantCourant = donneesCourantes;
+                        }
+
+                        if (parser.getLocalName().equals("mdpSe")) {
+                            mdpCourantSe = donneesCourantes;
+                        }
+
+                        if (parser.getLocalName().equals("identifiantSe")) {
+                            identifiantCourantSe = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("nom")) {
+                            nomCourant = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("nomS")) {
+                            nomSpecialiteCourante = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("nomM")) {
+                            nomMedecinCourant = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("prenomM")) {
+                            prenomMedecinCourant = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("patient")) {
+                            //on l'ajoute au medecinCourant et on vérifie si il n'est pas déjà dans la liste des medecins
+                            boolean present = false;
+                            for (Patient p : hospitalCourant.getListPatient()) {
+                                if (p.getSecu() == secuCourante) {
+                                    present = true;
+                                    patientCourant = p;
+
                                 }
-                                if (!present) {
-                                    patientCourant = new Patient(nomCourant, prenomCourant, secuCourante, dateNaissanceCourante);
-                                    
-                                    
-                                }
-                                //on ajoute les fiches de soins courantes
-                                for(FicheDeSoins fs:fiches){
-                                             patientCourant.ajouterFicheDeSoins(fs);
-                                             fs.setPatient(patientCourant);
-                                }
-                                //on clear la fiches de soins courantes
-                                
-                                fiches.clear();
+                            }
+                            if (!present) {
+                                patientCourant = new Patient(nomCourant, prenomCourant, secuCourante, dateNaissanceCourante);
+                                //on ajoute à la liste de patient de l'hopital
                                 hospitalCourant.ajouterPatient(patientCourant);
+                            }
+                            //on ajoute les fiches de soins courantes
+                            for (FicheDeSoins fs : fiches) {
+                                patientCourant.ajouterFicheDeSoins(fs);
+                                fs.setPatient(patientCourant);
+                            }
+                            //on clear la fiches de soins courantes
+                            fiches.clear();
+                            
+                            //on ajoute à la liste de patients courants
+                            patients.add(patientCourant);
 
+                        }
+                        if (parser.getLocalName().equals("prenom")) {
+                            prenomCourant = donneesCourantes;
+                        }
+                        if (parser.getLocalName().equals("specialite")) {
+                            specialiteCourante = new Specialite(nomSpecialiteCourante, secretaireMedicaleCourante);
+                            for (Medecin m : medecins) {
+                                specialiteCourante.ajouterMedecin(m);
                             }
-                            if (parser.getLocalName().equals("prenom")) {
-                                prenomCourant = donneesCourantes;
-                            }
-                            if (parser.getLocalName().equals("specialite")) {
-                                specialiteCourante = new Specialite(nomCourant, secretaireMedicaleCourante);
-                                for(Medecin m:medecins){
-                                    specialiteCourante.ajouterMedecin(medecinCourant);
-                                }
-                                medecins.clear();
-                            }
-                            break;
-                        case XMLStreamConstants.CHARACTERS:
-                            donneesCourantes = parser.getText();
-                            break;
-                    } // end switch
-                } // end while
-                parser.close();
-            } catch (XMLStreamException ex) {
-                System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier);
-                System.out.println("Details :");
-                System.out.println(ex);
-            } catch (IOException ex) {
-                System.out.println("Exception de type 'IOException' lors de la lecture du fichier : " + nomFichier);
-                System.out.println("Verifier le chemin.");
-                System.out.println(ex.getMessage());
-            }
+                            //création de la secretaire avec la specialite courante
+                            secretaireMedicaleCourante = new SecretaireMedicale(identifiantCourantSe, mdpCourantSe, specialiteCourante);
 
-            return hospitalCourant;
+                            //on set la secretaireMedicale
+                            specialiteCourante.setSM(secretaireMedicaleCourante);
+
+                            //on l'ajoute à l'hopital la secretaire medicale
+                            hospitalCourant.ajouterSecretaireM(secretaireMedicaleCourante);
+
+                            //on ajoute la specialite à l'hopital
+                            hospitalCourant.ajouterSpecialite(specialiteCourante);
+                            medecins.clear();
+                        }
+                        break;
+
+                    case XMLStreamConstants.CHARACTERS:
+                        donneesCourantes = parser.getText();
+                        break;
+                } // end switch
+            } // end while
+            parser.close();
+        } catch (XMLStreamException ex) {
+            System.out.println("Exception de type 'XMLStreamException' lors de la lecture du fichier : " + nomFichier);
+            System.out.println("Details :");
+            System.out.println(ex);
+        } catch (IOException ex) {
+            System.out.println("Exception de type 'IOException' lors de la lecture du fichier : " + nomFichier);
+            System.out.println("Verifier le chemin.");
+            System.out.println(ex.getMessage());
         }
+
+        return hospitalCourant;
+    }
 
     private static Code getCode(String code) {
         if (code.equals("CS")) {

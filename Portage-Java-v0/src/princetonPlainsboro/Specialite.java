@@ -42,6 +42,10 @@ public class Specialite {
         return this.listeMed;
 
     }
+    
+    public void setSM(SecretaireMedicale sm){
+        this.secMed=sm;
+    }
 
     //vérifier que ça marche
     public void afficherInfos() {
