@@ -40,6 +40,8 @@ public class LectureXMLHop {
         List<Patient> patients = new ArrayList<Patient>();
         Patient patientCourant = null;
         Medecin medecinCourant = null;
+        int numeroCourant =0;
+        int codePCourant=0;
         Specialite specialiteCourante = null;
         String mdpCourant = null;
         String identifiantCourant = null;
@@ -53,7 +55,6 @@ public class LectureXMLHop {
         String prenomMedecinCourant = "";
         String mdpCourantSe = "";
         String identifiantCourantSe = "";
-
         long secuCourante = 0;
         Date dateNaissanceCourante = null;
         Code codeCourant = null;
@@ -79,21 +80,31 @@ public class LectureXMLHop {
                         if (parser.getLocalName().equals("acte")) {
                             actes.add(new Acte(codeCourant, coefCourant));
                         }
+                        
                         if (parser.getLocalName().equals("code")) {
                             codeCourant = getCode(donneesCourantes);
                             if (codeCourant == null) {
                                 throw new XMLStreamException("Impossible de trouver le code d'acte = " + donneesCourantes);
                             }
                         }
+                        
                         if (parser.getLocalName().equals("coef")) {
                             coefCourant = Integer.parseInt(donneesCourantes);
                         }
+                        
+                        if(parser.getLocalName().equals("num")){
+                            numeroCourant=Integer.parseInt(donneesCourantes);
+                        }
+                        
+                        
                         if (parser.getLocalName().equals("date")) {
                             int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
-                            int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-') + 1, donneesCourantes.lastIndexOf('-')));
-                            int jour = Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-') + 1, donneesCourantes.length()));
+                            int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-') + 1, donneesCourantes.indexOf('-',donneesCourantes.indexOf('-')+1)));
+                            int jour = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-',donneesCourantes.indexOf('-')+1)+1,donneesCourantes.indexOf('-',donneesCourantes.indexOf('-',donneesCourantes.indexOf('-')+1)+1)));
+                            int heure =Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-',donneesCourantes.indexOf('-',donneesCourantes.indexOf('-')+1)+1)+ 1,donneesCourantes.lastIndexOf('-',donneesCourantes.indexOf('-',donneesCourantes.indexOf('-',donneesCourantes.indexOf('-',donneesCourantes.indexOf('-')+1)+1)+1))));
+                            int minutes =Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-',donneesCourantes.indexOf('-',donneesCourantes.indexOf('-',donneesCourantes.indexOf('-',donneesCourantes.indexOf('-')+1)+1)+1))+ 1, donneesCourantes.length()));
 
-                            date = new Date(jour, mois, annee);
+                            date = new Date(jour, mois,annee,heure,minutes);
                         }
                         if (parser.getLocalName().equals("ficheDeSoin")) {
 
@@ -121,7 +132,7 @@ public class LectureXMLHop {
                             }
                             //si il n'est pas present
                             if (!presentM) {
-                                medecinCourant = new Medecin(nomMedecinCourant, prenomMedecinCourant, nomSpecialiteCourante, identifiantCourant, mdpCourant);
+                                medecinCourant = new Medecin(nomMedecinCourant, prenomMedecinCourant, nomSpecialiteCourante, identifiantCourant, mdpCourant,numeroCourant);
                                 hospitalCourant.ajouterMedecin(medecinCourant);
                             }
                             //on lui ajoute ses patients qu'il n'a pas déjà 
@@ -146,11 +157,14 @@ public class LectureXMLHop {
                             secuCourante = Long.parseLong(donneesCourantes);
                         }
                         if (parser.getLocalName().equals("dateNaissance")) {
-                            int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
-                            int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-') + 1, donneesCourantes.lastIndexOf('-')));
-                            int jour = Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-') + 1, donneesCourantes.length()));
 
-                            dateNaissanceCourante = new Date(annee, mois, jour);
+                            int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
+                            int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-') + 1, donneesCourantes.indexOf('-',donneesCourantes.indexOf('-')+1)));
+                            int jour = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-',donneesCourantes.indexOf('-')+1)+1,donneesCourantes.indexOf('-',donneesCourantes.indexOf('-',donneesCourantes.indexOf('-')+1)+1)));
+                            int heure =Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-',donneesCourantes.indexOf('-',donneesCourantes.indexOf('-')+1)+1)+ 1,donneesCourantes.lastIndexOf('-',donneesCourantes.indexOf('-',donneesCourantes.indexOf('-',donneesCourantes.indexOf('-',donneesCourantes.indexOf('-')+1)+1)+1))));
+                            int minutes =Integer.parseInt(donneesCourantes.substring(donneesCourantes.lastIndexOf('-',donneesCourantes.indexOf('-',donneesCourantes.indexOf('-',donneesCourantes.indexOf('-',donneesCourantes.indexOf('-')+1)+1)+1))+ 1, donneesCourantes.length()));
+
+                            dateNaissanceCourante = new Date(annee, mois, jour,heure,minutes);
                         }
                         if (parser.getLocalName().equals("mdp")) {
                             mdpCourant = donneesCourantes;
@@ -165,6 +179,10 @@ public class LectureXMLHop {
 
                         if (parser.getLocalName().equals("identifiantSe")) {
                             identifiantCourantSe = donneesCourantes;
+                        }
+                        
+                        if(parser.getLocalName().equals("codeP")){
+                            codePCourant=Integer.parseInt(donneesCourantes);
                         }
                         if (parser.getLocalName().equals("nom")) {
                             nomCourant = donneesCourantes;
@@ -189,7 +207,7 @@ public class LectureXMLHop {
                                 }
                             }
                             if (!present) {
-                                patientCourant = new Patient(nomCourant, prenomCourant, secuCourante, dateNaissanceCourante);
+                                patientCourant = new Patient(nomCourant, prenomCourant, secuCourante, dateNaissanceCourante,codePCourant);
                                 //on ajoute à la liste de patient de l'hopital
                                 hospitalCourant.ajouterPatient(patientCourant);
                             }
