@@ -13,40 +13,49 @@ import java.util.List;
  * @author Maelle
  */
 public class SecretaireMedicale {
+
     private String identifiant;
     private String mdp;
     private Specialite specialite;
-      private List<Patient> listeP;
-    
-    public SecretaireMedicale(String identifiant,String mdp,Specialite specialite){
-        this.identifiant=identifiant;
-        this.mdp=mdp;
-        this.specialite=specialite;
-        this.listeP=new ArrayList<Patient>();
-        for(Medecin m:specialite.getListeMed()){
-            for(Patient p:m.getListPatient()){
-                if(!this.listeP.contains(p)){
+    private List<Patient> listeP;
+
+    public SecretaireMedicale(String identifiant, String mdp, Specialite specialite) {
+        this.identifiant = identifiant;
+        this.mdp = mdp;
+        this.specialite = specialite;
+        this.listeP = new ArrayList<Patient>();
+        for (Medecin m : specialite.getListeMed()) {
+            for (Patient p : m.getListPatient()) {
+                if (!this.listeP.contains(p)) {
                     listeP.add(p);
                 }
             }
         }
     }
-    public String getIdentifiant(){
+
+    public String getIdentifiant() {
         return identifiant;
     }
-    
-    public String getMdp(){
+
+    public String getMdp() {
         return mdp;
     }
-    
-    public Specialite getSpecialite(){
+
+    public Specialite getSpecialite() {
         return this.specialite;
     }
-     
-    
-    public void afficherPatient(){
-        for(Patient p:listeP){
-            System.out.println(p.getNom()+p.getPrenom());
+
+    public List<Patient> getListP() {
+        return this.listeP;
+    }
+
+    public void afficherPatient() {
+        for (Patient p : listeP) {
+            System.out.println(p.getNom() + p.getPrenom());
         }
+    }
+    
+    public void ajouterPatient(Patient p){
+        this.listeP.add(p); 
     }
 }

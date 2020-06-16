@@ -120,7 +120,7 @@ public class FicheMedecin extends javax.swing.JFrame implements ActionListener, 
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/103965117_564825807513574_8527130025994621034_n.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\Bureau\\Projet APO\\NB\\APO_G2-master\\Portage-Java-v0\\src\\images\\103965117_564825807513574_8527130025994621034_n.jpg")); // NOI18N
 
         jToggleButton1.setFont(new java.awt.Font("Bell MT", 0, 11)); // NOI18N
         jToggleButton1.setText("Close");

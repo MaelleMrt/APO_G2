@@ -5,6 +5,8 @@
  */
 package princetonPlainsboro;
 
+import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author Maelle
@@ -32,5 +34,19 @@ public class SecretaireAdministrative {
     
     public String getIdentifiant(){
         return this.identifiant;
+    }
+    public Hospital getHospital(){
+        return this.hospital;
+    }
+    
+    public List<FicheDeSoins> getFiches(){
+        List<FicheDeSoins> fiche = new ArrayList<FicheDeSoins>(); 
+        for ( Patient p : this.getHospital().getListPatient()){
+            for(FicheDeSoins fs : p.getDossierMed()){
+                fs.afficher();
+                fiche.add(fs);
+            }
+        }
+        return fiche;
     }
 }

@@ -61,7 +61,7 @@ public class Connexion extends javax.swing.JFrame {
 
         jPasswordField1.setText("jPasswordField1");
 
-        jToggleButton1.setText("✓");
+        jToggleButton1.setText("?");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
@@ -69,7 +69,7 @@ public class Connexion extends javax.swing.JFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
-        jLabel6.setIcon(new javax.swing.ImageIcon("/Users/Maelle/Desktop/projet APO/Portage-Java-v0/src/images/logo2.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon("D:\\Bureau\\Projet APO\\NB\\APO_G2-master\\Portage-Java-v0\\src\\images\\logo2.png")); // NOI18N
 
         jComboBox1.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Medecin", "Secretaire Administrative", "Secretaire Medicale", " " }));

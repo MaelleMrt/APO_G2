@@ -46,6 +46,10 @@ public class Patient {
     public Date getNaissance() {
         return naissance;
     }
+    
+    public int getCP(){
+        return this.codePostale; 
+    }
 
     public void ajouterFicheDeSoins(FicheDeSoins fiche) {
         DossierMedical.add(fiche);

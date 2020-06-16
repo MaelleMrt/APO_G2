@@ -31,11 +31,11 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
     /**
      * Creates new form FichePatient
      */
-    public FichePatient(Patient p) {
+    public FichePatient(Patient p ,List<FicheDeSoins> dossier) {
         
         this.patient = p;
         this.date = p.getNaissance();
-        this.fiche = p.getDossierMed();
+        this.fiche = dossier;
         for(FicheDeSoins fs:fiche){
             System.out.println(fs.getDate());
         }
@@ -111,7 +111,7 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
         jLabel5.setText("Nom");
 
         jLabel6.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
-        jLabel6.setText("Prénom");
+        jLabel6.setText("Prenom");
 
         jLabel7.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
         jLabel7.setText("Adresse");
@@ -187,7 +187,7 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
         jToggleButton1.setFont(new java.awt.Font("Bell MT", 0, 11)); // NOI18N
         jToggleButton1.setText("Close");
 
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo_petit.png"))); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon("D:\\Bureau\\Projet APO\\NB\\APO_G2-master\\Portage-Java-v0\\src\\images\\logo_petit.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -234,7 +234,7 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
                             .addComponent(jLabel1)
                             .addComponent(jLabel16))))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -297,9 +297,9 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 // new FichePatient().setVisible(true);
-                Date date = new Date(12,12,12,12,12);
-                Patient p = new Patient("M","K", 01234567,date);
-                   new FichePatient(p).setVisible(true);
+//                Date date = new Date(12,12,12,12,12);
+//                Patient p = new Patient("M","K", 0123456789110,date,83600);
+//                   new FichePatient(p).setVisible(true);
             }
         });
     }

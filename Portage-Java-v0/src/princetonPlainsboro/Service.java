@@ -11,9 +11,9 @@ package princetonPlainsboro;
  */
 public enum Service {
 
-    MEDECINE("Médecine"),
+    MEDECINE("Medecine"),
     CHIRURGIE("Chirurgie"),
-    GYNECOLOGIE_OBSTERIQUE("gynécologie Obstérique");
+    GYNECOLOGIE_OBSTERIQUE("gynecologie Obsterique");
 
     private String service;
 

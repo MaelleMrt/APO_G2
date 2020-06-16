@@ -1,12 +1,8 @@
 package Interfaces;
 
-import Interfaces.FichePatient;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
-import javax.swing.ListModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import princetonPlainsboro.Hospital;
@@ -47,7 +43,7 @@ public class Secretaire_Administrative extends javax.swing.JFrame implements Lis
         //initialisation de la liste médecin (jlist1)
         DefaultListModel ModeleTest1 = new DefaultListModel();
         for (Medecin m : h.getListMedecin()) {
-            ModeleTest1.addElement(m.getNom());
+            ModeleTest1.addElement(m.getNomComplet());
         }
         jList1.setModel(ModeleTest1);
         
@@ -60,7 +56,7 @@ public class Secretaire_Administrative extends javax.swing.JFrame implements Lis
         //initialisation de la JComboBox des médecins
         jComboBox2.addItem(" ");
         for(Medecin m : h.getListMedecin()){
-            jComboBox2.addItem(m.getNom());
+            jComboBox2.addItem(m.getNomComplet());
         }
         
         //actions associées aux JList
@@ -70,8 +66,11 @@ public class Secretaire_Administrative extends javax.swing.JFrame implements Lis
         //actions associées aux JComboBox
         jComboBox1.addActionListener(this);
         jComboBox2.addActionListener(this);
-
-
+        
+        //lecture des boutons
+        jToggleButton1.addActionListener(this);
+        jToggleButton2.addActionListener(this);
+        jToggleButton3.addActionListener(this);
     }
 
 
@@ -81,16 +80,15 @@ public class Secretaire_Administrative extends javax.swing.JFrame implements Lis
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
         jToggleButton1 = new javax.swing.JToggleButton();
-        jButton1 = new javax.swing.JButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         jComboBox1 = new javax.swing.JComboBox();
         jComboBox2 = new javax.swing.JComboBox();
+        jToggleButton3 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,10 +97,6 @@ public class Secretaire_Administrative extends javax.swing.JFrame implements Lis
         jLabel1.setFont(new java.awt.Font("Bell MT", 1, 22)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(222, 31, 31));
         jLabel1.setText("Centre Hospitalier de Princeton Plainsboro");
-
-        jLabel2.setFont(new java.awt.Font("Bell MT", 1, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Nom");
 
         jList2.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -121,19 +115,19 @@ public class Secretaire_Administrative extends javax.swing.JFrame implements Lis
         jToggleButton1.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
         jToggleButton1.setText("Ajouter un patient");
 
-        jButton1.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
-        jButton1.setText("Accès à l'ensemble des fiches soins");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jToggleButton2.setFont(new java.awt.Font("Bell MT", 0, 14)); // NOI18N
         jToggleButton2.setText("Déconnexion");
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton2ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton3.setFont(new java.awt.Font("Bell MT", 1, 12)); // NOI18N
+        jToggleButton3.setText("Accès à l'ensemble des fiches soins");
+        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton3ActionPerformed(evt);
             }
         });
 
@@ -144,45 +138,36 @@ public class Secretaire_Administrative extends javax.swing.JFrame implements Lis
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane1)
-                                    .addComponent(jComboBox1, 0, 281, Short.MAX_VALUE))
-                                .addGap(73, 73, 73)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(51, 51, 51)
-                                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(129, 129, 129)
-                                .addComponent(jButton1)))
-                        .addGap(0, 67, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jToggleButton2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1)
+                            .addComponent(jComboBox1, 0, 281, Short.MAX_VALUE))
+                        .addGap(73, 73, 73)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                        .addComponent(jToggleButton3)
+                        .addGap(95, 95, 95)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jToggleButton2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jToggleButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -194,8 +179,8 @@ public class Secretaire_Administrative extends javax.swing.JFrame implements Lis
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jToggleButton1))
+                    .addComponent(jToggleButton1)
+                    .addComponent(jToggleButton3))
                 .addGap(26, 26, 26))
         );
 
@@ -215,29 +200,31 @@ public class Secretaire_Administrative extends javax.swing.JFrame implements Lis
 
     //méthode permettant de définir l'action pour un élément de la liste sélectionnée
     public void valueChanged(ListSelectionEvent e){
+        //affichage de la fiche du patient sélectionné dans la JList
         int j = jList2.getSelectedIndex();
         if(j != -1){
-            Patient p = new Patient(h.getListPatient().get(j).getNom(),h.getListPatient().get(j).getPrenom(),h.getListPatient().get(j).getSecu(),h.getListPatient().get(j).getNaissance());
-            FichePatient fp = new FichePatient(p);
+            Patient p = new Patient(h.getListPatient().get(j).getNom(),h.getListPatient().get(j).getPrenom(),h.getListPatient().get(j).getSecu(),h.getListPatient().get(j).getNaissance(),h.getListPatient().get(j).getCP());
+            FichePatient fp = new FichePatient(p, h.getListPatient().get(j).getDossierMed());
             fp.setVisible(true);
             jList2.clearSelection();
         }
+        //affichage de la fiche du médecin sélectionné dans la JList
         int k = jList1.getSelectedIndex();
         if(k != -1){
-            Medecin m = new Medecin(h.getListMedecin().get(k).getNom(),h.getListMedecin().get(k).getPrenom(),h.getListMedecin().get(k).getSpecialite(),h.getListMedecin().get(k).getIdentifiant(),h.getListMedecin().get(k).getMdp());
+            Medecin m = new Medecin(h.getListMedecin().get(k).getNom(),h.getListMedecin().get(k).getPrenom(),h.getListMedecin().get(k).getSpecialite(),h.getListMedecin().get(k).getIdentifiant(),h.getListMedecin().get(k).getMdp(),h.getListMedecin().get(k).getNumeroTel());
             FicheMedecin fm = new FicheMedecin(m);
             fm.setVisible(true);
             jList1.clearSelection();
         }    
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,11 +263,9 @@ public class Secretaire_Administrative extends javax.swing.JFrame implements Lis
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JList jList1;
     private javax.swing.JList jList2;
     private javax.swing.JPanel jPanel1;
@@ -288,37 +273,48 @@ public class Secretaire_Administrative extends javax.swing.JFrame implements Lis
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //action de la JComboBox des patients
+        //affichage de la fiche du patient sélectionné dans la JComboBox
         int j = jComboBox1.getSelectedIndex();
         if(j != 0){
             j = j - 1;
-            Patient p = new Patient(h.getListPatient().get(j).getNom(),h.getListPatient().get(j).getPrenom(),h.getListPatient().get(j).getSecu(),h.getListPatient().get(j).getNaissance());
-            FichePatient fp = new FichePatient(p);
+            Patient p = new Patient(h.getListPatient().get(j).getNom(),h.getListPatient().get(j).getPrenom(),h.getListPatient().get(j).getSecu(),h.getListPatient().get(j).getNaissance(),h.getListPatient().get(j).getCP() );
+            FichePatient fp = new FichePatient(p, h.getListPatient().get(j).getDossierMed());
             fp.setVisible(true);
             jComboBox1.setSelectedIndex(0);
         }
-        //action de la JComboBox des médecins
+        //affichage de la fiche du médecin sélectionné dans la JComboBox
         int k = jComboBox2.getSelectedIndex();
         if(k != 0){
             k = k - 1;
-            Medecin m = new Medecin(h.getListMedecin().get(k).getNom(),h.getListMedecin().get(k).getPrenom(),h.getListMedecin().get(k).getSpecialite(),h.getListMedecin().get(k).getIdentifiant(),h.getListMedecin().get(k).getMdp());
+            Medecin m = new Medecin(h.getListMedecin().get(k).getNom(),h.getListMedecin().get(k).getPrenom(),h.getListMedecin().get(k).getSpecialite(),h.getListMedecin().get(k).getIdentifiant(),h.getListMedecin().get(k).getMdp(),h.getListMedecin().get(k).getNumeroTel());
             FicheMedecin fm = new FicheMedecin(m);
             fm.setVisible(true);
             jComboBox2.setSelectedIndex(0);
         }
         //action du bouton ajout d'un nouveau patient
-        if(jToggleButton1.isSelected()){
-            //NouvelleFiche nf = NouvelleFiche();
-            //nf.setVisible(true);
+        if(jToggleButton1.isSelected()){ //AjouterPatient prend en parametre une SA
+//            AjouterPatient nouveauPatient = new AjouterPatient();
+//            nouveauPatient.setVisible(true);
+            jToggleButton1.setSelected(!jToggleButton1.isSelected());
         }
         //action d'ouverture de l'ensemble des fiches de soins
-        if(jToggleButton1.isSelected()){
-            //NouvelleFiche nf = NouvelleFiche();
-            //nf.setVisible(true);
+        if(jToggleButton3.isSelected()){
+            AfficherFichesSoins listeFiches = new AfficherFichesSoins(h.getSA());
+            listeFiches.setVisible(true);
+             jToggleButton3.setSelected(!jToggleButton3.isSelected());
         }
+        //action de déconnexion
+        if(jToggleButton2.isSelected()){
+            Connexion c = new Connexion(h);
+            c.setVisible(true);
+            this.setVisible(false);
+        }
+        
+
     }
 }

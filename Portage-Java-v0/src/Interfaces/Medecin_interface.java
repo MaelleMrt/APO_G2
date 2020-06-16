@@ -6,8 +6,6 @@
 package Interfaces;
 
 import javax.swing.DefaultListModel;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import princetonPlainsboro.Hospital;
@@ -21,27 +19,43 @@ import princetonPlainsboro.Patient;
  */
 public class Medecin_interface extends javax.swing.JFrame implements ListSelectionListener {
 
-    private Medecin med;
-
+    private Medecin med; 
     /**
      * Creates new form Medecin_interface
-     */
-
-    //crï¿½ation de l'hï¿½pital pour pouvoir faire les tests
-    public Medecin_interface(Medecin med) {
-        this.med = med;
+    */
+    
+    //création de l'hôpital pour pouvoir faire les tests
+    LectureXMLHop test = new LectureXMLHop("hopital.xml");
+    Hospital h = test.getHospital();
+    
+    public Medecin_interface() {
         initComponents();
-        jList1.addListSelectionListener(this);
         
+         //initialisation de la liste patient (jlist1)
+        DefaultListModel ModeleTest2 = new DefaultListModel();
+        for (Patient p : h.getListPatient()) {
+            ModeleTest2.addElement(p.getNom());
+        }
+        jList1.setModel(ModeleTest2);
+
+        //initialisation de la liste médecin (jlist2)
+        DefaultListModel ModeleTest1 = new DefaultListModel();
+        for (Medecin m : h.getListMedecin()) {
+            ModeleTest1.addElement(m.getNom());
+        }
+        jList2.setModel(ModeleTest1);
+
+        //actions lorsqu'un élément de la liste est sélectionnée
+        jList1.addListSelectionListener(this);
         //jList2.addListSelectionListener(this);
-
+        
     }
 
-    //mï¿½thode permettant de dï¿½finir l'action pour un ï¿½lï¿½ment de la liste sï¿½lectionnï¿½e
-    public void valueChanged(ListSelectionEvent e) {
+    //méthode permettant de définir l'action pour un élément de la liste sélectionnée
+    public void valueChanged(ListSelectionEvent e){
 
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,57 +89,18 @@ public class Medecin_interface extends javax.swing.JFrame implements ListSelecti
         jLabel2.setText(med.getNomComplet());
 
         jList1.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
-        DefaultListModel ModeleTest2 = new DefaultListModel();
-        for (Patient p : this.med.getListPatient()) {
-            ModeleTest2.addElement(p.getNom());
-        }
-        jList1.setModel(ModeleTest2);
-        jList1.addListSelectionListener(new ListSelectionListener() {
-            public void valueChanged(ListSelectionEvent e) {
-                System.out.println("nom select"+(String)jList1.getSelectedValue());
-                String valeurSelect=(String)jList1.getSelectedValue();
-                for(Patient p:med.getListPatient()){
-                    if(valeurSelect.equals(p.getNom())){
-                        new FichePatient(p);
-                    }
-                }
-
-            }
+        jList1.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(jList1);
 
         jTextField1.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
         jTextField1.setText("Recherche Patient");
-        jTextField1.getDocument().addDocumentListener(new DocumentListener() {
-            public void changedUpdate(DocumentEvent e) {
-                afficherList();
-            }
-            public void removeUpdate(DocumentEvent e) {
-                afficherList();
-            }
-            public void insertUpdate(DocumentEvent e) {
-                afficherList();
-            }
-
-            public void afficherList() {
-                DefaultListModel ModeleTest2 = new DefaultListModel();
-                String texte=jTextField1.getText();
-                for (Patient p : med.getListPatient()) {
-                    if(p.getNom().contains(texte)){
-                        ModeleTest2.addElement(p.getNom());
-                    }
-                }
-                jList1.setModel(ModeleTest2);
-            }
-        });
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
-            }
-        });
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField1KeyTyped(evt);
             }
         });
 
@@ -138,9 +113,9 @@ public class Medecin_interface extends javax.swing.JFrame implements ListSelecti
         jScrollPane2.setViewportView(jList2);
 
         jTextField2.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
-        jTextField2.setText("Recherche MÃ©decin");
+        jTextField2.setText("Recherche Médecin");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("/Users/Maelle/Desktop/projet APO/Portage-Java-v0/src/images/logo_petit.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo_petit.png"))); // NOI18N
 
         jButton2.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
         jButton2.setText("Deconnexion");
@@ -164,6 +139,7 @@ public class Medecin_interface extends javax.swing.JFrame implements ListSelecti
                             .addComponent(jScrollPane2)
                             .addComponent(jTextField2)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton2)
                                 .addGap(8, 8, 8))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -173,7 +149,7 @@ public class Medecin_interface extends javax.swing.JFrame implements ListSelecti
                         .addGap(0, 39, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)))
                 .addContainerGap())
         );
@@ -221,12 +197,8 @@ public class Medecin_interface extends javax.swing.JFrame implements ListSelecti
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-  
+        // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
-      
-    }//GEN-LAST:event_jTextField1KeyTyped
 
     /**
      * @param args the command line arguments
@@ -258,9 +230,7 @@ public class Medecin_interface extends javax.swing.JFrame implements ListSelecti
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                LectureXMLHop test = new LectureXMLHop("hopital.xml");
-                Hospital hop=test.getHospital();
-                new Medecin_interface(hop.getListMedecin().get(0)).setVisible(true);
+                new Medecin_interface().setVisible(true);
             }
         });
     }

@@ -226,7 +226,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/103965117_564825807513574_8527130025994621034_n.jpg"/>
+              <Image iconType="2" name="D:\Bureau\Projet APO\NB\APO_G2-master\Portage-Java-v0\src\images\103965117_564825807513574_8527130025994621034_n.jpg"/>
             </Property>
           </Properties>
         </Component>

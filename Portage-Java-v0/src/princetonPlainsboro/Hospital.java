@@ -18,8 +18,8 @@ public class Hospital {
     
     
 
-    private final String nom = "PrincetonBoro"; //nom de l'hÃ´pital
-    //private java.util.ArrayList<String> listeSpe; // liste des quantites des spÃ©cialitÃ©s/services 
+    private final String nom = "PrincetonBoro"; //nom de l'hôpital
+    //private java.util.ArrayList<String> listeSpe; // liste des quantites des spécialités/services 
     private List<Specialite> listeSpe;
     private List<Service> listeSe;
     private List<Patient> patientsH;
@@ -85,7 +85,11 @@ public class Hospital {
     public String getNom(){
         return this.nom;
     }
-    //vÃ©rification bon fonctionnement 
+    
+    public void setSecretaireA(SecretaireAdministrative sa){
+        this.sA=sa; 
+    }
+    //vérification bon fonctionnement 
     public void afficherInfos(){
         System.out.println("Nom de l'Hopital = "+this.nom);
         System.out.println("Liste des specialites : ");
@@ -101,8 +105,7 @@ public class Hospital {
         for(Patient p:this.patientsH){
             System.out.println("Monsieur/Madame " +p);
         }
-        
-        
     }
+   
    
 }
