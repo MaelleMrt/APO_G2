@@ -5,16 +5,32 @@
  */
 package Interfaces;
 
+import java.util.List;
+import princetonPlainsboro.FicheDeSoins;
+import princetonPlainsboro.Hospital;
+import princetonPlainsboro.LectureXMLHop;
+import princetonPlainsboro.Medecin;
+import princetonPlainsboro.Patient;
+import princetonPlainsboro.TableauSoins;
+
 /**
  *
  * @author kalma
  */
 public class FicheSoin extends javax.swing.JFrame {
-
+    
+    private Patient patient; 
+    private String medecin ; 
+    private Hospital hop;
+    private FicheDeSoins fiche;
+ 
     /**
      * Creates new form FicheSoin
      */
-    public FicheSoin() {
+    public FicheSoin(Hospital hop) {
+        this.patient = hop.getListPatient().get(0) ;
+        this.hop = hop;
+        this.fiche = hop.getListPatient().get(0).getDossierMed().get(0);
         initComponents();
     }
 
@@ -43,7 +59,8 @@ public class FicheSoin extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable(new TableauSoins(fiche));
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,13 +81,13 @@ public class FicheSoin extends javax.swing.JFrame {
         jLabel3.setText("Nom : ");
 
         jLabel4.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
-        jLabel4.setText("jLabel4");
+        jLabel4.setText(patient.getNom());
 
         jLabel5.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
         jLabel5.setText("Prénom :");
 
         jLabel6.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
-        jLabel6.setText("jLabel4");
+        jLabel6.setText(patient.getPrenom());
 
         jLabel7.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel7.setText("Informations médecin :");
@@ -81,13 +98,13 @@ public class FicheSoin extends javax.swing.JFrame {
         jLabel8.setText("Nom : ");
 
         jLabel9.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
-        jLabel9.setText("jLabel");
+        jLabel9.setText(fiche.getMedecin());
 
         jLabel10.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
         jLabel10.setText("Spécialité : ");
 
         jLabel11.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
-        jLabel11.setText("jLabel4");
+        jLabel11.setText(fiche.getService());
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -158,25 +175,6 @@ public class FicheSoin extends javax.swing.JFrame {
         jLabel12.setText("Actes médicaux :");
 
         jTable1.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Nom de l'acte : ", "Code : ", "Coefficients :", "Coût : "
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Double.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jScrollPane1.setViewportView(jTable1);
 
@@ -201,6 +199,9 @@ public class FicheSoin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel13.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
+        jLabel13.setText("Fiche de soins ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -208,18 +209,24 @@ public class FicheSoin extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -271,7 +278,9 @@ public class FicheSoin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FicheSoin().setVisible(true);
+                LectureXMLHop test = new LectureXMLHop("hopital.xml");
+                Hospital hop = test.getHospital();
+                new FicheSoin(hop).setVisible(true);
             }
         });
     }
@@ -281,6 +290,7 @@ public class FicheSoin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

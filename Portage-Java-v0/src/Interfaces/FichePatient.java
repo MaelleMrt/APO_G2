@@ -33,7 +33,7 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
     public FichePatient(Hospital hop) {
         
         this.patient = hop.getListPatient().get(0) ; 
-        this.date= hop.getListPatient().get(0).getNaissance(); 
+        this.date= hop.getListPatient().get(0).getNaissance();
         this.hop = hop;
         this.fiche = hop.getListPatient().get(0).getDossierMed();
         for (FicheDeSoins fs:fiche){

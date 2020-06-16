@@ -5,24 +5,17 @@
  */
 package Interfaces;
 
-/**
- *
- * @author kalma
- */
-
-
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import princetonPlainsboro.FicheDeSoins;
 
-/**
- *
- * @author Maelle
- */
+
+
+//calsse pour la liste des patient et leur liste de soins respectives 
 public class ListeTest extends AbstractTableModel {
     private List<FicheDeSoins> ficheSoins;
  
-    private final String[] entetes = {"Date","Service"};
+    private final String[] entetes = {"Date","Service", "Cout"};
  
     public ListeTest(List<FicheDeSoins> fiche) {
       super();
@@ -52,7 +45,8 @@ public class ListeTest extends AbstractTableModel {
                 return ficheSoins.get(rowIndex).getDate();
             case 1:
                 return ficheSoins.get(rowIndex).getService();
-           
+            case 2: 
+                return ficheSoins.get(rowIndex).coutTotal() + " euros";
             default:
                 return null; //Ne devrait jamais arriver
         }
