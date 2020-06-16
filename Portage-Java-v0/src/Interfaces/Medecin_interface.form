@@ -61,7 +61,6 @@
                               <Component id="jScrollPane2" max="32767" attributes="0"/>
                               <Component id="jTextField2" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                               </Group>
@@ -75,7 +74,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jLabel2" min="-2" pref="82" max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" pref="117" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -148,19 +147,16 @@
           <SubComponents>
             <Component class="javax.swing.JList" name="jList1">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor" postCode="DefaultListModel ModeleTest2 = new DefaultListModel();&#xa;        for (Patient p : this.med.getListPatient()) {&#xa;            ModeleTest2.addElement(p.getNom());&#xa;        }">
                   <Font name="Bell MT" size="13" style="0"/>
                 </Property>
-                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="5">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                    <StringItem index="4" value="Item 5"/>
-                  </StringArray>
+                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="ModeleTest2" type="code"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jList1.addListSelectionListener(new ListSelectionListener() {&#xa;            public void valueChanged(ListSelectionEvent e) {&#xa;            System.out.println(&quot;nom select&quot;+(String)jList1.getSelectedValue());&#xa;            String valeurSelect=(String)jList1.getSelectedValue();&#xa;               for(Patient p:med.getListPatient()){&#xa;                    if(valeurSelect.equals(p.getNom())){&#xa;                        new FichePatient(p);&#xa;                    }&#xa;                }&#xa;              &#xa;            }&#xa;});"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -173,7 +169,11 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField1KeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTextField1.getDocument().addDocumentListener(new DocumentListener() {&#xa;  public void changedUpdate(DocumentEvent e) {&#xa;    afficherList();&#xa;  }&#xa;  public void removeUpdate(DocumentEvent e) {&#xa;    afficherList();&#xa;  }&#xa;  public void insertUpdate(DocumentEvent e) {&#xa;    afficherList();&#xa;  }&#xa;&#xa;  public void afficherList() {&#xa;     DefaultListModel ModeleTest2 = new DefaultListModel();&#xa;     String texte=jTextField1.getText();&#xa;        for (Patient p : med.getListPatient()) {&#xa;            if(p.getNom().contains(texte)){&#xa;                ModeleTest2.addElement(p.getNom());&#xa;            }    &#xa;        }&#xa;        jList1.setModel(ModeleTest2);&#xa;  }&#xa;});"/>
+          </AuxValues>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
 
@@ -208,7 +208,7 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/logo_petit.png"/>
+              <Image iconType="2" name="/Users/Maelle/Desktop/projet APO/Portage-Java-v0/src/images/logo_petit.png"/>
             </Property>
           </Properties>
         </Component>
