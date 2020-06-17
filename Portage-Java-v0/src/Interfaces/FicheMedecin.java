@@ -63,10 +63,10 @@ public class FicheMedecin extends javax.swing.JFrame implements ActionListener, 
         jLabel3.setText("Nom");
 
         jLabel4.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
-        jLabel4.setText("Specialite");
+        jLabel4.setText("Spécialité");
 
         jLabel5.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
-        jLabel5.setText("NumÃ©ro de telephone");
+        jLabel5.setText("Numéro de téléphone");
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
         jLabel1.setText(medecin.getNomComplet());
@@ -75,7 +75,7 @@ public class FicheMedecin extends javax.swing.JFrame implements ActionListener, 
         jLabel6.setText(medecin.getSpecialite());
 
         jLabel8.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
-        jLabel8.setText(Integer.toString(medecin.getNumeroTel()));
+        jLabel8.setText(medecin.getNumeroTel());
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -119,8 +119,6 @@ public class FicheMedecin extends javax.swing.JFrame implements ActionListener, 
                         .addComponent(jLabel5)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\Bureau\\Projet APO\\NB\\APO_G2-master\\Portage-Java-v0\\src\\images\\103965117_564825807513574_8527130025994621034_n.jpg")); // NOI18N
 
         jToggleButton1.setFont(new java.awt.Font("Bell MT", 0, 11)); // NOI18N
         jToggleButton1.setText("Close");
@@ -208,7 +206,7 @@ public class FicheMedecin extends javax.swing.JFrame implements ActionListener, 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               Medecin m = new Medecin("","","","","",5);
+               Medecin m = new Medecin("","","","","","");
                new FicheMedecin(m).setVisible(true);
             }
         });
