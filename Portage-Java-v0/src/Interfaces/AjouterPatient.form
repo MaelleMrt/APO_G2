@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="609" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="623" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
           </Group>
@@ -31,7 +31,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="457" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="594" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
           </Group>
@@ -49,7 +49,22 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jToggleButton1" min="-2" pref="87" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
@@ -62,22 +77,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="26" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jToggleButton1" min="-2" pref="87" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -95,14 +95,24 @@
                   </Group>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jToggleButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel2" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jToggleButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabel2" min="-2" pref="25" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
@@ -142,17 +152,16 @@
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jLabel6" min="-2" pref="63" max="-2" attributes="0"/>
-                                      <Component id="jLabel5" min="-2" pref="50" max="-2" attributes="0"/>
-                                      <Component id="jLabel7" alignment="1" min="-2" pref="121" max="-2" attributes="0"/>
-                                      <Component id="jLabel8" alignment="1" min="-2" pref="121" max="-2" attributes="0"/>
-                                      <Component id="jLabel9" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jLabel11" pref="167" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jLabel6" min="-2" pref="63" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="jLabel7" alignment="1" min="-2" pref="121" max="-2" attributes="0"/>
+                                  <Component id="jLabel8" alignment="1" min="-2" pref="121" max="-2" attributes="0"/>
+                                  <Component id="jLabel9" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel11" alignment="1" min="-2" pref="167" max="-2" attributes="0"/>
+                                  <Component id="jLabel15" alignment="1" min="-2" pref="118" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jComboBox1" max="32767" attributes="0"/>
                                   <Component id="jTextField1" pref="302" max="32767" attributes="0"/>
@@ -160,6 +169,7 @@
                                   <Component id="jTextField4" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jTextField5" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jTextField2" max="32767" attributes="0"/>
+                                  <Component id="jComboBox2" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="102" pref="102" max="-2" attributes="0"/>
                           </Group>
@@ -197,10 +207,15 @@
                           <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -306,7 +321,7 @@
                   <Font name="Bell MT" size="13" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="Service Consulte"/>
+                <Property name="text" type="java.lang.String" value="Service consulte : "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBox1">
@@ -323,6 +338,22 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="AAAA-MM-JJ-HH-MM"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel15">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Bell MT" size="13" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="4"/>
+                <Property name="text" type="java.lang.String" value="Medecin : "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBox2">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox()"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jComboBox2.addItem(&quot; &quot;);&#xa;    for(Medecin med : sa.getHospital().getListMedecin()){&#xa;        jComboBox2.addItem(med.getNom());&#xa;}"/>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -397,7 +428,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton1ActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jToggleButton1.addActionListener(new ActionListener() {&#xa;    public void actionPerformed(ActionEvent e){&#xa;&#xa;    //on verifie que les champs ne sont pas vide&#xa;&#xa;    if(jTextField1.getText().isEmpty()|jTextField3.getText().isEmpty()|jTextField4.getText().isEmpty()|jTextField5.getText().isEmpty()|jTextField2.getText().isEmpty()){&#xa;        jLabel12.setVisible(false);&#xa;        jLabel13.setVisible(false);&#xa;        jLabel14.setVisible(false);&#xa;        jLabel2.setVisible(true);&#xa;        jToggleButton1.setSelected(false);&#xa;&#xa;    //on verifie que la date est valide&#xa;&#xa;    }else if(!DateChecker.isValid(jTextField2.getText())){&#xa;        jLabel2.setVisible(false);&#xa;        jLabel13.setVisible(false);&#xa;        jLabel12.setVisible(false);&#xa;        jLabel14.setVisible(true);&#xa;        jTextField2.setText(&quot;AAAA-MM-JJ-HH-MM&quot;);&#xa;        jToggleButton1.setSelected(false);&#xa;&#xa;    //on verifie que le code postale est bien de longueur 5&#xa;&#xa;    }else if(jTextField4.getText().length()!=5){&#xa;        jLabel14.setVisible(false);&#xa;        jLabel2.setVisible(false);&#xa;        jLabel13.setVisible(false);&#xa;        jLabel12.setVisible(true);&#xa;        jToggleButton1.setSelected(false);&#xa;&#xa;    //on verifie que le numero de secu est bien de 13 char&#xa;&#xa;    }else if(jTextField5.getText().length()!=13){&#xa;        jLabel2.setVisible(false);&#xa;        jLabel12.setVisible(false);&#xa;        jLabel14.setVisible(false);&#xa;        jLabel13.setVisible(true);&#xa;        jToggleButton1.setSelected(false);&#xa;    &#xa;    //si tout est bon on cr&#xe9;e le nouveau patient&#xa;    }else{ &#xa;      //on enleve tous les labels d&apos;erreurs&#xa;      jLabel14.setVisible(false);&#xa;      jLabel11.setVisible(false);&#xa;      jLabel12.setVisible(false);&#xa;      jLabel13.setVisible(false);&#xa;&#xa;      //on recup&#xe8;re nom, prenom, dateNaissance, codePostale et num secu&#xa;      String nom=jTextField1.getText();&#xa;      String prenom=jTextField3.getText();&#xa;      Date dateNaissance=creerDate(jTextField2.getText());&#xa;      int codeP=Integer.parseInt(jTextField4.getText());&#xa;      long ns=Long.parseLong(jTextField5.getText());&#xa;&#xa;      //on cr&#xe9;e le nouveau patient&#xa;      Patient nouveauP=new Patient(nom,prenom,ns,dateNaissance,codeP);&#xa;      System.out.println(&quot;ajout patient &quot;+nom+&quot; &quot;+prenom+&quot; &quot;+&quot;n&#xb0; &quot;+ns+&quot; n&#xe9; le &quot;+dateNaissance.toString()+&quot; dans le &quot;+codeP);&#xa;      sa.getHospital().ajouterPatient(nouveauP);&#xa;      Specialite speC=null;&#xa;      for(Specialite spe:sa.getHospital().getSpecialite()){&#xa;        if(spe.getNom().equals(jComboBox1.getSelectedItem())){&#xa;             spe.getSecMed().ajouterPatient(new Patient(nom,prenom,ns,dateNaissance,codeP));&#xa;        }&#xa;      }&#xa;      dispose();&#xa;      }&#xa;    }&#xa;});"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jToggleButton1.addActionListener(new ActionListener() {&#xa;    public void actionPerformed(ActionEvent e){&#xa;&#xa;    //on verifie que les champs ne sont pas vide&#xa;&#xa;    if(jTextField1.getText().isEmpty()|jTextField3.getText().isEmpty()|jTextField4.getText().isEmpty()|jTextField5.getText().isEmpty()|jTextField2.getText().isEmpty()){&#xa;        jLabel12.setVisible(false);&#xa;        jLabel13.setVisible(false);&#xa;        jLabel14.setVisible(false);&#xa;        jLabel2.setVisible(true);&#xa;        jToggleButton1.setSelected(false);&#xa;&#xa;    //on verifie que la date est valide&#xa;&#xa;    }else if(!DateChecker.isValid(jTextField2.getText())){&#xa;        jLabel2.setVisible(false);&#xa;        jLabel13.setVisible(false);&#xa;        jLabel12.setVisible(false);&#xa;        jLabel14.setVisible(true);&#xa;        jTextField2.setText(&quot;AAAA-MM-JJ-HH-MM&quot;);&#xa;        jToggleButton1.setSelected(false);&#xa;&#xa;    //on verifie que le code postale est bien de longueur 5&#xa;&#xa;    }else if(jTextField4.getText().length()!=5){&#xa;        jLabel14.setVisible(false);&#xa;        jLabel2.setVisible(false);&#xa;        jLabel13.setVisible(false);&#xa;        jLabel12.setVisible(true);&#xa;        jToggleButton1.setSelected(false);&#xa;&#xa;    //on verifie que le numero de secu est bien de 13 char&#xa;&#xa;    }else if(jTextField5.getText().length()!=13){&#xa;        jLabel2.setVisible(false);&#xa;        jLabel12.setVisible(false);&#xa;        jLabel14.setVisible(false);&#xa;        jLabel13.setVisible(true);&#xa;        jToggleButton1.setSelected(false);&#xa;    &#xa;    //si tout est bon on cr&#xe9;e le nouveau patient&#xa;    }else{ &#xa;      //on enleve tous les labels d&apos;erreurs&#xa;      jLabel14.setVisible(false);&#xa;      jLabel11.setVisible(false);&#xa;      jLabel12.setVisible(false);&#xa;      jLabel13.setVisible(false);&#xa;&#xa;      //on recup&#xe8;re nom, prenom, dateNaissance, codePostale et num secu&#xa;      String nom=jTextField1.getText();&#xa;      String prenom=jTextField3.getText();&#xa;      Date dateNaissance=creerDate(jTextField2.getText());&#xa;      int codeP=Integer.parseInt(jTextField4.getText());&#xa;      long ns=Long.parseLong(jTextField5.getText());&#xa;      String nomM = (String) jComboBox2.getSelectedItem(); &#xa;&#xa;      //on cr&#xe9;e le nouveau patient&#xa;      Patient nouveauP=new Patient(nom,prenom,ns,dateNaissance,codeP);&#xa;      System.out.println(&quot;ajout patient &quot;+nom+&quot; &quot;+prenom+&quot; &quot;+&quot;n&#xb0; &quot;+ns+&quot; n&#xe9; le &quot;+dateNaissance.toString()+&quot; dans le &quot;+codeP);&#xa;      sa.getHospital().ajouterPatient(nouveauP);&#xa;      Specialite speC=null;&#xa;      //on cherche la spe&#xa;      for(Specialite spe:sa.getHospital().getSpecialite()){&#xa;        if(spe.getNom().equals(jComboBox1.getSelectedItem())){&#xa;             spe.getSecMed().ajouterPatient(nouveauP);&#xa;             speC=spe;&#xa;             &#xa;        }&#xa;      }&#xa;     //on cherche le medecin&#xa;     for(Medecin med:speC.getListeMed()){&#xa;        if(med.getNom().equals(nomM)){&#xa;try {&#xa;            EcritureXMLPatient.lireFichier(&quot;src/donnees/hopital_1.xml&quot;);&#xa;            EcritureXMLPatient.ajouterPatientXML(nouveauP, med);&#xa;            EcritureXMLPatient.enregistreFichier(&quot;src/donnees/hopital_1.xml&quot;);&#xa;        } catch (Exception k) {&#xa;            System.out.println(k);&#xa;        }&#xa;            &#xa;        }&#xa;      }&#xa;      dispose();&#xa;      }&#xa;    }&#xa;});"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel14">
