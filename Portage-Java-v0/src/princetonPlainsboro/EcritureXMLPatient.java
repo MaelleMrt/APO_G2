@@ -13,7 +13,7 @@ import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
-import static princetonPlainsboro.EcritureXMLMedecin.document;
+import static princetonPlainsboro.EcritureXMLPatient.document;
 
 /**
  *
@@ -24,33 +24,13 @@ public class EcritureXMLPatient {
     static org.jdom2.Document document;
     static Element racine;
 
-    public static void main(String[] args) {
-        try {
-            lireFichier("src/donnees/hopital_1.xml");
-            //System.out.println("lecture fichier");
-            Date date = new Date(1996, 12, 3, 20, 14);
-            Patient p = new Patient("Rico", "Coco", 12, date, 83600);
-            Medecin m = new Medecin("Mama", "Mia", "cardiologie", "med8", "motdepasse", 12);
-            //System.out.println("creation element");
-            ajouterPatient(p, m);
-            //System.out.println("ajout de l element ");
-            enregistreFichier("src/donnees/hopital_1.xml");
-            //System.out.println("enregistrement des donnees");
-        } catch (Exception e) {
-            System.out.println("erreur (catch)");
-            System.out.println(e);
-        }
-    }
-    //On parse le fichier et on initialise la racine de notre arborescence
-
-    static void lireFichier(String fichier) throws Exception {
+    public static void lireFichier(String fichier) throws Exception {
         SAXBuilder sxb = new SAXBuilder();
         document = sxb.build(new File(fichier));
         racine = document.getRootElement();
     }
-    
 
-    static void ajouterPatient(Patient p, Medecin m) {
+    public static void ajouterPatientXML(Patient p, Medecin m) {
         //creation du nouveau patient : 
         Element newPatient = new Element("patient");
 
@@ -69,7 +49,7 @@ public class EcritureXMLPatient {
 
         Element naissance = new Element("dateNaissance");
         String dateN = p.getNaissance().getAnnee() + "-" + p.getNaissance().getMois() + "-" + p.getNaissance().getJour() + "-" + p.getNaissance().getHeure() + "-" + p.getNaissance().getMinutes();
-        naissance.setText(dateN); 
+        naissance.setText(dateN);
         newPatient.addContent(naissance);
 
         Element codeP = new Element("codeP");
@@ -79,23 +59,23 @@ public class EcritureXMLPatient {
         //Dans un premier temps on liste toutes les specialites
         List listSpecialite = racine.getChildren("specialite");
         Iterator i = listSpecialite.iterator();
-        
+
         //On parcourt la liste grâce à un iterator
         //on trouve la specialite qui nous interresse 
         while (i.hasNext()) {
             Element courant = (Element) i.next();
             if (courant.getChildText("nomS").equals(m.getSpecialite())) {
                 //changement de l'element racine du code xml 
-                racine= courant.setName("specialite"); 
+                racine = courant.setName("specialite");
                 //System.out.println("parcours liste specialites : la racine devient specialite ");
             }
         }
         //trouver le bon medecin et lui ajouter le patient 
         List listMed = racine.getChildren("medecin");
-        Iterator j = listMed.iterator(); 
-        while(j.hasNext()){
-            Element courant2 =(Element) j.next(); 
-            if (courant2.getChildText("nomM").equals(m.getNom())){
+        Iterator j = listMed.iterator();
+        while (j.hasNext()) {
+            Element courant2 = (Element) j.next();
+            if (courant2.getChildText("nomM").equals(m.getNom())) {
                 courant2.addContent(newPatient); //ajout du patient au dossier 
                 System.out.println("Ajout du patient à la liste");
             }
@@ -104,7 +84,7 @@ public class EcritureXMLPatient {
 
     //On enregistre notre nouvelle arborescence dans le fichier
     //d'origine dans un format classique.
-    static void enregistreFichier(String fichier) throws Exception {
+    public static void enregistreFichier(String fichier) throws Exception {
         XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
         sortie.output(document, new FileOutputStream(fichier));
     }
