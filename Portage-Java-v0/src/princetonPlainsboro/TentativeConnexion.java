@@ -27,13 +27,14 @@ public class TentativeConnexion {
         }
         if (statut.equals("Secretaire Medicale")) {
             for (SecretaireMedicale sm : this.hospital.getListSM()) {
-                if (sm.getIdentifiant().equals(identifiant) && sm.getMdp().toCharArray().equals(mdp)) {
+                if (sm.getIdentifiant().equals(identifiant) && sm.getMdp().equals(mdp)) {
                     return true;
                 }
             }
         }
         if (statut.equals("Secretaire Administrative")) {
-            if (this.hospital.getSA().getIdentifiant().equals(identifiant) && this.hospital.getSA().getMdp().toCharArray().equals(mdp)) {
+            
+            if (this.hospital.getSA().getIdentifiant().equals(identifiant) && this.hospital.getSA().getMdp().equals(mdp)) {
                 return true;
             }
         } 
