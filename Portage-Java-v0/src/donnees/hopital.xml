@@ -9,13 +9,13 @@ and open the template in the editor.
 <hopital>
     <nom>PrincetonPlainsboro</nom>
     <secretaireAdministrative>
-        <mdp>secA1</mdp>
-        <identifiant>secA1</identifiant>
+        <mdpSe>secA1</mdpSe>
+        <identifiantSe>secA1</identifiantSe>
     </secretaireAdministrative>
     <specialite>
         <secretaireMedicale>
-            <mdp>secM1</mdp>
-            <identifiant>secM1</identifiant>
+            <mdpMe>secM1</mdpMe>
+            <identifiantMe>secM1</identifiantMe>
         </secretaireMedicale>
         <nomS>cardiologie</nomS>
         <medecin>
@@ -83,8 +83,8 @@ and open the template in the editor.
     </specialite>
     <specialite>
         <secretaireMedicale>
-            <mdp>secM2</mdp>
-            <identifiant>secM2</identifiant>
+            <mdpMe>secM2</mdpMe>
+            <identifiantMe>secM2</identifiantMe>
         </secretaireMedicale> 
         <nomS>dentaire</nomS>
         <medecin>
