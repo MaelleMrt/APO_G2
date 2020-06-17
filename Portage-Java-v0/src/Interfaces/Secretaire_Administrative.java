@@ -9,6 +9,7 @@ import princetonPlainsboro.Hospital;
 import princetonPlainsboro.LectureXMLHop;
 import princetonPlainsboro.Patient;
 import princetonPlainsboro.Medecin;
+import princetonPlainsboro.SecretaireAdministrative;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -29,8 +30,11 @@ public class Secretaire_Administrative extends javax.swing.JFrame implements Lis
     //création de l'hôpital pour pouvoir faire les tests
     LectureXMLHop test = new LectureXMLHop("hopital.xml");
     Hospital h = test.getHospital();
+    SecretaireAdministrative sa;
+
     
-    public Secretaire_Administrative() {
+    public Secretaire_Administrative(SecretaireAdministrative sa) {
+        this.sa = sa;
         initComponents();      
         
         //initialisation de la liste patient (jlist2)
@@ -89,6 +93,7 @@ public class Secretaire_Administrative extends javax.swing.JFrame implements Lis
         jComboBox1 = new javax.swing.JComboBox();
         jComboBox2 = new javax.swing.JComboBox();
         jToggleButton3 = new javax.swing.JToggleButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -131,6 +136,8 @@ public class Secretaire_Administrative extends javax.swing.JFrame implements Lis
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\marin\\OneDrive\\Bureau\\ProjetsFinalCode\\mardiam\\APO_G2-master\\Portage-Java-v0\\src\\images\\logo_petit.png")); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -139,6 +146,8 @@ public class Secretaire_Administrative extends javax.swing.JFrame implements Lis
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jToggleButton2))
@@ -163,11 +172,16 @@ public class Secretaire_Administrative extends javax.swing.JFrame implements Lis
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jToggleButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jToggleButton2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -256,8 +270,10 @@ public class Secretaire_Administrative extends javax.swing.JFrame implements Lis
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Hospital h = new Hospital("PrincetonBoro");
-                new Secretaire_Administrative().setVisible(true);
+                LectureXMLHop test = new LectureXMLHop("hopital.xml");
+                Hospital h = test.getHospital();
+                SecretaireAdministrative sa = new SecretaireAdministrative("","",h);
+                new Secretaire_Administrative(sa).setVisible(true);
             }
         });
     }
@@ -266,6 +282,7 @@ public class Secretaire_Administrative extends javax.swing.JFrame implements Lis
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JList jList1;
     private javax.swing.JList jList2;
     private javax.swing.JPanel jPanel1;
@@ -298,21 +315,21 @@ public class Secretaire_Administrative extends javax.swing.JFrame implements Lis
         }
         //action du bouton ajout d'un nouveau patient
         if(jToggleButton1.isSelected()){ //AjouterPatient prend en parametre une SA
-//            AjouterPatient nouveauPatient = new AjouterPatient();
-//            nouveauPatient.setVisible(true);
+            AjouterPatient nouveauPatient = new AjouterPatient(sa);
+            nouveauPatient.setVisible(true);
             jToggleButton1.setSelected(!jToggleButton1.isSelected());
         }
         //action d'ouverture de l'ensemble des fiches de soins
         if(jToggleButton3.isSelected()){
-            AfficherFichesSoins listeFiches = new AfficherFichesSoins(h.getSA());
+            AfficherFichesSoins listeFiches = new AfficherFichesSoins(sa);
             listeFiches.setVisible(true);
-             jToggleButton3.setSelected(!jToggleButton3.isSelected());
+            jToggleButton3.setSelected(!jToggleButton3.isSelected());
         }
         //action de déconnexion
         if(jToggleButton2.isSelected()){
             Connexion c = new Connexion(h);
             c.setVisible(true);
-            this.setVisible(false);
+            this.dispose();
         }
         
 

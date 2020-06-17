@@ -22,8 +22,8 @@ public class FicheMedecin extends javax.swing.JFrame implements ActionListener, 
      * Creates new form FicheMedecin
      */
     public FicheMedecin(Medecin m) {
-        initComponents();
         this.medecin= m; 
+        initComponents();
         jToggleButton1.addActionListener(this);
 
     }
@@ -208,8 +208,8 @@ public class FicheMedecin extends javax.swing.JFrame implements ActionListener, 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               
-               //new FicheMedecin(m).setVisible(true);
+               Medecin m = new Medecin("","","","","",5);
+               new FicheMedecin(m).setVisible(true);
             }
         });
     }
