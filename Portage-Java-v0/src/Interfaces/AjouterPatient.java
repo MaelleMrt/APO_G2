@@ -8,6 +8,7 @@ package Interfaces;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import princetonPlainsboro.Date;
+import princetonPlainsboro.DateChecker;
 import princetonPlainsboro.Hospital;
 import princetonPlainsboro.LectureXMLHop;
 import princetonPlainsboro.Patient;
@@ -62,6 +63,7 @@ public class AjouterPatient extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -219,39 +221,68 @@ public class AjouterPatient extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(249, 23, 23));
-        jLabel13.setText("num�ro SS incorrect");
+        jLabel13.setText("numéro SS incorrect");
         jLabel13.setVisible(false);
 
         jToggleButton1.setText("Valider");
         jToggleButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
+
+                //on verifie que les champs ne sont pas vide
+
                 if(jTextField1.getText().isEmpty()|jTextField3.getText().isEmpty()|jTextField4.getText().isEmpty()|jTextField5.getText().isEmpty()|jTextField2.getText().isEmpty()){
                     jLabel12.setVisible(false);
                     jLabel13.setVisible(false);
+                    jLabel14.setVisible(false);
                     jLabel2.setVisible(true);
                     jToggleButton1.setSelected(false);
 
+                    //on verifie que la date est valide
+
+                }else if(!DateChecker.isValid(jTextField2.getText())){
+                    jLabel2.setVisible(false);
+                    jLabel13.setVisible(false);
+                    jLabel12.setVisible(false);
+                    jLabel14.setVisible(true);
+                    jTextField2.setText("AAAA-MM-JJ-HH-MM");
+                    jToggleButton1.setSelected(false);
+
+                    //on verifie que le code postale est bien de longueur 5
+
                 }else if(jTextField4.getText().length()!=5){
+                    jLabel14.setVisible(false);
                     jLabel2.setVisible(false);
                     jLabel13.setVisible(false);
                     jLabel12.setVisible(true);
                     jToggleButton1.setSelected(false);
 
+                    //on verifie que le numero de secu est bien de 13 char
+
                 }else if(jTextField5.getText().length()!=13){
                     jLabel2.setVisible(false);
-                    jLabel13.setVisible(false);
+                    jLabel12.setVisible(false);
+                    jLabel14.setVisible(false);
                     jLabel13.setVisible(true);
                     jToggleButton1.setSelected(false);
+
+                    //si tout est bon on crée le nouveau patient
                 }else{
+                    //on enleve tous les labels d'erreurs
+                    jLabel14.setVisible(false);
                     jLabel11.setVisible(false);
                     jLabel12.setVisible(false);
                     jLabel13.setVisible(false);
+
+                    //on recupère nom, prenom, dateNaissance, codePostale et num secu
                     String nom=jTextField1.getText();
                     String prenom=jTextField3.getText();
                     Date dateNaissance=creerDate(jTextField2.getText());
                     int codeP=Integer.parseInt(jTextField4.getText());
-                    int ns=Integer.parseInt(jTextField5.getText());
+                    long ns=Long.parseLong(jTextField5.getText());
+
+                    //on crée le nouveau patient
                     Patient nouveauP=new Patient(nom,prenom,ns,dateNaissance,codeP);
+                    System.out.println("ajout patient "+nom+" "+prenom+" "+"n° "+ns+" né le "+dateNaissance.toString()+" dans le "+codeP);
                     sa.getHospital().ajouterPatient(nouveauP);
                     Specialite speC=null;
                     for(Specialite spe:sa.getHospital().getSpecialite()){
@@ -259,10 +290,20 @@ public class AjouterPatient extends javax.swing.JFrame {
                             spe.getSecMed().ajouterPatient(new Patient(nom,prenom,ns,dateNaissance,codeP));
                         }
                     }
-
+                    dispose();
                 }
             }
         });
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(223, 38, 38));
+        jLabel14.setText("Date invalide ");
+        jLabel14.setVisible(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -280,7 +321,9 @@ public class AjouterPatient extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(26, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
@@ -306,11 +349,12 @@ public class AjouterPatient extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jLabel2)
-                    .addComponent(jToggleButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jToggleButton1)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel14))
+                .addGap(1, 1, 1)
                 .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel13)
                 .addContainerGap())
         );
@@ -352,6 +396,10 @@ public class AjouterPatient extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     public Date creerDate(String donnees) {
         int annee = Integer.parseInt(donnees.substring(0, donnees.indexOf('-')));
@@ -407,6 +455,7 @@ public class AjouterPatient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

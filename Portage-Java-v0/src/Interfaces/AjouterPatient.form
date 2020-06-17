@@ -65,7 +65,9 @@
                   <EmptySpace pref="26" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="jToggleButton1" min="-2" pref="87" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jButton2" min="-2" max="-2" attributes="0"/>
@@ -96,12 +98,13 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jToggleButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel2" alignment="1" max="32767" attributes="0"/>
+                      <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -390,8 +393,25 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Valider"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton1ActionPerformed"/>
+          </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jToggleButton1.addActionListener(new ActionListener() {&#xa;    public void actionPerformed(ActionEvent e){&#xa;    if(jTextField1.getText().isEmpty()|jTextField3.getText().isEmpty()|jTextField4.getText().isEmpty()|jTextField5.getText().isEmpty()|jTextField2.getText().isEmpty()){&#xa;        jLabel12.setVisible(false);&#xa;        jLabel13.setVisible(false);&#xa;        jLabel2.setVisible(true);&#xa;        jToggleButton1.setSelected(false);&#xa;&#xa;    }else if(jTextField4.getText().length()!=5){&#xa;        jLabel2.setVisible(false);&#xa;        jLabel13.setVisible(false);&#xa;        jLabel12.setVisible(true);&#xa;        jToggleButton1.setSelected(false);&#xa;&#xa;    }else if(jTextField5.getText().length()!=13){&#xa;        jLabel2.setVisible(false);&#xa;        jLabel13.setVisible(false);  &#xa;        jLabel13.setVisible(true);&#xa;        jToggleButton1.setSelected(false);&#xa;    }else{   &#xa;      jLabel11.setVisible(false);&#xa;      jLabel12.setVisible(false);&#xa;      jLabel13.setVisible(false);&#xa;      String nom=jTextField1.getText();&#xa;      String prenom=jTextField3.getText();&#xa;      Date dateNaissance=creerDate(jTextField2.getText());&#xa;      int codeP=Integer.parseInt(jTextField4.getText());&#xa;      int ns=Integer.parseInt(jTextField5.getText());&#xa;      Patient nouveauP=new Patient(nom,prenom,ns,dateNaissance,codeP);&#xa;      sa.getHospital().ajouterPatient(nouveauP);&#xa;      Specialite speC=null;&#xa;      for(Specialite spe:sa.getHospital().getSpecialite()){&#xa;        if(spe.getNom().equals(jComboBox1.getSelectedItem())){&#xa;             spe.getSecMed().ajouterPatient(new Patient(nom,prenom,ns,dateNaissance,codeP));&#xa;        }&#xa;      }&#xa;&#xa;      }&#xa;    }&#xa;});"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jToggleButton1.addActionListener(new ActionListener() {&#xa;    public void actionPerformed(ActionEvent e){&#xa;&#xa;    //on verifie que les champs ne sont pas vide&#xa;&#xa;    if(jTextField1.getText().isEmpty()|jTextField3.getText().isEmpty()|jTextField4.getText().isEmpty()|jTextField5.getText().isEmpty()|jTextField2.getText().isEmpty()){&#xa;        jLabel12.setVisible(false);&#xa;        jLabel13.setVisible(false);&#xa;        jLabel14.setVisible(false);&#xa;        jLabel2.setVisible(true);&#xa;        jToggleButton1.setSelected(false);&#xa;&#xa;    //on verifie que la date est valide&#xa;&#xa;    }else if(!DateChecker.isValid(jTextField2.getText())){&#xa;        jLabel2.setVisible(false);&#xa;        jLabel13.setVisible(false);&#xa;        jLabel12.setVisible(false);&#xa;        jLabel14.setVisible(true);&#xa;        jTextField2.setText(&quot;AAAA-MM-JJ-HH-MM&quot;);&#xa;        jToggleButton1.setSelected(false);&#xa;&#xa;    //on verifie que le code postale est bien de longueur 5&#xa;&#xa;    }else if(jTextField4.getText().length()!=5){&#xa;        jLabel14.setVisible(false);&#xa;        jLabel2.setVisible(false);&#xa;        jLabel13.setVisible(false);&#xa;        jLabel12.setVisible(true);&#xa;        jToggleButton1.setSelected(false);&#xa;&#xa;    //on verifie que le numero de secu est bien de 13 char&#xa;&#xa;    }else if(jTextField5.getText().length()!=13){&#xa;        jLabel2.setVisible(false);&#xa;        jLabel12.setVisible(false);&#xa;        jLabel14.setVisible(false);&#xa;        jLabel13.setVisible(true);&#xa;        jToggleButton1.setSelected(false);&#xa;    &#xa;    //si tout est bon on cr&#xe9;e le nouveau patient&#xa;    }else{ &#xa;      //on enleve tous les labels d&apos;erreurs&#xa;      jLabel14.setVisible(false);&#xa;      jLabel11.setVisible(false);&#xa;      jLabel12.setVisible(false);&#xa;      jLabel13.setVisible(false);&#xa;&#xa;      //on recup&#xe8;re nom, prenom, dateNaissance, codePostale et num secu&#xa;      String nom=jTextField1.getText();&#xa;      String prenom=jTextField3.getText();&#xa;      Date dateNaissance=creerDate(jTextField2.getText());&#xa;      int codeP=Integer.parseInt(jTextField4.getText());&#xa;      long ns=Long.parseLong(jTextField5.getText());&#xa;&#xa;      //on cr&#xe9;e le nouveau patient&#xa;      Patient nouveauP=new Patient(nom,prenom,ns,dateNaissance,codeP);&#xa;      System.out.println(&quot;ajout patient &quot;+nom+&quot; &quot;+prenom+&quot; &quot;+&quot;n&#xb0; &quot;+ns+&quot; n&#xe9; le &quot;+dateNaissance.toString()+&quot; dans le &quot;+codeP);&#xa;      sa.getHospital().ajouterPatient(nouveauP);&#xa;      Specialite speC=null;&#xa;      for(Specialite spe:sa.getHospital().getSpecialite()){&#xa;        if(spe.getNom().equals(jComboBox1.getSelectedItem())){&#xa;             spe.getSecMed().ajouterPatient(new Patient(nom,prenom,ns,dateNaissance,codeP));&#xa;        }&#xa;      }&#xa;      dispose();&#xa;      }&#xa;    }&#xa;});"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel14">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Bell MT" size="13" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="26" green="26" red="df" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Date invalide "/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel14.setVisible(false);"/>
           </AuxValues>
         </Component>
       </SubComponents>
