@@ -11,9 +11,9 @@ public class Medecin {
     private List<Patient> patients;
     private String identifiant;
     private String mdp;
-    private int tel; 
+    private String tel; 
 
-    public Medecin(String nom, String prenom, String specialite, String identifiant, String mdp, int tel) {
+    public Medecin(String nom, String prenom, String specialite, String identifiant, String mdp, String tel) {
         this.nom = nom;
         this.prenom = prenom;
         this.specialite = specialite;
@@ -55,7 +55,7 @@ public class Medecin {
         return this.mdp;
     }
     
-    public int getNumeroTel(){
+    public String getNumeroTel(){
         return this.tel;
     }
 
