@@ -156,6 +156,28 @@ public class Medecin_interface extends javax.swing.JFrame  {
 
         jTextField2.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
         jTextField2.setText("Recherche Médecin");
+        jTextField2.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                afficherList();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                afficherList();
+            }
+            public void insertUpdate(DocumentEvent e) {
+                afficherList();
+            }
+
+            public void afficherList() {
+                DefaultListModel ModeleTest2 = new DefaultListModel();
+                String texte=jTextField2.getText();
+                for (Medecin m :h.getListMedecin()) {
+                    if(m.getNom().contains(texte)){
+                        ModeleTest2.addElement(m.getNom());
+                    }
+                }
+                jList2.setModel(ModeleTest2);
+            }
+        });
 
         jLabel4.setIcon(new javax.swing.ImageIcon("/Users/Maelle/Desktop/projet APO/Portage-Java-v0/src/images/logo_petit.png")); // NOI18N
 
