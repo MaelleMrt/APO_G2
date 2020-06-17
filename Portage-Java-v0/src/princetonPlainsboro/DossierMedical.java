@@ -1,12 +1,12 @@
 package princetonPlainsboro;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-class DossierMedical {
+public class DossierMedical {
 
     private List<FicheDeSoins> fiches;     // contient des objets de classe 'FicheDeSoins'
-
 
     public DossierMedical() {
         fiches = new Vector<FicheDeSoins>();  // liste vide
@@ -89,9 +89,24 @@ class DossierMedical {
         return n;
     }
 
-    public void trierDates() {
-        Vector<FicheDeSoins> copieFiches = new Vector<FicheDeSoins>(fiches);
+    public static List<FicheDeSoins> SelectionnerDate(Date d1, Date d2, List<FicheDeSoins> fiches) {
+        List<FicheDeSoins> fichesD = new ArrayList<FicheDeSoins>();
+        for (FicheDeSoins fs : fiches) {
+            System.out.println("annee fiche analyse   " + fs.getDate().getAnnee());
+            System.out.println("annee d1    " + d1.getAnnee());
+            System.out.println("annee d2    " + d2.getAnnee());
+            if (fs.getDate().compareTo(d1) >= 0 && fs.getDate().compareTo(d2) <= 0) {
+                fichesD.add(fs);
+                System.out.println("fs ajouté");
+            }
+        }
+        return fichesD;
+    }
 
+    public static List<FicheDeSoins> trierDates(List<FicheDeSoins> fiches) {
+        Vector<FicheDeSoins> copieFiches = new Vector<FicheDeSoins>(fiches);
+        List<FicheDeSoins> fichesT = new ArrayList<FicheDeSoins>();
+        int j = 1;
         while (!copieFiches.isEmpty()) {
             // on cherche la fiche de soins de date minimale :
             int imin = 0;
@@ -103,18 +118,18 @@ class DossierMedical {
                     f1 = f2;
                 }
             }
-            // on affiche la fiche de soins trouvee :
-            f1.afficher();
-            System.out.println("------------------------");
-            //on la supprime de la liste :
+
+            fichesT.add(f1);
             copieFiches.remove(imin);
         }
+        return fichesT;
     }
 
     // tri generique :
-    public void trier(ComparaisonFiches c) {
-        Vector<FicheDeSoins> copieFiches = new Vector<FicheDeSoins>(fiches);
-
+    public static List<FicheDeSoins> trierCout(List<FicheDeSoins> fichesNT) {
+        Vector<FicheDeSoins> copieFiches = new Vector<FicheDeSoins>(fichesNT);
+        ComparaisonFichesCouts c=new ComparaisonFichesCouts();
+        List<FicheDeSoins> fichesT = new ArrayList<FicheDeSoins>();
         while (!copieFiches.isEmpty()) {
             // on cherche la fiche de soins minimale :
             int imin = 0;
@@ -126,12 +141,10 @@ class DossierMedical {
                     f1 = f2;
                 }
             }
-            // on affiche la fiche de soins trouvee :
-            f1.afficher();
-            System.out.println("------------------------");
-            //on la supprime de la liste :
+            fichesT.add(f1);
             copieFiches.remove(imin);
+
         }
+        return fichesT;
     }
 }
-
