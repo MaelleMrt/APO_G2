@@ -245,7 +245,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Bell MT" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Informations m&#xe9;decin :"/>
+                <Property name="text" type="java.lang.String" value="Informations medecin :"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
@@ -336,7 +336,7 @@
                   <Font name="Bell MT" size="14" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Actes m&#xe9;dicaux :"/>
+                <Property name="text" type="java.lang.String" value="Actes medicaux :"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">

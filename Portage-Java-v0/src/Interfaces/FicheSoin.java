@@ -91,7 +91,7 @@ public class FicheSoin extends javax.swing.JFrame {
         jLabel6.setText(patient.getPrenom());
 
         jLabel7.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
-        jLabel7.setText("Informations médecin :");
+        jLabel7.setText("Informations medecin :");
         jLabel7.setToolTipText("");
         jLabel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
 
@@ -173,7 +173,7 @@ public class FicheSoin extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Bell MT", 1, 14)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("Actes médicaux :");
+        jLabel12.setText("Actes medicaux :");
 
         jTable1.setFont(new java.awt.Font("Bell MT", 0, 12)); // NOI18N
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
