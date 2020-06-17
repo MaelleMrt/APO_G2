@@ -18,8 +18,8 @@ public class Hospital {
     
     
 
-    private final String nom = "PrincetonBoro"; //nom de l'hôpital
-    //private java.util.ArrayList<String> listeSpe; // liste des quantites des spécialités/services 
+    private final String nom = "PrincetonBoro"; //nom de l'hopital
+    //private java.util.ArrayList<String> listeSpe; // liste des quantites des specialites/services 
     private List<Specialite> listeSpe;
     private List<Service> listeSe;
     private List<Patient> patientsH;
@@ -89,7 +89,7 @@ public class Hospital {
     public void setSecretaireA(SecretaireAdministrative sa){
         this.sA=sa; 
     }
-    //vérification bon fonctionnement 
+    //vï¿½rification bon fonctionnement 
     public void afficherInfos(){
         System.out.println("Nom de l'Hopital = "+this.nom);
         System.out.println("Liste des specialites : ");
