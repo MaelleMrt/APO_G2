@@ -63,10 +63,10 @@ public class FicheMedecin extends javax.swing.JFrame implements ActionListener, 
         jLabel3.setText("Nom");
 
         jLabel4.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
-        jLabel4.setText("Spécialité");
+        jLabel4.setText("Specialite");
 
         jLabel5.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
-        jLabel5.setText("Numéro de téléphone");
+        jLabel5.setText("NumÃ©ro de telephone");
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
         jLabel1.setText(medecin.getNomComplet());
