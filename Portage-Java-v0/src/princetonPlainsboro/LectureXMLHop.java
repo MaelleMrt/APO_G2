@@ -54,7 +54,9 @@ public class LectureXMLHop {
         String nomMedecinCourant = "";
         String prenomMedecinCourant = "";
         String mdpCourantSe = "";
+        String identifiantCourantMe=" ";
         String identifiantCourantSe = "";
+        String mdpCourantMe=" ";
         long secuCourante = 0;
         Date dateNaissanceCourante = null;
         Code codeCourant = null;
@@ -147,11 +149,8 @@ public class LectureXMLHop {
 
 
                         }
-                        if (parser.getLocalName().equals("secretaireMedicale")) {
-
-                        }
                         if (parser.getLocalName().equals("secretaireAdministrative")) {
-                            secretaireAdministrativeCourante = new SecretaireAdministrative(identifiantCourant, mdpCourant, hospitalCourant);
+                            secretaireAdministrativeCourante = new SecretaireAdministrative(identifiantCourantSe, mdpCourantSe, hospitalCourant);
                             hospitalCourant.setSecretaireA(secretaireAdministrativeCourante);
                         }
                         if (parser.getLocalName().equals("secu")) {
@@ -181,13 +180,21 @@ public class LectureXMLHop {
                         if (parser.getLocalName().equals("identifiantSe")) {
                             identifiantCourantSe = donneesCourantes;
                         }
-                        
+                        if(parser.getLocalName().equals("identifiantMe")){
+                            identifiantCourantMe=donneesCourantes;
+                        }
+                        if(parser.getLocalName().equals("mdpMe")){
+                            mdpCourantMe=donneesCourantes;
+                        }
                         if(parser.getLocalName().equals("codeP")){
                             codePCourant=Integer.parseInt(donneesCourantes);
                         }
+                        
                         if (parser.getLocalName().equals("nom")) {
                             nomCourant = donneesCourantes;
                         }
+                        
+      
                         if (parser.getLocalName().equals("nomS")) {
                             nomSpecialiteCourante = donneesCourantes;
                         }
@@ -233,13 +240,13 @@ public class LectureXMLHop {
                                 specialiteCourante.ajouterMedecin(m);
                             }
                             //création de la secretaire avec la specialite courante
-                            secretaireMedicaleCourante = new SecretaireMedicale(identifiantCourantSe, mdpCourantSe, specialiteCourante);
-
+                            secretaireMedicaleCourante = new SecretaireMedicale(identifiantCourantMe, mdpCourantMe, specialiteCourante);
+                            System.out.println(secretaireMedicaleCourante.getIdentifiant());
+                            hospitalCourant.ajouterSecretaireM(secretaireMedicaleCourante);
                             //on set la secretaireMedicale
                             specialiteCourante.setSM(secretaireMedicaleCourante);
 
                             //on l'ajoute à l'hopital la secretaire medicale
-                            hospitalCourant.ajouterSecretaireM(secretaireMedicaleCourante);
 
                             //on ajoute la specialite à l'hopital
                             hospitalCourant.ajouterSpecialite(specialiteCourante);
