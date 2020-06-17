@@ -117,7 +117,7 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
         jLabel7.setText("Adresse");
 
         jLabel8.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
-        jLabel8.setText("N° de Sécurité Sociale");
+        jLabel8.setText("NÂ° de Securite Sociale");
 
         jLabel11.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
         jLabel11.setText("jLabel11");
