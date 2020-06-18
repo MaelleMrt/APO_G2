@@ -19,27 +19,26 @@ import princetonPlainsboro.Patient;
  *
  * @author marin
  */
-public class Medecin_interface extends javax.swing.JFrame  {
+public class Medecin_interface extends javax.swing.JFrame {
 
     private Medecin med;
-    //création de l'hôpital pour pouvoir faire les tests
-    LectureXMLHop test = new LectureXMLHop("hopital.xml");
-    Hospital h = test.getHospital();
+    private Hospital h; 
+    
+
     /**
      * Creates new form Medecin_interface
      */
-
-    //cr�ation de l'h�pital pour pouvoir faire les tests
+    //creation de l'hopital pour pouvoir faire les tests
     public Medecin_interface(Medecin med) {
+        //Lecture de la base de donnees pour mise a jour 
+        LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
+        this.h = test.getHospital();
+
         this.med = med;
         initComponents();
-       
+
         //jList2.addListSelectionListener(this);
-
     }
-
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -155,7 +154,7 @@ public class Medecin_interface extends javax.swing.JFrame  {
         jScrollPane2.setViewportView(jList2);
 
         jTextField2.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
-        jTextField2.setText("Recherche Médecin");
+        jTextField2.setText("Recherche Medecin");
         jTextField2.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
                 afficherList();
@@ -178,8 +177,11 @@ public class Medecin_interface extends javax.swing.JFrame  {
                 jList2.setModel(ModeleTest2);
             }
         });
-
-        jLabel4.setIcon(new javax.swing.ImageIcon("/Users/Maelle/Desktop/projet APO/Portage-Java-v0/src/images/logo_petit.png")); // NOI18N
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
         jButton2.setText("Deconnexion");
@@ -214,7 +216,7 @@ public class Medecin_interface extends javax.swing.JFrame  {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)
-                        .addGap(0, 39, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -265,16 +267,20 @@ public class Medecin_interface extends javax.swing.JFrame  {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-  
+
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
-      
+
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,8 +312,8 @@ public class Medecin_interface extends javax.swing.JFrame  {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                LectureXMLHop test = new LectureXMLHop("hopital.xml");
-                Hospital hop=test.getHospital();
+                LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
+                Hospital hop = test.getHospital();
                 new Medecin_interface(hop.getListMedecin().get(0)).setVisible(true);
             }
         });

@@ -21,17 +21,20 @@ import princetonPlainsboro.Patient;
  */
 public class AjouterActes extends javax.swing.JFrame {
 
-    private Patient patient; 
+    private Patient patient;
     private FicheDeSoins fiche;
     private Hospital hop;
+
     /**
      * Creates new form AjouterFicheDeSoins
      */
-    public AjouterActes(Patient p,FicheDeSoins fiche) {
-        LectureXMLHop test = new LectureXMLHop("hopital.xml");
+    public AjouterActes(Patient p, FicheDeSoins fiche) {
+        //Lecture de la base de donnee
+        LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
         this.hop = test.getHospital();
-        this.patient=p;
-        this.fiche=fiche;
+
+        this.patient = p;
+        this.fiche = fiche;
         initComponents();
     }
 
@@ -53,7 +56,7 @@ public class AjouterActes extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<String>();
+        jComboBox3 = new javax.swing.JComboBox();
         jTextField1 = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
         jLabel5 = new javax.swing.JLabel();
@@ -70,8 +73,6 @@ public class AjouterActes extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel4.setText("Nouvelle fiche de soins : ");
-
-        jLabel10.setIcon(new javax.swing.ImageIcon("/Users/Maelle/Desktop/projet APO/Portage-Java-v0/src/images/logo_petit.png")); // NOI18N
 
         jButton2.setFont(new java.awt.Font("Bell MT", 0, 16)); // NOI18N
         jButton2.setText("Retour ");
@@ -135,12 +136,12 @@ public class AjouterActes extends javax.swing.JFrame {
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox3, 0, 245, Short.MAX_VALUE)
+                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextField1)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(66, 66, 66)
                                 .addComponent(jToggleButton1)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(0, 95, Short.MAX_VALUE)))))
                 .addGap(70, 70, 70))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -162,7 +163,7 @@ public class AjouterActes extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jToggleButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(20, 20, 20))
         );
@@ -192,46 +193,45 @@ public class AjouterActes extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)))
-                        .addGap(384, 384, 384)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(101, 101, 101)
                         .addComponent(jButton2)
-                        .addGap(26, 26, 26))))
+                        .addGap(309, 309, 309))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel4))
-                            .addComponent(jLabel10)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jButton2)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jButton2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4))
+                    .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
                 .addGap(33, 33, 33)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1044, Short.MAX_VALUE)
+            .addGap(0, 694, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 513, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -248,47 +248,44 @@ public class AjouterActes extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        if(jToggleButton1.isSelected()){
-            if(jTextField1.getText().isEmpty()){
+        if (jToggleButton1.isSelected()) {
+            if (jTextField1.getText().isEmpty()) {
                 jLabel5.setVisible(true);
                 jToggleButton1.setSelected(false);
-            }
-            else{
-               String nCode =(String)jComboBox3.getSelectedItem();
-               Code code=Code.valueOf(nCode);
-               int coef=Integer.parseInt(jTextField1.getText());
-               //on recupére l'acte
-               Acte acte=new Acte(code,coef);
-               
-               //on cherche le medecin
-               fiche.ajouterActe(acte);
-               
-               
-               try {
-                
-                EcritureXMLActes.lireFichier("src/donnees/hopital_1.xml");
-                System.out.println("------------------------");
-                System.out.println("patient "+patient.getNom());
-                System.out.println("medecin "+hop.rechercherMedecin(fiche.getMedecin()).getNom());
-                System.out.println(fiche.getDate().getAnnee());
-                System.out.println(fiche.getDate().getMois());
-                System.out.println(fiche.getDate().getJour());
-                System.out.println(fiche.getDate().getHeure());
-                System.out.println(fiche.getDate().getMinutes());
-                fiche.afficher();
-                System.out.println("acte "+acte.toString());
-                EcritureXMLActes.ajouterActeXML(patient,hop.rechercherMedecin(fiche.getMedecin()), fiche,acte);
-                //System.out.println("ajout de l element ");
-                EcritureXMLActes.enregistreFichier("src/donnees/hopital_1.xml");
-                //System.out.println("enregistrement des donnees");
-                
-        } catch (Exception e) {
-            System.out.println("erreur (catch)");
-            System.out.println(e);
-        }
-               dispose();
-               
-               
+            } else {
+                String nCode = (String) jComboBox3.getSelectedItem();
+                Code code = Code.valueOf(nCode);
+                int coef = Integer.parseInt(jTextField1.getText());
+                //on recupére l'acte
+                Acte acte = new Acte(code, coef);
+
+                //on cherche le medecin
+                fiche.ajouterActe(acte);
+
+                try {
+
+                    EcritureXMLActes.lireFichier("src/donnees/hopital_1.xml");
+                    System.out.println("------------------------");
+                    System.out.println("patient " + patient.getNom());
+                    System.out.println("medecin " + hop.rechercherMedecin(fiche.getMedecin()).getNom());
+                    System.out.println(fiche.getDate().getAnnee());
+                    System.out.println(fiche.getDate().getMois());
+                    System.out.println(fiche.getDate().getJour());
+                    System.out.println(fiche.getDate().getHeure());
+                    System.out.println(fiche.getDate().getMinutes());
+                    fiche.afficher();
+                    System.out.println("acte " + acte.toString());
+                    EcritureXMLActes.ajouterActeXML(patient, hop.rechercherMedecin(fiche.getMedecin()), fiche, acte);
+                    //System.out.println("ajout de l element ");
+                    EcritureXMLActes.enregistreFichier("src/donnees/hopital_1.xml");
+                    //System.out.println("enregistrement des donnees");
+
+                } catch (Exception e) {
+                    System.out.println("erreur (catch)");
+                    System.out.println(e);
+                }
+                dispose();
+
             }
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
@@ -324,9 +321,9 @@ public class AjouterActes extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                LectureXMLHop test = new LectureXMLHop("hopital.xml");
+                LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
                 Hospital hop = test.getHospital();
-               //new AjouterActes().setVisible(true);
+                //new AjouterActes().setVisible(true);
             }
         });
     }

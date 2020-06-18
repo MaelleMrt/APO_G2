@@ -28,9 +28,11 @@ public class AjouterMedecin extends javax.swing.JFrame implements ActionListener
     SecretaireMedicale secretaire;
 
     public AjouterMedecin(SecretaireAdministrative sa, SecretaireMedicale secretaire) {
+        //Lecture de la base de donnees avec mise a jour 
+        LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
+        Hospital hop = test.getHospital();
+        
         this.sa = sa;
-        // jToggleButton1.addActionListener(this);
-        //    jToggleButton2.addActionListener(this);
         initComponents();
     }
 
@@ -390,7 +392,7 @@ public class AjouterMedecin extends javax.swing.JFrame implements ActionListener
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                LectureXMLHop test = new LectureXMLHop("hopital.xml");
+                LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
                 Hospital h = test.getHospital();
                 SecretaireAdministrative sa;
                 sa = h.getSA();
@@ -428,28 +430,6 @@ public class AjouterMedecin extends javax.swing.JFrame implements ActionListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        /*if(jToggleButton1.isSelected()){
-            if(jTextField1.getText().isEmpty()|jTextField2.getText().isEmpty()|jTextField3.getText().isEmpty()|jTextField4.getText().isEmpty()){
-                    jLabel2.setVisible(true);
-                    jToggleButton1.setSelected(false);    
-            }
-            else{
-                jLabel2.setVisible(false);
-                String nom = jTextField1.getText();
-                String prenom = jTextField2.getText();
-                int telephone = Integer.parseInt(jTextField3.getText());
-                String nomSpe = jTextField4.getText();
-                Specialite specialite = new Specialite(nomSpe,secretaire,x);
-                String id = "id" + nom;
-                String mdp = "mdp" + prenom;
-                Medecin nouveauM = new Medecin(nom,prenom,specialite,id,mdp,telephone);
-                sa.getHospital().ajouterMedecin(nouveauM); 
-                this.dispose();
-            }
-            
-            
-            
-        }*/
         if (jToggleButton2.isSelected()) {
             this.dispose();
         }

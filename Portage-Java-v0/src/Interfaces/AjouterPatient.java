@@ -7,6 +7,7 @@ package Interfaces;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.DefaultComboBoxModel;
 import princetonPlainsboro.Date;
 import princetonPlainsboro.DateChecker;
 import princetonPlainsboro.EcritureXMLPatient;
@@ -17,6 +18,7 @@ import princetonPlainsboro.Patient;
 import princetonPlainsboro.SecretaireAdministrative;
 import princetonPlainsboro.Specialite;
 import org.jdom2.*;
+import princetonPlainsboro.NumeroChecker;
 
 /**
  *
@@ -31,6 +33,10 @@ public class AjouterPatient extends javax.swing.JFrame {
      * Creates new form AjouterPatient
      */
     public AjouterPatient(SecretaireAdministrative sa) {
+        //Lecture de la base de donnees avec mise a jour 
+        LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
+        Hospital hop = test.getHospital();
+
         this.sa = sa;
         initComponents();
     }
@@ -140,6 +146,11 @@ public class AjouterPatient extends javax.swing.JFrame {
         for(Specialite sp: sa.getHospital().getSpecialite()){
             jComboBox1.addItem(sp.getNom());
         }
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jTextField2.setText("AAAA-MM-JJ-HH-MM");
 
@@ -269,7 +280,7 @@ public class AjouterPatient extends javax.swing.JFrame {
 
                     //on verifie que le code postale est bien de longueur 5
 
-                }else if(jTextField4.getText().length()!=5){
+                }else if((jTextField4.getText().length()!=5) | (!NumeroChecker.chekerNumero(jTextField4.getText()))){
                     jLabel14.setVisible(false);
                     jLabel2.setVisible(false);
                     jLabel13.setVisible(false);
@@ -278,14 +289,14 @@ public class AjouterPatient extends javax.swing.JFrame {
 
                     //on verifie que le numero de secu est bien de 13 char
 
-                }else if(jTextField5.getText().length()!=13){
+                }else if((jTextField5.getText().length()!=13)| (!NumeroChecker.chekerNumero(jTextField5.getText()))){
                     jLabel2.setVisible(false);
                     jLabel12.setVisible(false);
                     jLabel14.setVisible(false);
                     jLabel13.setVisible(true);
                     jToggleButton1.setSelected(false);
 
-                    //si tout est bon on cr√©e le nouveau patient
+                    //si tout est bon on cree le nouveau patient
                 }else{
                     //on enleve tous les labels d'erreurs
                     jLabel14.setVisible(false);
@@ -293,17 +304,17 @@ public class AjouterPatient extends javax.swing.JFrame {
                     jLabel12.setVisible(false);
                     jLabel13.setVisible(false);
 
-                    //on recup√®re nom, prenom, dateNaissance, codePostale et num secu
+                    //on recupere nom, prenom, dateNaissance, codePostale et num secu
                     String nom=jTextField1.getText();
                     String prenom=jTextField3.getText();
                     Date dateNaissance=creerDate(jTextField2.getText());
-                    int codeP=Integer.parseInt(jTextField4.getText());
+                    String codeP=jTextField4.getText();
                     long ns=Long.parseLong(jTextField5.getText());
                     String nomM = (String) jComboBox2.getSelectedItem();
 
-                    //on cr√©e le nouveau patient
+                    //on crÈe le nouveau patient
                     Patient nouveauP=new Patient(nom,prenom,ns,dateNaissance,codeP);
-                    System.out.println("ajout patient "+nom+" "+prenom+" "+"n¬∞ "+ns+" n√© le "+dateNaissance.toString()+" dans le "+codeP);
+                    System.out.println("ajout patient "+nom+" "+prenom+" "+"n∞ "+ns+" nÈ le "+dateNaissance.toString()+" dans le "+codeP);
                     sa.getHospital().ajouterPatient(nouveauP);
                     Specialite speC=null;
                     //on cherche la spe
@@ -383,23 +394,21 @@ public class AjouterPatient extends javax.swing.JFrame {
                     .addComponent(jLabel10))
                 .addGap(29, 29, 29)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel2)
+                .addGap(4, 4, 4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jToggleButton1)
-                                .addComponent(jButton2))
-                            .addComponent(jLabel14))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel13)
-                .addContainerGap())
+                        .addComponent(jLabel14)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jToggleButton1)
+                            .addComponent(jButton2)
+                            .addComponent(jLabel12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel13)
+                        .addGap(59, 59, 59))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -412,7 +421,7 @@ public class AjouterPatient extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 594, Short.MAX_VALUE)
+            .addGap(0, 606, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -443,6 +452,28 @@ public class AjouterPatient extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        //methode pour lier les deux jComboBox ensemble: 
+        // lorsque que le specialite est selectionnee, 
+        // seuls les medecins de cette specialite sont affiche dans le jComboBox2 
+        String str = (String) jComboBox1.getSelectedItem();
+        jComboBox2.setModel(new DefaultComboBoxModel() );
+        System.out.println(str);
+        for (Specialite spe : sa.getHospital().getSpecialite()) {
+            if (str.equals(spe.getNom())) {
+                jComboBox2.addItem(" ");
+                for (Medecin ma : spe.getListeMed()) {
+                    jComboBox2.addItem(ma.getNom());
+                }
+        // si aucune specialite n'a ete selectionnee, tous les medecins sont affiches 
+            } else if (jComboBox1.getSelectedItem().toString().isEmpty()) {
+                for (Medecin mi : sa.getHospital().getListMedecin()) {
+                    jComboBox2.addItem(mi.getNom());
+                }
+            }
+        }      
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     public Date creerDate(String donnees) {
         int annee = Integer.parseInt(donnees.substring(0, donnees.indexOf('-')));

@@ -6,6 +6,7 @@
 package Interfaces;
 
 import java.util.List;
+import javax.swing.event.ListSelectionEvent;
 import princetonPlainsboro.AffichageFiches;
 import princetonPlainsboro.Date;
 import princetonPlainsboro.DateChecker;
@@ -13,6 +14,7 @@ import princetonPlainsboro.DossierMedical;
 import princetonPlainsboro.FicheDeSoins;
 import princetonPlainsboro.Hospital;
 import princetonPlainsboro.LectureXMLHop;
+import princetonPlainsboro.Patient;
 import princetonPlainsboro.SecretaireAdministrative;
 
 /**
@@ -28,6 +30,9 @@ public class AfficherFichesSoins extends javax.swing.JFrame {
      * Creates new form AfficherFichesSoins
      */
     public AfficherFichesSoins(SecretaireAdministrative sa) {
+        //Lecture de la base de donnees avec mise a jour 
+        LectureXMLHop test = new LectureXMLHop("hopital.xml");
+        Hospital hop = test.getHospital();
         this.sa = sa;
         this.fiche = sa.getFiches();
         initComponents();
@@ -215,9 +220,9 @@ public class AfficherFichesSoins extends javax.swing.JFrame {
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         if (jToggleButton3.isSelected()) {
             List<FicheDeSoins> ficheI = null;
-            //si les JText fiel ont été rempli on verifie que les dates sont valide et on fait la selection entre 2 dates
+            //si les JText fiel ont ete rempli on verifie que les dates sont valide et on fait la selection entre 2 dates
             if ((!jTextField1.getText().equals("AAAA-MM-JJ-HH-MM") | !jTextField2.getText().equals("AAAA-MM-JJ-HH-MM"))) {
-                System.out.println("textFieldModifié");
+                System.out.println("textFieldModifie");
                 if (!DateChecker.isValid(jTextField1.getText()) | !DateChecker.isValid(jTextField2.getText())) {
                     jLabel6.setVisible(true);
                     jTextField1.setText("AAAA-MM-JJ-HH-MM");
@@ -226,8 +231,8 @@ public class AfficherFichesSoins extends javax.swing.JFrame {
                     return;
                 } else {
                     jLabel6.setVisible(false);
-                    System.out.println("d1  "+creerDate(jTextField1.getText()).toString());
-                    System.out.println("d2  "+creerDate(jTextField2.getText()).toString());
+                    System.out.println("d1  " + creerDate(jTextField1.getText()).toString());
+                    System.out.println("d2  " + creerDate(jTextField2.getText()).toString());
                     ficheI = DossierMedical.SelectionnerDate(creerDate(jTextField1.getText()), creerDate(jTextField2.getText()), fiche);
                 }
             } else {
@@ -238,7 +243,7 @@ public class AfficherFichesSoins extends javax.swing.JFrame {
             jTable1.setModel(new AffichageFiches(ficheF));
             revalidate();
             repaint();
-        }else{
+        } else {
             jTable1.setModel(new AffichageFiches(fiche));
             revalidate();
             repaint();
@@ -247,17 +252,32 @@ public class AfficherFichesSoins extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        if(jToggleButton2.isSelected()){
-            List<FicheDeSoins> listeT=DossierMedical.trierCout(fiche);
+        if (jToggleButton2.isSelected()) {
+            List<FicheDeSoins> listeT = DossierMedical.trierCout(fiche);
             jTable1.setModel(new AffichageFiches(listeT));
             revalidate();
             repaint();
-        }else{
+        } else {
             jTable1.setModel(new AffichageFiches(fiche));
             revalidate();
             repaint();
         }
     }//GEN-LAST:event_jToggleButton2ActionPerformed
+    //methode permettant de definir l'action pour un element de la liste selectionnee
+    public void valueChanged(ListSelectionEvent e) {
+        //Relecture de l'hopital.xml pour possible mise a jour de la base 
+        LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
+        Hospital hop = test.getHospital();
+
+        //Code permettant l'affichage de la fiche du patient selectionne dans la jList
+        int j = jTable1.getSelectedRow(); //Donne l'indice de la ligne selectionnee
+        if (j != -1) {
+            Patient p = new Patient(sa.getHospital().getListPatient().get(j).getNom(), sa.getHospital().getListPatient().get(j).getPrenom(), sa.getHospital().getListPatient().get(j).getSecu(), sa.getHospital().getListPatient().get(j).getNaissance(), sa.getHospital().getListPatient().get(j).getCP());
+            FichePatient fp = new FichePatient(p, sa.getHospital().getListPatient().get(j).getDossierMed()); //Creation de la fichePatient associe au patient slectionne
+            fp.setVisible(true); //Affichage de la fichePatient
+            jTable1.clearSelection();
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -289,7 +309,8 @@ public class AfficherFichesSoins extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                LectureXMLHop test = new LectureXMLHop("hopital.xml");
+                //Lecture de la base de donnees avec mise a jour 
+                LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
                 Hospital hop = test.getHospital();
                 new AfficherFichesSoins(hop.getSA()).setVisible(true);
             }

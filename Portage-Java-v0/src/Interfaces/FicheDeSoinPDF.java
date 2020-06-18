@@ -39,6 +39,9 @@ public class FicheDeSoinPDF extends javax.swing.JFrame implements ActionListener
     double coutTotal = 0.0;
     
     public FicheDeSoinPDF(FicheDeSoins f) {
+        //Lecture de la base de donnees avec mise a jour 
+        LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
+        Hospital hop = test.getHospital();
         
         //Initialisation des attributs de la classe 
         this.fiche = f;
@@ -107,8 +110,6 @@ public class FicheDeSoinPDF extends javax.swing.JFrame implements ActionListener
         jLabel2.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel2.setText("Centre Hospitalier de Princeton Plainshoro");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\marin\\OneDrive\\Bureau\\ProjetsFinalCode\\jeudiMatin\\APO_G2-master\\Portage-Java-v0\\src\\images\\logo_petit.png")); // NOI18N
-
         jLabel3.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
         jLabel3.setText(patient.getNom());
 
@@ -119,7 +120,7 @@ public class FicheDeSoinPDF extends javax.swing.JFrame implements ActionListener
         jLabel5.setText(patient.getNaissance().toString());
 
         jLabel6.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
-        jLabel6.setText(Integer.toString(patient.getCP()));
+        jLabel6.setText(patient.getCP());
 
         jLabel7.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
         jLabel7.setText(this.specialite);
@@ -163,11 +164,8 @@ public class FicheDeSoinPDF extends javax.swing.JFrame implements ActionListener
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -331,7 +329,7 @@ public class FicheDeSoinPDF extends javax.swing.JFrame implements ActionListener
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                LectureXMLHop test = new LectureXMLHop("hopital.xml");
+                LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
                 Hospital h = test.getHospital();
                 Patient p = h.getListPatient().get(0);
                 new FicheDeSoinPDF(p.getDossierMed().get(0)).setVisible(true);

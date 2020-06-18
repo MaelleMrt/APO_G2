@@ -28,6 +28,10 @@ public class FicheSoinMedecin extends javax.swing.JFrame {
      * Creates new form FicheSoin
      */
     public FicheSoinMedecin(Patient patient,FicheDeSoins fiche) {
+        //Lecture de la base de donnees avec mise a jour 
+        LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
+        Hospital hop = test.getHospital();
+        
         this.patient=patient;
         this.fiche=fiche;
         initComponents();
@@ -342,7 +346,7 @@ public class FicheSoinMedecin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                LectureXMLHop test = new LectureXMLHop("hopital.xml");
+                LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
                 Hospital hop = test.getHospital();
                 Patient p=hop.getListPatient().get(0);
                 FicheDeSoins ficheDeS=p.getDossierMed().get(0);

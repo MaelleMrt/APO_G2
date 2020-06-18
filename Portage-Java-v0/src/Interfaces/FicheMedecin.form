@@ -188,7 +188,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Bell MT" size="13" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Num&#xe9;ro de t&#xe9;l&#xe9;phone"/>
+                <Property name="text" type="java.lang.String" value="Numero de telephone"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">

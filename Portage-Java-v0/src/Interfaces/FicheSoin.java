@@ -27,7 +27,11 @@ public class FicheSoin extends javax.swing.JFrame {
     /**
      * Creates new form FicheSoin
      */
-    public FicheSoin(Hospital hop) {
+    public FicheSoin() {
+        //Lecture de la base de donnees avec mise a jour 
+        LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
+        Hospital hop = test.getHospital();
+        
         this.patient = hop.getListPatient().get(0) ;
         this.hop = hop;
         this.fiche = hop.getListPatient().get(0).getDossierMed().get(0);
@@ -285,9 +289,9 @@ public class FicheSoin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                LectureXMLHop test = new LectureXMLHop("hopital.xml");
+                LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
                 Hospital hop = test.getHospital();
-                new FicheSoin(hop).setVisible(true);
+                new FicheSoin().setVisible(true);
             }
         });
     }

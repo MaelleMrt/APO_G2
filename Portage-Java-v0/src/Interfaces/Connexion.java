@@ -21,6 +21,10 @@ public class Connexion extends javax.swing.JFrame {
      * Creates new form Connexion
      */
     public Connexion(Hospital hospital) {
+        //Lecture de la base de donnees avec mise a jour 
+        LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
+        Hospital hop = test.getHospital();
+
         initComponents();
         this.hospital = hospital;
     }
@@ -69,7 +73,7 @@ public class Connexion extends javax.swing.JFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\marin\\OneDrive\\Bureau\\ProjetsFinalCode\\mardiam\\APO_G2-master\\Portage-Java-v0\\src\\images\\logo.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/logo2.png"))); // NOI18N
 
         jComboBox1.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Medecin", "Secretaire Administrative", "Secretaire Medicale", " " }));
@@ -123,8 +127,8 @@ public class Connexion extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(406, Short.MAX_VALUE)))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(357, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,7 +160,7 @@ public class Connexion extends javax.swing.JFrame {
                 .addContainerGap(53, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(48, Short.MAX_VALUE)
+                    .addContainerGap(77, Short.MAX_VALUE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
@@ -185,8 +189,7 @@ public class Connexion extends javax.swing.JFrame {
                 jLabel7.setVisible(true);
                 jToggleButton1.setSelected(false);
                 jLabel8.setVisible(false);
-            }
-            else if (connexionV.connexionValide(jTextField1.getText(), String.valueOf(jPasswordField1.getPassword()), jComboBox1.getSelectedItem().toString())) {
+            } else if (connexionV.connexionValide(jTextField1.getText(), String.valueOf(jPasswordField1.getPassword()), jComboBox1.getSelectedItem().toString())) {
                 //si on a les bons identifiants on se connecte -> disparaitre les messages d'erreurs
                 //vider les JtextFields
                 jLabel7.setVisible(false);
@@ -217,8 +220,8 @@ public class Connexion extends javax.swing.JFrame {
                     this.setVisible(false);
                 }
             } else {
-                System.out.println("identifiant: "+jTextField1.getText());
-                System.out.println("mdp: "+jPasswordField1.getPassword().toString().toCharArray());
+                System.out.println("identifiant: " + jTextField1.getText());
+                System.out.println("mdp: " + jPasswordField1.getPassword().toString().toCharArray());
                 jLabel8.setVisible(true);
                 jLabel7.setVisible(false);
                 jToggleButton1.setSelected(false);
@@ -256,7 +259,7 @@ public class Connexion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
                 LectureXMLHop test = new LectureXMLHop("hopital.xml");
                 Hospital hop = test.getHospital();
                 new Connexion(hop).setVisible(true);

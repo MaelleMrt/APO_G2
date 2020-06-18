@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import princetonPlainsboro.Hospital;
+import princetonPlainsboro.LectureXMLHop;
 import princetonPlainsboro.Medecin;
 
 /**
@@ -24,6 +26,9 @@ public class FicheMedecin extends javax.swing.JFrame implements ActionListener, 
      * Creates new form FicheMedecin
      */
     public FicheMedecin(Medecin m) {
+        //Lecture de la base de donnees avec mise a jour 
+        LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
+        Hospital hop = test.getHospital();
         
         //Initialisation de l'attribut de la classe FicheMedecin
         this.medecin= m; 
@@ -72,7 +77,7 @@ public class FicheMedecin extends javax.swing.JFrame implements ActionListener, 
         jLabel4.setText("Specialite");
 
         jLabel5.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
-        jLabel5.setText("Numéro de téléphone");
+        jLabel5.setText("Numero de telephone");
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
         jLabel1.setText(medecin.getNomComplet());
@@ -233,7 +238,7 @@ public class FicheMedecin extends javax.swing.JFrame implements ActionListener, 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Code permettant de fermer l'interface FichePatient gr�ce au bouton "deconnexion"
+        // Code permettant de fermer l'interface FichePatient gr�ce au bouton "deconnexion"
         if(jToggleButton1.isSelected()){
             this.dispose();
         }
