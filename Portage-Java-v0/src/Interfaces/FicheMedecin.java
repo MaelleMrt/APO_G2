@@ -17,15 +17,21 @@ import princetonPlainsboro.Medecin;
  */
 public class FicheMedecin extends javax.swing.JFrame implements ActionListener, ComponentListener {
 
+    // attribut de la classe FicheMedecin
     private Medecin medecin ;
+    
     /**
      * Creates new form FicheMedecin
      */
     public FicheMedecin(Medecin m) {
+        
+        //Initialisation de l'attribut de la classe FicheMedecin
         this.medecin= m; 
+        
         initComponents();
+        
+        //Commandes permettant la lecture de l'action d'un bouton
         jToggleButton1.addActionListener(this);
-
     }
 
     /**
@@ -206,8 +212,7 @@ public class FicheMedecin extends javax.swing.JFrame implements ActionListener, 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               Medecin m = new Medecin("","","","","","");
-               new FicheMedecin(m).setVisible(true);
+               //new FicheMedecin(m).setVisible(true);
             }
         });
     }
@@ -228,6 +233,7 @@ public class FicheMedecin extends javax.swing.JFrame implements ActionListener, 
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        // Code permettant de fermer l'interface FichePatient grâce au bouton "deconnexion"
         if(jToggleButton1.isSelected()){
             this.dispose();
         }
