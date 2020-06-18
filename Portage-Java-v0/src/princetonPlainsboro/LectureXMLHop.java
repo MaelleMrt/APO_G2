@@ -165,14 +165,17 @@ public class LectureXMLHop {
                             dateNaissanceCourante = new Date(annee, mois, jour, heure, minutes);
                         }
                         if (parser.getLocalName().equals("mdp")) {
-                            mdpCourant = donneesCourantes;
+                            System.out.println(Cryptage.dechiffre(6, donneesCourantes).compareTo("medA")==0);
+                            mdpCourant = Cryptage.dechiffre(6, donneesCourantes);
+                            
                         }
                         if (parser.getLocalName().equals("identifiant")) {
                             identifiantCourant = donneesCourantes;
                         }
 
                         if (parser.getLocalName().equals("mdpSe")) {
-                            mdpCourantSe = donneesCourantes;
+                            System.out.println(Cryptage.dechiffre(6, donneesCourantes));
+                            mdpCourantSe = Cryptage.dechiffre(6, donneesCourantes);
                         }
 
                         if (parser.getLocalName().equals("identifiantSe")) {
@@ -182,7 +185,8 @@ public class LectureXMLHop {
                             identifiantCourantMe = donneesCourantes;
                         }
                         if (parser.getLocalName().equals("mdpMe")) {
-                            mdpCourantMe = donneesCourantes;
+                            System.out.println(Cryptage.dechiffre(6, donneesCourantes));
+                            mdpCourantMe = Cryptage.dechiffre(6, donneesCourantes);
                         }
                         if (parser.getLocalName().equals("codeP")) {
                             codePCourant = Integer.parseInt(donneesCourantes);
