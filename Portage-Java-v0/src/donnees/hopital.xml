@@ -9,19 +9,19 @@ and open the template in the editor.
 <hopital>
     <nom>PrincetonPlainsboro</nom>
     <secretaireAdministrative>
-        <mdpSe>secA1</mdpSe>
+        <mdpSe>ykiGG</mdpSe>
         <identifiantSe>secA1</identifiantSe>
     </secretaireAdministrative>
     <specialite>
         <secretaireMedicale>
-            <mdpMe>secM1</mdpMe>
+            <mdpMe>ykiSG</mdpMe>
             <identifiantMe>secM1</identifiantMe>
         </secretaireMedicale>
         <nomS>cardiologie</nomS>
         <medecin>
             <num>0767782227</num>
             <identifiant>med1</identifiant>
-            <mdp>med1</mdp>
+            <mdp>skjG</mdp>
             <nomM>House</nomM>
             <prenomM>Patrick</prenomM>
             <patient>
@@ -83,14 +83,14 @@ and open the template in the editor.
     </specialite>
     <specialite>
         <secretaireMedicale>
-            <mdpMe>secM2</mdpMe>
+            <mdpMe>ykiSH</mdpMe>
             <identifiantMe>secM2</identifiantMe>
         </secretaireMedicale> 
         <nomS>dentaire</nomS>
         <medecin>
             <num>0767792227</num>
             <identifiant>med2</identifiant>
-            <mdp>med2</mdp>
+            <mdp>skjH</mdp>
             <nomM>Richard</nomM>
             <prenomM>Jean</prenomM>
             <patient>
@@ -166,7 +166,7 @@ and open the template in the editor.
         <medecin>
             <num>0667798227</num>
             <identifiant>med3</identifiant>
-            <mdp>med3</mdp>
+            <mdp>skjI</mdp>
             <nomM>Epi</nomM>
             <prenomM>Fanie</prenomM>
             <patient>
@@ -188,5 +188,33 @@ and open the template in the editor.
                 </ficheDeSoin>
             </patient>
         </medecin>
-    </specialite>   
+    </specialite>  
+    <specialite>
+        <secretaireMedicale>
+            <mdp>skjI</mdp>
+            <identifiant>secM3</identifiant>
+        </secretaireMedicale>
+        <nomS>Pediatrique</nomS>
+    </specialite>
+    <specialite>
+        <secretaireMedicale>
+            <mdp>skjJ</mdp>
+            <identifiant>secM4</identifiant>
+        </secretaireMedicale>
+        <nomS>Gynecology Obstetrique</nomS>
+    </specialite>
+    <specialite>
+        <secretaireMedicale>
+            <mdp>skjL</mdp>
+            <identifiant>secM5</identifiant>
+        </secretaireMedicale>
+        <nomS>Neurologie</nomS>
+    </specialite>
+    <specialite>
+        <secretaireMedicale>
+            <mdp>secMF</mdp>
+            <identifiant>secM6</identifiant>
+        </secretaireMedicale>
+        <nomS>Dermathologie</nomS>
+    </specialite> 
 </hopital>
