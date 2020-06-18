@@ -21,7 +21,7 @@ import princetonPlainsboro.LectureXMLHop;
  *
  * @author marin
  */
-public class FichePatient extends javax.swing.JFrame implements ActionListener, ComponentListener {
+public class FichePatientMed extends javax.swing.JFrame implements ActionListener, ComponentListener {
 
     //attributs de la classe FichePatient
     private Patient patient; 
@@ -32,7 +32,7 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
     /**
      * Creates new form FichePatient
      */
-    public FichePatient(Patient p ,List<FicheDeSoins> listeFiches) {
+    public FichePatientMed(Patient p ,List<FicheDeSoins> listeFiches) {
         //Lecture de la base de donnees avec mise a jour 
         LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
         Hospital hop = test.getHospital();
@@ -363,12 +363,13 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
         for (int i =0; i<jTable2.getRowCount(); i++){
             int j = jTable2.getSelectedRow();
             if(i == j && jToggleButton2.isSelected()){
-                FicheDeSoinPDF fp = new FicheDeSoinPDF(listeFiche.get(j));
+                FicheSoinMedecin fp = new FicheSoinMedecin(patient,listeFiche.get(j));
                 fp.setVisible(true);
                 jTable2.clearSelection();
                 jToggleButton2.setSelected(!jToggleButton2.isSelected());
             }
         }
+        
         // Code permettant de fermer l'interface FichePatient gr�ce au bouton "deconnexion"
         if(jToggleButton1.isSelected()){
             this.dispose();

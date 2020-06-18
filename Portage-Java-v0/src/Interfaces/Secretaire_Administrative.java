@@ -139,6 +139,8 @@ public class Secretaire_Administrative extends javax.swing.JFrame implements Lis
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon("src/images/logo_petit.png"));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(

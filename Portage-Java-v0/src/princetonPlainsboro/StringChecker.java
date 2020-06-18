@@ -12,7 +12,7 @@ package princetonPlainsboro;
 public class StringChecker {
         public static boolean chekerString(String numero) {
         for (int i = 0; i < numero.length(); i++) {
-            if (Character.toUpperCase(numero.charAt(i)) >= ':' && Character.toUpperCase(numero.charAt(i)) <= '@') {
+            if (Character.toUpperCase(numero.charAt(i)) >= '!' && Character.toUpperCase(numero.charAt(i)) <= '@') {
                 return false;
             }
         }
