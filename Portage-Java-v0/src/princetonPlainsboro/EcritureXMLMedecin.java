@@ -53,7 +53,7 @@ public class EcritureXMLMedecin {
         numero.setText(String.valueOf(med.getNumeroTel()));   //recuperation donnee
         newMedecin.addContent(numero);      // ajout du numero au medecin 
 
-        Element identifiant = new Element("identitfiant");
+        Element identifiant = new Element("identifiant");
         identifiant.setText(med.getIdentifiant());
         newMedecin.addContent(identifiant);
 
