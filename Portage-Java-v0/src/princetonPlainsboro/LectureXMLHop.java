@@ -109,7 +109,7 @@ public class LectureXMLHop {
                         }
                         if (parser.getLocalName().equals("ficheDeSoin")) {
 
-                            FicheDeSoins f = new FicheDeSoins(patientCourant, nomMedecinCourant + " " + prenomMedecinCourant, nomSpecialiteCourante, date);
+                            FicheDeSoins f = new FicheDeSoins(patientCourant, nomMedecinCourant /*+ " " + prenomMedecinCourant*/, nomSpecialiteCourante, date);
                             // ajout des actes
                             for (int i = 0; i < actes.size(); i++) {
                                 Acte a = (Acte) actes.get(i);
