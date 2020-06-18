@@ -73,9 +73,9 @@ public class Hospital {
         return this.secretairesM;
     }
     
-    public Medecin rechercherMedecin(String identifiant){
+    public Medecin rechercherMedecin(String nom){
         for(Medecin m:this.medecinsH){
-            if(m.getIdentifiant().equals(identifiant)){
+            if(m.getNom().equals(nom)){
                 return m;
             }
         }
