@@ -17,12 +17,12 @@ public class Patient {
     private String prenom;
     private Date naissance;
     private long numSecu;
-    private int codePostale;
+    private String codePostale;
 
     private ArrayList<FicheDeSoins> DossierMedical;
 
     //, Date naissance, Integer numSecu
-    public Patient(String nom, String prenom, long secu, Date dateDeNaissance,int codePostale) {
+    public Patient(String nom, String prenom, long secu, Date dateDeNaissance,String codePostale) {
         this.nom = nom;
         this.prenom = prenom;
         this.naissance = dateDeNaissance;
@@ -47,7 +47,7 @@ public class Patient {
         return naissance;
     }
     
-    public int getCP(){
+    public String getCP(){
         return this.codePostale; 
     }
 

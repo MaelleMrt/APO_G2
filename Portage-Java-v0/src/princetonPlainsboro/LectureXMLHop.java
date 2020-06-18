@@ -41,7 +41,7 @@ public class LectureXMLHop {
         Patient patientCourant = null;
         Medecin medecinCourant = null;
         String numeroCourant = "";
-        int codePCourant = 0;
+        String codePCourant = "";
         Specialite specialiteCourante = null;
         String mdpCourant = null;
         String identifiantCourant = null;
@@ -122,7 +122,7 @@ public class LectureXMLHop {
                         }
                         if (parser.getLocalName().equals("medecin")) {
 
-                            //on l'ajoute à la liste du serviceCourant et on vérifie si il n'est pas déjà dans la liste des medecins
+                            //on l'ajoute a� la liste du serviceCourant et on verifie si il n'est pas deja� dans la liste des medecins
                             boolean presentM = false;
                             for (Medecin m : hospitalCourant.getListMedecin()) {
                                 if (m.getIdentifiant().equals(identifiantCourant)) {
@@ -136,7 +136,7 @@ public class LectureXMLHop {
                                 medecinCourant = new Medecin(nomMedecinCourant, prenomMedecinCourant, nomSpecialiteCourante, identifiantCourant, mdpCourant, numeroCourant);
                                 hospitalCourant.ajouterMedecin(medecinCourant);
                             }
-                            //on lui ajoute ses patients qu'il n'a pas déjà 
+                            //on lui ajoute ses patients qu'il n'a pas deja
                             for (Patient p : patients) {
                                 if (!medecinCourant.getListPatient().contains(p)) {
                                     medecinCourant.ajouterPatient(p);
@@ -189,7 +189,7 @@ public class LectureXMLHop {
                             mdpCourantMe = Cryptage.dechiffre(6, donneesCourantes);
                         }
                         if (parser.getLocalName().equals("codeP")) {
-                            codePCourant = Integer.parseInt(donneesCourantes);
+                            codePCourant = donneesCourantes;
                         }
 
                         if (parser.getLocalName().equals("nom")) {
@@ -206,7 +206,7 @@ public class LectureXMLHop {
                             prenomMedecinCourant = donneesCourantes;
                         }
                         if (parser.getLocalName().equals("patient")) {
-                            //on l'ajoute au medecinCourant et on vérifie si il n'est pas déjà dans la liste des medecins
+                            //on l'ajoute au medecinCourant et on verifie si il n'est pas deja� dans la liste des medecins
                             boolean present = false;
                             for (Patient p : hospitalCourant.getListPatient()) {
                                 if (p.getSecu() == secuCourante) {
@@ -217,7 +217,7 @@ public class LectureXMLHop {
                             }
                             if (!present) {
                                 patientCourant = new Patient(nomCourant, prenomCourant, secuCourante, dateNaissanceCourante, codePCourant);
-                                //on ajoute à la liste de patient de l'hopital
+                                //on ajoute a� la liste de patient de l'hopital
                                 hospitalCourant.ajouterPatient(patientCourant);
                             }
                             //on ajoute les fiches de soins courantes
@@ -228,7 +228,7 @@ public class LectureXMLHop {
                             //on clear la fiches de soins courantes
                             fiches.clear();
 
-                            //on ajoute à la liste de patients courants
+                            //on ajoute a� la liste de patients courants
                             patients.add(patientCourant);
 
                         }
@@ -240,15 +240,15 @@ public class LectureXMLHop {
                             for (Medecin m : medecins) {
                                 specialiteCourante.ajouterMedecin(m);
                             }
-                            //création de la secretaire avec la specialite courante
+                            //creation de la secretaire avec la specialite courante
                             secretaireMedicaleCourante = new SecretaireMedicale(identifiantCourantMe, mdpCourantMe, specialiteCourante);
                             System.out.println(secretaireMedicaleCourante.getIdentifiant());
                             hospitalCourant.ajouterSecretaireM(secretaireMedicaleCourante);
                             //on set la secretaireMedicale
                             specialiteCourante.setSM(secretaireMedicaleCourante);
 
-                            //on l'ajoute à l'hopital la secretaire medicale
-                            //on ajoute la specialite à l'hopital
+                            //on l'ajoute a� l'hopital la secretaire medicale
+                            //on ajoute la specialite a� l'hopital
                             hospitalCourant.ajouterSpecialite(specialiteCourante);
                             medecins.clear();
                         }
