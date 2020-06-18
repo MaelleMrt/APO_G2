@@ -14,7 +14,7 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 import static princetonPlainsboro.Code.*;
-
+import princetonPlainsboro.Date;
 /**
  *
  * @author kalma
@@ -29,7 +29,7 @@ public class EcritureXMLActes {
 //            lireFichier("src/donnees/hopital_1.xml");
 //            //System.out.println("lecture fichier : ok ");
 //            Date date = new Date(1996, 12, 3, 20, 14);
-//            Date dateFS = new Date(2020,6,17,15,27); 
+//            Date dateFS = new Date(17,6,2020,15,27); 
 //            Patient p = new Patient("Rico", "Coco", 12, date, 83600);
 //            Medecin m = new Medecin("Mama", "Mia", "cardiologie", "med8", "motdepasse", 12);
 //            Acte a = new Acte(K, 2); 
@@ -47,6 +47,7 @@ public class EcritureXMLActes {
         SAXBuilder sxb = new SAXBuilder();
         document = sxb.build(new File(fichier));
         racine = document.getRootElement();
+        System.out.println("fichier lu");
     }
     //On fait des modifications sur un Element
 
@@ -66,7 +67,7 @@ public class EcritureXMLActes {
 
         // On liste toutes les specialites de l'hopital : 
         List listSpecialite = racine.getChildren("specialite");
-        //On parcourt la liste grâce à un iterator
+        //On parcourt la liste grace a un iterator
         Iterator i = listSpecialite.iterator();
         //on cherche la specialite d'interet: 
         while (i.hasNext()) {
@@ -74,7 +75,7 @@ public class EcritureXMLActes {
             if (courant.getChildText("nomS").equals(m.getSpecialite())) {
                 // La <specialite> d'interet devient notre racine: 
                 racine = courant.setName("specialite");
-                //System.out.println("parcours des specialites");
+                System.out.println("parcours des specialites");
             }
         }
 
@@ -88,7 +89,7 @@ public class EcritureXMLActes {
             if (courant2.getChildText("nomM").equals(m.getNom())) {
                 // <medecin> devient racine 
                 racine = courant2.setName("medecin");
-                //   System.out.println("parcours des medecins");
+                System.out.println("parcours des medecins");
             }
         }
 
@@ -102,7 +103,7 @@ public class EcritureXMLActes {
             if (courant3.getChildText("nom").equals(p.getNom())) {
                 //<patient> devient racine
                 racine = courant3.setName("patient");
-                // System.out.println("fiche de soins ajoutee au patient : la racine devient patient");
+                System.out.println("parcours fiche de soins:la racine de devient patient");
             }
         }
 
@@ -113,7 +114,15 @@ public class EcritureXMLActes {
         //on cherhce la bonne fiche : 
         while (l.hasNext()) {
             Element courant4 = (Element) l.next();
-            if (courant4.getChildText("date").equals(fs.getDate().getAnnee() + "-" + fs.getDate().getMois() + "-" + fs.getDate().getJour() + "-" + fs.getDate().getHeure() + "-" + fs.getDate().getMinutes())) {
+            Date date = creerDate(courant4.getChildText("date"));
+            System.out.println("---------------");
+            System.out.println(date.getAnnee());
+            System.out.println(date.getMois());
+            System.out.println(date.getJour());
+            System.out.println(date.getHeure());
+            System.out.println(date.getMinutes());
+            System.out.println("---------------");
+            if (date.compareTo(fs.getDate()) == 0) {
                 //ajout des actes
                 courant4.addContent(newActe);
                 System.out.println("Actes ajoutes a la fiche de soins");
@@ -126,5 +135,14 @@ public class EcritureXMLActes {
     public static void enregistreFichier(String fichier) throws Exception {
         XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
         sortie.output(document, new FileOutputStream(fichier));
+    }
+
+    public static Date creerDate(String donnees) {
+        int annee = Integer.parseInt(donnees.substring(0, donnees.indexOf('-')));
+        int mois = Integer.parseInt(donnees.substring(donnees.indexOf('-') + 1, donnees.indexOf('-', donnees.indexOf('-') + 1)));
+        int jour = Integer.parseInt(donnees.substring(donnees.indexOf('-', donnees.indexOf('-') + 1) + 1, donnees.indexOf('-', donnees.indexOf('-', donnees.indexOf('-') + 1) + 1)));
+        int heure = Integer.parseInt(donnees.substring(donnees.indexOf('-', donnees.indexOf('-', donnees.indexOf('-') + 1) + 1) + 1, donnees.lastIndexOf('-', donnees.indexOf('-', donnees.indexOf('-', donnees.indexOf('-', donnees.indexOf('-') + 1) + 1) + 1))));
+        int minutes = Integer.parseInt(donnees.substring(donnees.lastIndexOf('-', donnees.indexOf('-', donnees.indexOf('-', donnees.indexOf('-', donnees.indexOf('-') + 1) + 1) + 1)) + 1, donnees.length()));
+        return new Date(jour, mois, annee, heure, minutes);
     }
 }

@@ -28,7 +28,7 @@ public class EcritureXMLFichesSoins {
 //            lireFichier("src/donnees/hopital_1.xml");
 //            //System.out.println("lecture fichier : ok ");
 //            Date date = new Date(1996, 12, 3, 20, 14);
-//            Date dateFS = new Date(2020,6,17,15,27); 
+//            Date dateFS = new Date(17,6,2020,15,27);  
 //            Patient p = new Patient("Rico", "Coco", 12, date, 83600);
 //            Medecin m = new Medecin("Mama", "Mia", "cardiologie", "med8", "motdepasse", 12);
 //            FicheDeSoins fs = new FicheDeSoins(p,m.getNom(),m.getSpecialite(),dateFS ); 
@@ -45,6 +45,7 @@ public class EcritureXMLFichesSoins {
         SAXBuilder sxb = new SAXBuilder();
         document = sxb.build(new File(fichier));
         racine = document.getRootElement();
+        System.out.println("fichier lu");
     }
     //On fait des modifications sur un Element
 
@@ -60,7 +61,7 @@ public class EcritureXMLFichesSoins {
 
         // On liste toutes les specialites de l'hopital : 
         List listSpecialite = racine.getChildren("specialite");
-        //On parcourt la liste grâce à un iterator
+        //On parcourt la liste grace a un iterator
         Iterator i = listSpecialite.iterator();
         //on cherche la specialite d'interet: 
         while (i.hasNext()) {
@@ -106,5 +107,6 @@ public class EcritureXMLFichesSoins {
     public static void enregistreFichier(String fichier) throws Exception {
         XMLOutputter sortie = new XMLOutputter(Format.getPrettyFormat());
         sortie.output(document, new FileOutputStream(fichier));
+        System.out.println("enregistrer");
     }
 }
