@@ -33,7 +33,7 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
      */
     public FichePatient(Patient p ,List<FicheDeSoins> listeFiches) {
         
-        //Initialisation des attributs de la classe FichePatient à partir des paramètres
+        //Initialisation des attributs de la classe FichePatient ï¿½ partir des paramï¿½tres
         this.patient = p;
         this.date = p.getNaissance();
         this.listeFiche = listeFiches;
@@ -122,7 +122,7 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
         jLabel7.setText("Adresse");
 
         jLabel8.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
-        jLabel8.setText("N° de Sécurité Sociale");
+        jLabel8.setText("Numero de Securite Sociale");
 
         jLabel11.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
         jLabel11.setText("jLabel11");
@@ -147,14 +147,13 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8)
                     .addComponent(jLabel7)
                     .addComponent(jLabel6)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel14))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addComponent(jLabel9)
@@ -182,10 +181,10 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel8))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -342,7 +341,7 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Code permettant d'ouvrir la fiche de soin sélectionnée dans le tableau après avoir cliqué sur le bouton
+        // Code permettant d'ouvrir la fiche de soin sï¿½lectionnï¿½e dans le tableau aprï¿½s avoir cliquï¿½ sur le bouton
         for (int i =0; i<jTable2.getRowCount(); i++){
             int j = jTable2.getSelectedRow();
             if(i == j && jToggleButton2.isSelected()){
@@ -352,7 +351,7 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
                 jToggleButton2.setSelected(!jToggleButton2.isSelected());
             }
         }
-        // Code permettant de fermer l'interface FichePatient grâce au bouton "deconnexion"
+        // Code permettant de fermer l'interface FichePatient grï¿½ce au bouton "deconnexion"
         if(jToggleButton1.isSelected()){
             this.dispose();
         }
