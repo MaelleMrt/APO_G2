@@ -48,11 +48,11 @@ public class FicheDeSoinPDF extends javax.swing.JFrame implements ActionListener
         this.date = f.getDate();
         this.actes = f.getActes();
               
-        //Construction du tableau avec les noms des actes associés à leur coût
+        //Construction du tableau avec les noms des actes associes à leur cout
         //Construction des noms des colonnes
         columnNames = new Vector<String>();
         columnNames.addElement("Actes");
-        columnNames.addElement("Coûts");
+        columnNames.addElement("Couts");
         //Construction de chaque ligne
         rowData = new Vector<Vector>(); //Vecteur contenant toutes les lignes du tableau
         for(Acte a : actes){
@@ -62,7 +62,7 @@ public class FicheDeSoinPDF extends javax.swing.JFrame implements ActionListener
             rowData.addElement(ligne);
         }
         
-        //Calcul du coût total
+        //Calcul du cout total
         for(Acte a : actes){
             coutTotal = coutTotal + a.cout();
         }
@@ -273,7 +273,7 @@ public class FicheDeSoinPDF extends javax.swing.JFrame implements ActionListener
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Code permettant l'ouverture d'une fenêtre qui permet d'imprimer la fiche de soin ou de la convertir en PDF
+        //Code permettant l'ouverture d'une fenetre qui permet d'imprimer la fiche de soin ou de la convertir en PDF
         PrinterJob job = PrinterJob.getPrinterJob();
         job.setJobName("Print Data");
         job.setPrintable(new Printable(){
@@ -361,7 +361,7 @@ public class FicheDeSoinPDF extends javax.swing.JFrame implements ActionListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //Code pour le bouton permettant de fermer la fenêtre
+        //Code pour le bouton permettant de fermer la fenetre
         if(jToggleButton1.isSelected()){
             this.dispose();
         }
