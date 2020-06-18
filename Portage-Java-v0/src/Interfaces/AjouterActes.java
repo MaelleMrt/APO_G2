@@ -7,12 +7,13 @@ package Interfaces;
 
 import princetonPlainsboro.Acte;
 import princetonPlainsboro.Code;
+import princetonPlainsboro.EcritureXMLActes;
+import static princetonPlainsboro.EcritureXMLActes.enregistreFichier;
 import princetonPlainsboro.FicheDeSoins;
 import princetonPlainsboro.Hospital;
 import princetonPlainsboro.LectureXMLHop;
 import princetonPlainsboro.Medecin;
 import princetonPlainsboro.Patient;
-import princetonPlainsboro.SecretaireMedicale;
 
 /**
  *
@@ -22,10 +23,13 @@ public class AjouterActes extends javax.swing.JFrame {
 
     private Patient patient; 
     private FicheDeSoins fiche;
+    private Hospital hop;
     /**
      * Creates new form AjouterFicheDeSoins
      */
     public AjouterActes(Patient p,FicheDeSoins fiche) {
+        LectureXMLHop test = new LectureXMLHop("hopital.xml");
+        this.hop = test.getHospital();
         this.patient=p;
         this.fiche=fiche;
         initComponents();
@@ -253,9 +257,26 @@ public class AjouterActes extends javax.swing.JFrame {
                String nCode =(String)jComboBox3.getSelectedItem();
                Code code=Code.valueOf(nCode);
                int coef=Integer.parseInt(jTextField1.getText());
+               //on recupére l'acte
                Acte acte=new Acte(code,coef);
+               
+               //on cherche le medecin
                fiche.ajouterActe(acte);
+               
+               
+               try {
+                System.out.println("tente d'ajouter");
+                EcritureXMLActes.lireFichier("src/donnees/hopital_1.xml");
+                EcritureXMLActes.ajouterActe(patient,hop.rechercherMedecin(fiche.getMedecin()), fiche,acte);
+                //System.out.println("ajout de l element ");
+                EcritureXMLActes.enregistreFichier("src/donnees/hopital_1.xml");
+            //System.out.println("enregistrement des donnees");
+        } catch (Exception e) {
+            System.out.println("erreur (catch)");
+            System.out.println(e);
+        }
                dispose();
+               
                
             }
         }
