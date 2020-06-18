@@ -241,7 +241,7 @@ public class AjouterPatient extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(249, 23, 23));
-        jLabel13.setText("numéro SS incorrect");
+        jLabel13.setText("numero SS incorrect");
         jLabel13.setVisible(false);
 
         jToggleButton1.setText("Valider");
@@ -285,7 +285,7 @@ public class AjouterPatient extends javax.swing.JFrame {
                     jLabel13.setVisible(true);
                     jToggleButton1.setSelected(false);
 
-                    //si tout est bon on crée le nouveau patient
+                    //si tout est bon on crÃ©e le nouveau patient
                 }else{
                     //on enleve tous les labels d'erreurs
                     jLabel14.setVisible(false);
@@ -293,7 +293,7 @@ public class AjouterPatient extends javax.swing.JFrame {
                     jLabel12.setVisible(false);
                     jLabel13.setVisible(false);
 
-                    //on recupère nom, prenom, dateNaissance, codePostale et num secu
+                    //on recupÃ¨re nom, prenom, dateNaissance, codePostale et num secu
                     String nom=jTextField1.getText();
                     String prenom=jTextField3.getText();
                     Date dateNaissance=creerDate(jTextField2.getText());
@@ -301,9 +301,9 @@ public class AjouterPatient extends javax.swing.JFrame {
                     long ns=Long.parseLong(jTextField5.getText());
                     String nomM = (String) jComboBox2.getSelectedItem();
 
-                    //on crée le nouveau patient
+                    //on crÃ©e le nouveau patient
                     Patient nouveauP=new Patient(nom,prenom,ns,dateNaissance,codeP);
-                    System.out.println("ajout patient "+nom+" "+prenom+" "+"n° "+ns+" né le "+dateNaissance.toString()+" dans le "+codeP);
+                    System.out.println("ajout patient "+nom+" "+prenom+" "+"nÂ° "+ns+" nÃ© le "+dateNaissance.toString()+" dans le "+codeP);
                     sa.getHospital().ajouterPatient(nouveauP);
                     Specialite speC=null;
                     //on cherche la spe

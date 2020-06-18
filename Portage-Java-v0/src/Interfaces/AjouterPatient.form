@@ -414,7 +414,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="17" green="17" red="f9" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="num&#xe9;ro SS incorrect"/>
+            <Property name="text" type="java.lang.String" value="numero SS incorrect"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jLabel13.setVisible(false);"/>
