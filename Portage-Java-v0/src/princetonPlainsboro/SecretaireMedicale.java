@@ -58,4 +58,15 @@ public class SecretaireMedicale {
     public void ajouterPatient(Patient p){
         this.listeP.add(p); 
     }
+    
+    public Medecin rechercherMedecin(Patient p){
+        for(Medecin m:this.specialite.getListeMed()){
+            for(Patient pm:m.getListPatient()){
+                if(pm.getSecu()==p.getSecu()){
+                    return m;
+                }
+            }
+        }
+        return null;
+    }
 }
