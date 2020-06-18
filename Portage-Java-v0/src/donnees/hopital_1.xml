@@ -12,14 +12,14 @@ and open the template in the editor.
   </secretaireAdministrative>
   <specialite>
     <secretaireMedicale>
-      <mdp>secM1</mdp>
+      <mdp>secMA</mdp>
       <identifiant>secM1</identifiant>
     </secretaireMedicale>
     <nomS>cardiologie</nomS>
     <medecin>
       <num>0767782227</num>
       <identifiant>med1</identifiant>
-      <mdp>med1</mdp>
+      <mdp>medA</mdp>
       <nomM>House</nomM>
       <prenomM>Patrick</prenomM>
       <patient>
@@ -41,6 +41,10 @@ and open the template in the editor.
           <acte>
             <code>K</code>
             <coef>150</coef>
+          </acte>
+          <acte>
+            <code>FP</code>
+            <coef>3</coef>
           </acte>
         </ficheDeSoin>
         <ficheDeSoin>
@@ -80,10 +84,10 @@ and open the template in the editor.
     </medecin>
     <medecin>
       <num>12</num>
-      <identitfiant>med8</identitfiant>
+      <identifiant>med8</identifiant>
       <mdp>motdepasse</mdp>
-      <nomM>Mama</nomM>
-      <prenomM>Mia</prenomM>
+      <nomM>Leponge</nomM>
+      <prenomM>Bob</prenomM>
       <patient>
         <nom>Rico</nom>
         <prenom>Coco</prenom>
@@ -117,23 +121,30 @@ and open the template in the editor.
       </patient>
     </medecin>
     <medecin>
-      <num>12</num>
-      <identitfiant>med8</identitfiant>
-      <mdp>motdepasse</mdp>
+      <num>0623456754</num>
+      <identifiant>meddd</identifiant>
+      <mdp>motdepaasse</mdp>
       <nomM>Mama</nomM>
       <prenomM>Mia</prenomM>
+      <patient>
+        <nom>Teuf</nom>
+        <prenom>Ti</prenom>
+        <secu>1234543627685</secu>
+        <dateNaissance>12-12-2000-12-12</dateNaissance>
+        <codeP>23000</codeP>
+      </patient>
     </medecin>
   </specialite>
   <specialite>
     <secretaireMedicale>
-      <mdp>secM2</mdp>
+      <mdp>secMB</mdp>
       <identifiant>secM2</identifiant>
     </secretaireMedicale>
     <nomS>dentaire</nomS>
     <medecin>
       <num>0767792227</num>
       <identifiant>med2</identifiant>
-      <mdp>med2</mdp>
+      <mdp>medmed</mdp>
       <nomM>Richard</nomM>
       <prenomM>Jean</prenomM>
       <patient>
@@ -209,7 +220,7 @@ and open the template in the editor.
     <medecin>
       <num>0667798227</num>
       <identifiant>med3</identifiant>
-      <mdp>med3</mdp>
+      <mdp>mimimi</mdp>
       <nomM>Epi</nomM>
       <prenomM>Fanie</prenomM>
       <patient>
@@ -230,6 +241,41 @@ and open the template in the editor.
           </acte>
         </ficheDeSoin>
       </patient>
+      <patient>
+        <nom>DeProvence</nom>
+        <prenom>Cote</prenom>
+        <secu>2201283456781</secu>
+        <dateNaissance>16-12-2000-23-34</dateNaissance>
+        <codeP>83700</codeP>
+      </patient>
     </medecin>
+  </specialite>
+  <specialite>
+    <secretaireMedicale>
+      <mdp>secMc</mdp>
+      <identifiant>secM3</identifiant>
+    </secretaireMedicale>
+    <nomS>Pediatrique</nomS>
+  </specialite>
+  <specialite>
+    <secretaireMedicale>
+      <mdp>secMd</mdp>
+      <identifiant>secM4</identifiant>
+    </secretaireMedicale>
+    <nomS>Gynecology Obstetrique</nomS>
+  </specialite>
+  <specialite>
+    <secretaireMedicale>
+      <mdp>secMe</mdp>
+      <identifiant>secM5</identifiant>
+    </secretaireMedicale>
+    <nomS>Neurologie</nomS>
+  </specialite>
+  <specialite>
+    <secretaireMedicale>
+      <mdp>secMf</mdp>
+      <identifiant>secM6</identifiant>
+    </secretaireMedicale>
+    <nomS>Dermathologie</nomS>
   </specialite>
 </hopital>
