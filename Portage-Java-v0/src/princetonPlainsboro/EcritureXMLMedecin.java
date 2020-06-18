@@ -72,7 +72,7 @@ public class EcritureXMLMedecin {
         //Dans un premier temps on liste toutes les fiches de soins
         List listFiches = racine.getChildren("specialite");
         Iterator i = listFiches.iterator();
-        //On parcourt la liste grâce à un iterator
+        //On parcourt la liste grace a un iterator
         while (i.hasNext()) {
             Element courant = (Element) i.next();
             if (courant.getChildText("nomS").equals(med.getSpecialite())) {
