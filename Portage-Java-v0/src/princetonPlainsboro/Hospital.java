@@ -82,6 +82,15 @@ public class Hospital {
         return null;
     }
     
+    public SecretaireMedicale rechercherSM(String identifiant){
+        for(SecretaireMedicale sm:this.secretairesM){
+            if(sm.getIdentifiant().equals(nom)){
+                return sm;
+            }
+        }
+        return null;
+    }
+    
     public String getNom(){
         return this.nom;
     }
@@ -106,6 +115,7 @@ public class Hospital {
             System.out.println("Monsieur/Madame " +p);
         }
     }
+    
    
    
 }
