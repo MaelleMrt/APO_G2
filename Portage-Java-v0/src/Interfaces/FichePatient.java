@@ -5,28 +5,16 @@
  */
 package Interfaces;
 
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.PageSize;
-import com.lowagie.text.pdf.PdfContentByte;
-import com.lowagie.text.pdf.PdfTemplate;
-import com.lowagie.text.pdf.PdfWriter;
-import java.awt.Graphics2D;
-import java.io.FileOutputStream;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import princetonPlainsboro.Date;
 import princetonPlainsboro.Patient;
 import princetonPlainsboro.TableauFichesSoins;
 import princetonPlainsboro.FicheDeSoins;
 import princetonPlainsboro.Hospital;
-
-
 
 /**
  *
@@ -34,23 +22,28 @@ import princetonPlainsboro.Hospital;
  */
 public class FichePatient extends javax.swing.JFrame implements ActionListener, ComponentListener {
 
+    //attributs de la classe FichePatient
     private Patient patient; 
-    private Hospital hop;
-    private List<FicheDeSoins> fiche;
+    private Hospital hopital;
+    private List<FicheDeSoins> listeFiche;
     private Date date;
 
     /**
      * Creates new form FichePatient
      */
-    public FichePatient(Patient p ,List<FicheDeSoins> dossier) {
+    public FichePatient(Patient p ,List<FicheDeSoins> listeFiches) {
         
+        //Initialisation des attributs de la classe FichePatient à partir des paramètres
         this.patient = p;
         this.date = p.getNaissance();
-        this.fiche = dossier;
-        for(FicheDeSoins fs:fiche){
+        this.listeFiche = listeFiches;
+        for(FicheDeSoins fs:listeFiche){
             System.out.println(fs.getDate());
         }
+        
         initComponents();
+        
+        //Commandes permettant la lecture de l'action d'un bouton
         jToggleButton1.addActionListener(this);
         jToggleButton2.addActionListener(this);
     }
@@ -70,7 +63,7 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable(new TableauFichesSoins(fiche));
+        jTable2 = new javax.swing.JTable(new TableauFichesSoins(listeFiche));
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -317,10 +310,7 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                // new FichePatient().setVisible(true);
-//                Date date = new Date(12,12,12,12,12);
-//                Patient p = new Patient("M","K", 0123456789110,date,83600);
-//                   new FichePatient(p).setVisible(true);
+                //new FichePatient(p).setVisible(true);
             }
         });
     }
@@ -352,15 +342,17 @@ public class FichePatient extends javax.swing.JFrame implements ActionListener, 
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        // Code permettant d'ouvrir la fiche de soin sélectionnée dans le tableau après avoir cliqué sur le bouton
         for (int i =0; i<jTable2.getRowCount(); i++){
             int j = jTable2.getSelectedRow();
             if(i == j && jToggleButton2.isSelected()){
-                FicheDeSoinPDF fp = new FicheDeSoinPDF(fiche.get(j));
+                FicheDeSoinPDF fp = new FicheDeSoinPDF(listeFiche.get(j));
                 fp.setVisible(true);
                 jTable2.clearSelection();
                 jToggleButton2.setSelected(!jToggleButton2.isSelected());
             }
         }
+        // Code permettant de fermer l'interface FichePatient grâce au bouton "deconnexion"
         if(jToggleButton1.isSelected()){
             this.dispose();
         }
