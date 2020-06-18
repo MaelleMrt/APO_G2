@@ -13,26 +13,26 @@ public class TestCryptage {
 
     /**
      * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        
-        System.out.println("administrative");
-        System.out.println("--------------");
-        System.out.println(Cryptage.chiffre(6, "secAA"));
-        System.out.println(Cryptage.dechiffre(6,Cryptage.chiffre(6, "secAA")).compareTo("secAA")==0);
-        System.out.println("--------------");
-        System.out.println("medicale");
-        System.out.println("--------------");
-        System.out.println(Cryptage.chiffre(6, "secMA"));
-        System.out.println(Cryptage.chiffre(6, "secMB"));
-        System.out.println("--------------");
-        System.out.println("medecin");
-        System.out.println("--------------");
-        System.out.println(Cryptage.chiffre(6, "medA"));
-        System.out.println(Cryptage.chiffre(6, "medB"));
-        System.out.println(Cryptage.chiffre(6, "medC"));
-        System.out.println(Cryptage.chiffre(6, "medD"));
-        System.out.println("--------------");
-    }
+//     */
+//    public static void main(String[] args) {
+//        
+//        System.out.println("administrative");
+//        System.out.println("--------------");
+//        System.out.println(Cryptage.chiffre(6, "secAA"));
+//        System.out.println(Cryptage.dechiffre(6,Cryptage.chiffre(6, "secAA")).compareTo("secAA")==0);
+//        System.out.println("--------------");
+//        System.out.println("medicale");
+//        System.out.println("--------------");
+//        System.out.println(Cryptage.chiffre(6, "secMA"));
+//        System.out.println(Cryptage.chiffre(6, "secMB"));
+//        System.out.println("--------------");
+//        System.out.println("medecin");
+//        System.out.println("--------------");
+//        System.out.println(Cryptage.chiffre(6, "medA"));
+//        System.out.println(Cryptage.chiffre(6, "medB"));
+//        System.out.println(Cryptage.chiffre(6, "medC"));
+//        System.out.println(Cryptage.chiffre(6, "medD"));
+//        System.out.println("--------------");
+//    }
     
 }

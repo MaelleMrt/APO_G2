@@ -14,25 +14,25 @@ import java.util.List;
  */
 public class TestXMLHopital {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        LectureXMLHop test = new LectureXMLHop("hopital.xml");
-        Hospital hop = test.getHospital();
-        hop.afficherInfos();
-        System.out.println("fiches de soins premier patient");
-//        for(Specialite sp:hop.getSpecialite()){
-//            System.out.println(sp.getNom());
-//            sp.afficherInfos();
-//            
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String[] args) {
+//        LectureXMLHop test = new LectureXMLHop("hopital.xml");
+//        Hospital hop = test.getHospital();
+//        hop.afficherInfos();
+//        System.out.println("fiches de soins premier patient");
+////        for(Specialite sp:hop.getSpecialite()){
+////            System.out.println(sp.getNom());
+////            sp.afficherInfos();
+////            
+////        }
+//List<FicheDeSoins>f = new ArrayList<FicheDeSoins>();      
+//SecretaireAdministrative sa = hop.getSA();
+//        for ( Patient p : sa.getHospital().getListPatient()){
+//            for(FicheDeSoins fs : p.getDossierMed()){
+//                f.add(fs);
+//            }
 //        }
-List<FicheDeSoins>f = new ArrayList<FicheDeSoins>();      
-SecretaireAdministrative sa = hop.getSA();
-        for ( Patient p : sa.getHospital().getListPatient()){
-            for(FicheDeSoins fs : p.getDossierMed()){
-                f.add(fs);
-            }
-        }
-    }
+//    }
 }

@@ -11,11 +11,11 @@ package princetonPlainsboro;
  */
 public class TestNumeroChecker {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        System.out.println(NumeroChecker.chekerNumero("12EENKJ"));
-    }
-    
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String[] args) {
+//        System.out.println(NumeroChecker.chekerNumero("12EENKJ"));
+//    }
+//    
 }

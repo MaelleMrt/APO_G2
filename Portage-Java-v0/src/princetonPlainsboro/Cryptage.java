@@ -56,11 +56,11 @@ public class Cryptage {
         }
         return (char) (((caractere) - base + decalage) % TAILLE_ALPHABET + base);
     }
- 
-    public static void main(String[] args) {
-        System.out.println(Cryptage.chiffre(6,"hello world"));
-        System.out.println(Cryptage.dechiffre(6,Cryptage.chiffre(6,"hello world")));
-       
-    }
+// 
+//    public static void main(String[] args) {
+//        System.out.println(Cryptage.chiffre(6,"hello world"));
+//        System.out.println(Cryptage.dechiffre(6,Cryptage.chiffre(6,"hello world")));
+//       
+//    }
 }
 
