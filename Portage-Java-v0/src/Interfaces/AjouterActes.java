@@ -265,12 +265,23 @@ public class AjouterActes extends javax.swing.JFrame {
                
                
                try {
-                System.out.println("tente d'ajouter");
+                
                 EcritureXMLActes.lireFichier("src/donnees/hopital_1.xml");
+                System.out.println("------------------------");
+                System.out.println("patient "+patient.getNom());
+                System.out.println("medecin "+hop.rechercherMedecin(fiche.getMedecin()).getNom());
+                System.out.println(fiche.getDate().getAnnee());
+                System.out.println(fiche.getDate().getMois());
+                System.out.println(fiche.getDate().getJour());
+                System.out.println(fiche.getDate().getHeure());
+                System.out.println(fiche.getDate().getMinutes());
+                fiche.afficher();
+                System.out.println("acte "+acte.toString());
                 EcritureXMLActes.ajouterActeXML(patient,hop.rechercherMedecin(fiche.getMedecin()), fiche,acte);
                 //System.out.println("ajout de l element ");
                 EcritureXMLActes.enregistreFichier("src/donnees/hopital_1.xml");
-            //System.out.println("enregistrement des donnees");
+                //System.out.println("enregistrement des donnees");
+                
         } catch (Exception e) {
             System.out.println("erreur (catch)");
             System.out.println(e);
