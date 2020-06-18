@@ -31,7 +31,7 @@ public class AjouterMedecin extends javax.swing.JFrame implements ActionListener
         //Lecture de la base de donnees avec mise a jour 
         LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
         Hospital hop = test.getHospital();
-        
+
         this.sa = sa;
         initComponents();
     }
@@ -67,6 +67,7 @@ public class AjouterMedecin extends javax.swing.JFrame implements ActionListener
         jToggleButton2 = new javax.swing.JToggleButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -202,7 +203,7 @@ public class AjouterMedecin extends javax.swing.JFrame implements ActionListener
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jLabel4.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
@@ -213,23 +214,37 @@ public class AjouterMedecin extends javax.swing.JFrame implements ActionListener
         jToggleButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
 
+                Boolean bool = false;
+                for(Medecin med : sa.getHospital().getListMedecin()){
+                    if ((med.getNom().equals(jTextField1.getText()))&&(med.getPrenom().equals(jTextField2.getText()))){
+                        System.out.println("trouve");
+                        bool=true;
+                    }
+                }
                 //on verifie que les champs ne sont pas vide
-
                 if(jTextField1.getText().isEmpty()|jTextField2.getText().isEmpty()|jTextField3.getText().isEmpty()|jTextField4.getText().isEmpty()|jTextField5.getText().isEmpty()){
                     jLabel2.setVisible(true);
                     jLabel9.setVisible(false);
+                    jLabel13.setVisible(false);
                     jToggleButton1.setSelected(false);
 
                     //On verifie que le numero de telelphone est valide
                 }else if(jTextField3.getText().length()!=10){
                     jLabel2.setVisible(false);
                     jLabel9.setVisible(true);
+                    jLabel13.setVisible(false);
                     jToggleButton1.setSelected(false);
 
                     //les champs sont complets et le telephone aussi
+                }else if (bool){
+                    jLabel13.setVisible(true);
+                    jLabel2.setVisible(false);
+                    jLabel9.setVisible(false);
+                    jToggleButton1.setSelected(false);
                 }else {
                     jLabel2.setVisible(false);
                     jLabel4.setVisible(false);
+                    jLabel13.setVisible(false);
 
                     //on recupere nom, prenom, telephone et specialite :
                     String nom = jTextField1.getText();
@@ -264,16 +279,26 @@ public class AjouterMedecin extends javax.swing.JFrame implements ActionListener
 
             jToggleButton2.setFont(new java.awt.Font("Bell MT", 1, 14)); // NOI18N
             jToggleButton2.setText("Retour");
+            jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jToggleButton2ActionPerformed(evt);
+                }
+            });
 
-            jLabel2.setFont(new java.awt.Font("Bell MT", 1, 10)); // NOI18N
+            jLabel2.setFont(new java.awt.Font("Bell MT", 1, 12)); // NOI18N
             jLabel2.setForeground(new java.awt.Color(222, 31, 31));
             jLabel2.setText("Champs incomplets");
             jLabel2.setVisible(false);
 
-            jLabel9.setFont(new java.awt.Font("Bell MT", 1, 10)); // NOI18N
+            jLabel9.setFont(new java.awt.Font("Bell MT", 1, 12)); // NOI18N
             jLabel9.setForeground(new java.awt.Color(222, 31, 31));
             jLabel9.setText("Telephone incomplet");
             jLabel9.setVisible(false);
+
+            jLabel13.setFont(new java.awt.Font("Bell MT", 1, 12)); // NOI18N
+            jLabel13.setForeground(new java.awt.Color(255, 0, 0));
+            jLabel13.setText("Medecin deja existant");
+            jLabel13.setVisible(false);
 
             javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
             jPanel1.setLayout(jPanel1Layout);
@@ -293,7 +318,9 @@ public class AjouterMedecin extends javax.swing.JFrame implements ActionListener
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addContainerGap(20, Short.MAX_VALUE))
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addGap(222, 222, 222)
+                    .addGap(69, 69, 69)
+                    .addComponent(jLabel13)
+                    .addGap(93, 93, 93)
                     .addComponent(jToggleButton1)
                     .addGap(28, 28, 28)
                     .addComponent(jToggleButton2)
@@ -318,7 +345,8 @@ public class AjouterMedecin extends javax.swing.JFrame implements ActionListener
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jToggleButton1)
                         .addComponent(jToggleButton2)
-                        .addComponent(jLabel2))
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel13))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jLabel9)
                     .addGap(48, 48, 48))
@@ -334,7 +362,7 @@ public class AjouterMedecin extends javax.swing.JFrame implements ActionListener
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 522, Short.MAX_VALUE)
+                .addGap(0, 527, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
@@ -361,6 +389,10 @@ public class AjouterMedecin extends javax.swing.JFrame implements ActionListener
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -409,6 +441,7 @@ public class AjouterMedecin extends javax.swing.JFrame implements ActionListener
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
