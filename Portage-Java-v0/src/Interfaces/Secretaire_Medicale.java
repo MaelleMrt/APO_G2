@@ -24,58 +24,53 @@ import princetonPlainsboro.SecretaireMedicale;
  */
 public class Secretaire_Medicale extends javax.swing.JFrame implements ListSelectionListener, ActionListener {
 
-    /**
-     * Creates new form SecrétaireMédicale
-     */
-        
-    //création de l'hôpital pour pouvoir faire les tests
+    //Hopital pour les tests
     LectureXMLHop test = new LectureXMLHop("hopital.xml");
     Hospital h = test.getHospital();
+    
+    //Attributs de la classe Secretaire_Medicale
     SecretaireAdministrative sa;      
     SecretaireMedicale secretaire;
 
     public Secretaire_Medicale(SecretaireAdministrative sa, SecretaireMedicale secretaire) {
+        
+        //Initialisation des attributs de la classe Secretaire_Medicale
         this.sa = sa;
-
         this.secretaire = secretaire;
         
         initComponents();
               
-        //initialisation de la liste patient (jlist1)
+        //Initialisation de la liste patient (jlist1)
         DefaultListModel ModeleTest2 = new DefaultListModel();
         for (Patient p : secretaire.getListP()) {
             ModeleTest2.addElement(p.getNom());
         }
         jList1.setModel(ModeleTest2);
 
-        //initialisation de la liste médecin (jlist2)
+        //Initialisation de la liste médecin (jlist2)
         DefaultListModel ModeleTest1 = new DefaultListModel();
         for (Medecin m : h.getListMedecin()) {
             ModeleTest1.addElement(m.getNomComplet());
         }
         jList2.setModel(ModeleTest1);
         
-        //initialisation de la JComboBox des patients
+        //Initialisation de la JComboBox des patients
         jComboBox1.addItem(" ");
         for(Patient p : secretaire.getListP()){
             jComboBox1.addItem(p.getNom());
         }
         
-        //initialisation de la JComboBox des médecins
+        //Initialisation de la JComboBox des médecins
         jComboBox2.addItem(" ");
         for(Medecin m : h.getListMedecin()){
             jComboBox2.addItem(m.getNomComplet());
         }
 
-        //actions lorsqu'un élément de la liste est sélectionnée
+        //Commandes pour les actions liées aux listes, aux JComboBox et aux boutons
         jList1.addListSelectionListener(this);
         jList2.addListSelectionListener(this);
-        
-        //actions associées aux JComboBox
         jComboBox1.addActionListener(this);
         jComboBox2.addActionListener(this);
-        
-        //lecture des boutons
         jToggleButton1.addActionListener(this);
         jToggleButton2.addActionListener(this);
         jToggleButton3.addActionListener(this);
@@ -245,20 +240,20 @@ public class Secretaire_Medicale extends javax.swing.JFrame implements ListSelec
 
     //méthode permettant de définir l'action pour un élément de la liste sélectionnée
     public void valueChanged(ListSelectionEvent e){
-        //affichage de la fiche du patient sélectionné dans la JList
-        int j = jList1.getSelectedIndex();
+        //Code permettant l'affichage de la fiche du patient sélectionné dans la JList
+        int j = jList1.getSelectedIndex(); //Donne l'indice de la ligne sélectionnée
         if(j != -1){
             Patient p = new Patient(secretaire.getListP().get(j).getNom(),secretaire.getListP().get(j).getPrenom(),secretaire.getListP().get(j).getSecu(),secretaire.getListP().get(j).getNaissance(),secretaire.getListP().get(j).getCP() );
-            FichePatient fp = new FichePatient(p, secretaire.getListP().get(j).getDossierMed());
-            fp.setVisible(true);
+            FichePatient fp = new FichePatient(p, secretaire.getListP().get(j).getDossierMed()); //Création de la fichePatient associé au patient sélectionné
+            fp.setVisible(true); //Affichage de la fichePatient
             jList1.clearSelection();
         }
-        //affichage de la fiche du médecin sélectionné dans la JList
-        int k = jList2.getSelectedIndex();
+        //Code permettant l'affichage de la fiche du médecin sélectionné dans la JList
+        int k = jList2.getSelectedIndex(); //Donne l'indice de la ligne sélectionnée
         if(k != -1){
             Medecin m = new Medecin(h.getListMedecin().get(k).getNom(),h.getListMedecin().get(k).getPrenom(),h.getListMedecin().get(k).getSpecialite(),h.getListMedecin().get(k).getIdentifiant(),h.getListMedecin().get(k).getMdp(),h.getListMedecin().get(k).getNumeroTel());
-            FicheMedecin fm = new FicheMedecin(m);
-            fm.setVisible(true);
+            FicheMedecin fm = new FicheMedecin(m); //Création de la ficheMedecin associée au médecin sélectionné
+            fm.setVisible(true); //Affichage de la ficheMedecin
             jList2.clearSelection();
         }    
     }
@@ -332,7 +327,7 @@ public class Secretaire_Medicale extends javax.swing.JFrame implements ListSelec
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //affichage de la fiche du patient sélectionné dans la JComboBox
+        //Code permettant l'affichage de la fiche du patient sélectionné dans la JComboBox
         int j = jComboBox1.getSelectedIndex();
         if(j != 0){
             j = j - 1;
@@ -341,7 +336,7 @@ public class Secretaire_Medicale extends javax.swing.JFrame implements ListSelec
             fp.setVisible(true);
             jComboBox1.setSelectedIndex(0);
         }
-        //affichage de la fiche du médecin sélectionné dans la JComboBox
+        //Code permettant l'affichage de la fiche du médecin sélectionné dans la JComboBox
         int k = jComboBox2.getSelectedIndex();
         if(k != 0){
             k = k - 1;
@@ -350,25 +345,25 @@ public class Secretaire_Medicale extends javax.swing.JFrame implements ListSelec
             fm.setVisible(true);
             jComboBox2.setSelectedIndex(0);
         }
-        //action du bouton ajout d'un nouveau patient
+        //Action du bouton permettant l'ajout d'un nouveau patient
         if(jToggleButton1.isSelected()){
             AjouterPatient nouveauPatient = new AjouterPatient(sa);
-            nouveauPatient.setVisible(true);
+            nouveauPatient.setVisible(true); //Ouverture de l'interface AjouterPatient pour entrer toutes les infos du patient
             jToggleButton1.setSelected(!jToggleButton1.isSelected());
         }
-        //action du bouton ajout d'un nouveau médecin
+        //Action du bouton permettant l'ajout d'un nouveau médecin
         if(jToggleButton3.isSelected()){
             AjouterMedecin nouveauMedecin = new AjouterMedecin(sa,secretaire);
-            nouveauMedecin.setVisible(true);
+            nouveauMedecin.setVisible(true); //Ouverture de l'interface AjouterMedecin pour entrer toutes les infos du médecin
             jToggleButton3.setSelected(!jToggleButton3.isSelected());
         }
-        //action du bouton ajout d'une fiche de soin
+        //Action du bouton permettant l'ajout d'une nouvelle fiche de soin
         if(jToggleButton2.isSelected()){
-            //AjouterFicheDeSoins fiche = new AjouterFicheDeSoins();
-            //fiche.setVisible(true);
+            AjouterFicheDeSoins fiche = new AjouterFicheDeSoins();
+            fiche.setVisible(true); //Ouverture de l'interface AjouterFicheDeSoins pour entrer toutes les infos de la nouvelle fiche de soin
             jToggleButton2.setSelected(!jToggleButton2.isSelected());
         }
-        //action de déconnexion
+        //Action de déconnexion
         if(jToggleButton4.isSelected()){
             Connexion c = new Connexion(h);
             c.setVisible(true);

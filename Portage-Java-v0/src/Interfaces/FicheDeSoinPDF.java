@@ -27,10 +27,7 @@ import princetonPlainsboro.Patient;
  */
 public class FicheDeSoinPDF extends javax.swing.JFrame implements ActionListener {
 
-    /**
-     * Creates new form FicheDeSoinPDF
-     */
-    
+    //Attributs de la classe FicheDeSoinPDF    
     FicheDeSoins fiche;
     Patient patient;
     String medecin;
@@ -42,6 +39,8 @@ public class FicheDeSoinPDF extends javax.swing.JFrame implements ActionListener
     double coutTotal = 0.0;
     
     public FicheDeSoinPDF(FicheDeSoins f) {
+        
+        //Initialisation des attributs de la classe 
         this.fiche = f;
         this.patient = f.getPatient();
         this.medecin = f.getMedecin();
@@ -49,13 +48,13 @@ public class FicheDeSoinPDF extends javax.swing.JFrame implements ActionListener
         this.date = f.getDate();
         this.actes = f.getActes();
               
-        //construction du tableau avec les noms des actes associés à leur coût
-        //construction des noms des colonnes
+        //Construction du tableau avec les noms des actes associés à leur coût
+        //Construction des noms des colonnes
         columnNames = new Vector<String>();
         columnNames.addElement("Actes");
         columnNames.addElement("Coûts");
-        //construction de chaque ligne
-        rowData = new Vector<Vector>(); //vecteur contenant toutes les lignes du tableau
+        //Construction de chaque ligne
+        rowData = new Vector<Vector>(); //Vecteur contenant toutes les lignes du tableau
         for(Acte a : actes){
             Vector<String> ligne = new Vector<String>();
             ligne.addElement(a.getCode().afficherLibelle());
@@ -63,16 +62,14 @@ public class FicheDeSoinPDF extends javax.swing.JFrame implements ActionListener
             rowData.addElement(ligne);
         }
         
-        //calcul du coût total
+        //Calcul du coût total
         for(Acte a : actes){
             coutTotal = coutTotal + a.cout();
         }
         
         initComponents();
         jToggleButton1.addActionListener(this);
-
-        
-        
+    
     }
 
     /**
@@ -276,7 +273,7 @@ public class FicheDeSoinPDF extends javax.swing.JFrame implements ActionListener
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
+        //Code permettant l'ouverture d'une fenêtre qui permet d'imprimer la fiche de soin ou de la convertir en PDF
         PrinterJob job = PrinterJob.getPrinterJob();
         job.setJobName("Print Data");
         job.setPrintable(new Printable(){
@@ -364,6 +361,7 @@ public class FicheDeSoinPDF extends javax.swing.JFrame implements ActionListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //Code pour le bouton permettant de fermer la fenêtre
         if(jToggleButton1.isSelected()){
             this.dispose();
         }
