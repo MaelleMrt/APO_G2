@@ -27,8 +27,10 @@ public class Connexion extends javax.swing.JFrame {
      * Creates new form Connexion
      */
     public Connexion(Hospital hospital) {
+        LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
+        this.hospital = test.getHospital();
         initComponents();
-        this.hospital = hospital;
+
     }
 
     /**
@@ -198,11 +200,13 @@ public class Connexion extends javax.swing.JFrame {
         if (jToggleButton1.isSelected()) {
             String valeurUtilisateur = jTextField1.getText();
             TentativeConnexion connexionV = new TentativeConnexion(hospital);
+
+            //si un des champs n'est pas rempli on affiche un message d'erreur
             if (jTextField1.getText().isEmpty() | jPasswordField1.getPassword().toString().isEmpty()) {
                 jLabel7.setVisible(true);
                 jToggleButton1.setSelected(false);
                 jLabel8.setVisible(false);
-            }
+            } //sinon on verifie le mdp et l'identifiant
             else if (connexionV.connexionValide(jTextField1.getText(), String.valueOf(jPasswordField1.getPassword()), jComboBox1.getSelectedItem().toString())) {
                 //si on a les bons identifiants on se connecte -> disparaitre les messages d'erreurs
                 //vider les JtextFields
@@ -211,7 +215,6 @@ public class Connexion extends javax.swing.JFrame {
                 jTextField1.setText("Nom Utilisateur");
                 jPasswordField1.setText("");
                 if (jComboBox1.getSelectedItem().toString() == "Medecin") {
-                    System.out.println("connexion medecin ok ");
                     //ouerture de l'interface medecin
                     Medecin_interface im = new Medecin_interface(hospital.rechercherMedecin(valeurUtilisateur));
                     im.setVisible(true);
@@ -227,14 +230,12 @@ public class Connexion extends javax.swing.JFrame {
 
                 }
                 if (jComboBox1.getSelectedItem().toString() == "Secretaire Medicale") {
-                    Secretaire_Medicale sm = new Secretaire_Medicale(hospital.getSA(),hospital.rechercherSM(valeurUtilisateur));
+                    Secretaire_Medicale sm = new Secretaire_Medicale(hospital.getSA(), hospital.rechercherSM(valeurUtilisateur));
                     sm.setVisible(true);
                     //on ferme la fenetre de connexion
                     this.setVisible(false);
                 }
             } else {
-                System.out.println("identifiant: "+jTextField1.getText());
-                System.out.println("mdp: "+jPasswordField1.getPassword().toString().toCharArray());
                 jLabel8.setVisible(true);
                 jLabel7.setVisible(false);
                 jToggleButton1.setSelected(false);

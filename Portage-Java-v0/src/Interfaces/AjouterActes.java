@@ -268,7 +268,7 @@ public class AjouterActes extends javax.swing.JFrame {
                 String nCode = (String) jComboBox3.getSelectedItem();
                 Code code = Code.valueOf(nCode);
                 int coef = Integer.parseInt(jTextField1.getText());
-                //on recupére l'acte
+                //on recupere l'acte
                 Acte acte = new Acte(code, coef);
 
                 //on cherche le medecin
@@ -277,20 +277,11 @@ public class AjouterActes extends javax.swing.JFrame {
                 try {
 
                     EcritureXMLActes.lireFichier("src/donnees/hopital_1.xml");
-                    System.out.println("------------------------");
-                    System.out.println("patient " + patient.getNom());
-                    System.out.println("medecin " + hop.rechercherMedecin(fiche.getMedecin()).getNom());
-                    System.out.println(fiche.getDate().getAnnee());
-                    System.out.println(fiche.getDate().getMois());
-                    System.out.println(fiche.getDate().getJour());
-                    System.out.println(fiche.getDate().getHeure());
-                    System.out.println(fiche.getDate().getMinutes());
-                    fiche.afficher();
-                    System.out.println("acte " + acte.toString());
+ 
                     EcritureXMLActes.ajouterActeXML(patient, hop.rechercherMedecin(fiche.getMedecin()), fiche, acte);
-                    //System.out.println("ajout de l element ");
+
                     EcritureXMLActes.enregistreFichier("src/donnees/hopital_1.xml");
-                    //System.out.println("enregistrement des donnees");
+ 
 
                 } catch (Exception e) {
                     System.out.println("erreur (catch)");

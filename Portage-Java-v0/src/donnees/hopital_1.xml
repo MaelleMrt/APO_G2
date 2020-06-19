@@ -191,29 +191,29 @@ and open the template in the editor.
     </specialite>  
     <specialite>
         <secretaireMedicale>
-            <mdp>skjI</mdp>
-            <identifiant>secM3</identifiant>
+            <mdpMe>ykiSI</mdpMe>
+            <identifiantMe>secM3</identifiantMe>
         </secretaireMedicale>
         <nomS>Pediatrique</nomS>
     </specialite>
     <specialite>
         <secretaireMedicale>
-            <mdp>skjJ</mdp>
-            <identifiant>secM4</identifiant>
+            <mdpMe>ykiSJ</mdpMe>
+            <identifiantMe>secM4</identifiantMe>
         </secretaireMedicale>
         <nomS>Gynecology Obstetrique</nomS>
     </specialite>
     <specialite>
         <secretaireMedicale>
-            <mdp>skjL</mdp>
-            <identifiant>secM5</identifiant>
+            <mdpMe>ykiSK</mdpMe>
+            <identifiantMe>secM5</identifiantMe>
         </secretaireMedicale>
         <nomS>Neurologie</nomS>
     </specialite>
     <specialite>
         <secretaireMedicale>
-            <mdp>secMF</mdp>
-            <identifiant>secM6</identifiant>
+            <mdpMe>ykiSL</mdpMe>
+            <identifiantMe>secM6</identifiantMe>
         </secretaireMedicale>
         <nomS>Dermathologie</nomS>
     </specialite> 

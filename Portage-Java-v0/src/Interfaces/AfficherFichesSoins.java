@@ -238,7 +238,6 @@ public class AfficherFichesSoins extends javax.swing.JFrame {
             List<FicheDeSoins> ficheI = null;
             //si les JText fiel ont ete rempli on verifie que les dates sont valide et on fait la selection entre 2 dates
             if ((!jTextField1.getText().equals("AAAA-MM-JJ-HH-MM") | !jTextField2.getText().equals("AAAA-MM-JJ-HH-MM"))) {
-                System.out.println("textFieldModifie");
                 if (!DateChecker.isValid(jTextField1.getText()) | !DateChecker.isValid(jTextField2.getText())) {
                     jLabel6.setVisible(true);
                     jTextField1.setText("AAAA-MM-JJ-HH-MM");
@@ -247,8 +246,6 @@ public class AfficherFichesSoins extends javax.swing.JFrame {
                     return;
                 } else {
                     jLabel6.setVisible(false);
-                    System.out.println("d1  " + creerDate(jTextField1.getText()).toString());
-                    System.out.println("d2  " + creerDate(jTextField2.getText()).toString());
                     ficheI = DossierMedical.SelectionnerDate(creerDate(jTextField1.getText()), creerDate(jTextField2.getText()), fiche);
                 }
             } else {

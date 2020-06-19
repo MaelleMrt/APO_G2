@@ -31,6 +31,8 @@ public class LectureXMLHop {
     }
 
     public Hospital getHospital() {
+        
+        //declaration de toutes les variables qui vons nous servir a remplir notre hopital
         Hospital hospitalCourant = null;
         Date date = null;
         List<Specialite> specialites = new ArrayList<Specialite>();
@@ -73,31 +75,40 @@ public class LectureXMLHop {
             for (int event = parser.next(); event != XMLStreamConstants.END_DOCUMENT; event = parser.next()) {
                 // traitement selon l'evenement
                 switch (event) {
+                    
+                    //creation du nouveau hopital
                     case XMLStreamConstants.START_ELEMENT:
                         if (parser.getLocalName().equals("hopital")) {
                             hospitalCourant = new Hospital(nomCourant);
                         }
                         break;
+                        
                     case XMLStreamConstants.END_ELEMENT:
+                        
+                        //on recupere l'acte
                         if (parser.getLocalName().equals("acte")) {
                             actes.add(new Acte(codeCourant, coefCourant));
                         }
-
+                        
+                        //on recupere le code
                         if (parser.getLocalName().equals("code")) {
                             codeCourant = getCode(donneesCourantes);
                             if (codeCourant == null) {
                                 throw new XMLStreamException("Impossible de trouver le code d'acte = " + donneesCourantes);
                             }
                         }
-
+                        
+                        //on recupere le coef
                         if (parser.getLocalName().equals("coef")) {
                             coefCourant = Integer.parseInt(donneesCourantes);
                         }
-
+                        
+                        //on recupere le numero de telephone
                         if (parser.getLocalName().equals("num")) {
                             numeroCourant = donneesCourantes;
                         }
-
+                        
+                        //on recupere la date d'une fiche de soins
                         if (parser.getLocalName().equals("date")) {
                             int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
                             int mois = Integer.parseInt(donneesCourantes.substring(donneesCourantes.indexOf('-') + 1, donneesCourantes.indexOf('-', donneesCourantes.indexOf('-') + 1)));
@@ -107,6 +118,8 @@ public class LectureXMLHop {
 
                             date = new Date(jour, mois, annee, heure, minutes);
                         }
+                        
+                        //on cree une nouvelle fiche de soin
                         if (parser.getLocalName().equals("ficheDeSoin")) {
 
                             FicheDeSoins f = new FicheDeSoins(patientCourant, nomMedecinCourant /*+ " " + prenomMedecinCourant*/, nomSpecialiteCourante, date);
@@ -120,6 +133,8 @@ public class LectureXMLHop {
                             // ajouter la fiche de soin au patient
                             fiches.add(f);
                         }
+                        
+                        //on cree le medecin
                         if (parser.getLocalName().equals("medecin")) {
 
                             //on l'ajoute a  la liste du serviceCourant et on verifie si il n'est pas deja  dans la liste des medecins
@@ -147,13 +162,19 @@ public class LectureXMLHop {
                             medecins.add(medecinCourant);
 
                         }
+                        
+                        //on cree la secretaire administrative
                         if (parser.getLocalName().equals("secretaireAdministrative")) {
                             secretaireAdministrativeCourante = new SecretaireAdministrative(identifiantCourantSe, mdpCourantSe, hospitalCourant);
                             hospitalCourant.setSecretaireA(secretaireAdministrativeCourante);
                         }
+                        
+                        //on recupere le numero de secu 
                         if (parser.getLocalName().equals("secu")) {
                             secuCourante = Long.parseLong(donneesCourantes);
                         }
+                        
+                        //on recupere la date de naissance
                         if (parser.getLocalName().equals("dateNaissance")) {
 
                             int annee = Integer.parseInt(donneesCourantes.substring(0, donneesCourantes.indexOf('-')));
@@ -178,7 +199,6 @@ public class LectureXMLHop {
                         
                         //recuperation et cryptage du mdp
                         if (parser.getLocalName().equals("mdpSe")) {
-                            System.out.println(Cryptage.dechiffre(6, donneesCourantes));
                             mdpCourantSe = Cryptage.dechiffre(6, donneesCourantes);
                         }
 
@@ -194,7 +214,6 @@ public class LectureXMLHop {
                         
                         //recuperation et cryptage du mdp
                         if (parser.getLocalName().equals("mdpMe")) {
-                            System.out.println(Cryptage.dechiffre(6, donneesCourantes));
                             mdpCourantMe = Cryptage.dechiffre(6, donneesCourantes);
                         }
                         
@@ -253,12 +272,12 @@ public class LectureXMLHop {
 
                         }
                         
-                        //
+                        //on recupere le nom du patient
                         if (parser.getLocalName().equals("prenom")) {
                             prenomCourant = donneesCourantes;
                         }
                         
-                        
+                        //on cree une nouvelle specialite
                         if (parser.getLocalName().equals("specialite")) {
                             specialiteCourante = new Specialite(nomSpecialiteCourante, secretaireMedicaleCourante);
                             for (Medecin m : medecins) {
@@ -266,7 +285,6 @@ public class LectureXMLHop {
                             }
                             //creation de la secretaire avec la specialite courante
                             secretaireMedicaleCourante = new SecretaireMedicale(identifiantCourantMe, mdpCourantMe, specialiteCourante);
-                            System.out.println(secretaireMedicaleCourante.getIdentifiant());
                             hospitalCourant.ajouterSecretaireM(secretaireMedicaleCourante);
                             //on set la secretaireMedicale
                             specialiteCourante.setSM(secretaireMedicaleCourante);

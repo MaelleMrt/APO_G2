@@ -251,9 +251,11 @@ public class AjouterFicheDeSoins extends javax.swing.JFrame {
 
                 try {
                     EcritureXMLFichesSoins.lireFichier("src/donnees/hopital_1.xml");
+                    
                     EcritureXMLFichesSoins.ajouterFicheXML(patient, sm.rechercherMedecin(patient), fs);
+                    
                     EcritureXMLFichesSoins.enregistreFichier("src/donnees/hopital_1.xml");
-                    //System.out.println("enregistrement des donnees : ok ");
+                    
                 } catch (Exception e) {
                     System.out.println("erreur (catch) : ");
                     System.out.println(e);

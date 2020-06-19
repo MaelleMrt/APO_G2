@@ -218,7 +218,6 @@ public class AjouterMedecin extends javax.swing.JFrame implements ActionListener
                 Boolean bool = false;
                 for(Medecin med : sa.getHospital().getListMedecin()){
                     if ((med.getNom().equals(jTextField1.getText()))&&(med.getPrenom().equals(jTextField2.getText()))){
-                        System.out.println("trouve");
                         bool=true;
                     }
                 }

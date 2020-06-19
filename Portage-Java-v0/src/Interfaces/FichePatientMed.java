@@ -41,10 +41,7 @@ public class FichePatientMed extends javax.swing.JFrame implements ActionListene
         this.patient = p;
         this.date = p.getNaissance();
         this.listeFiche = listeFiches;
-        for(FicheDeSoins fs:listeFiche){
-            System.out.println(fs.getDate());
-        }
-        
+
         initComponents();
         
         //Commandes permettant la lecture de l'action d'un bouton

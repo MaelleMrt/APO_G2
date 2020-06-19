@@ -52,7 +52,7 @@ public class Secretaire_Medicale extends javax.swing.JFrame implements ListSelec
 
         //Initialisation de la liste médecin (jlist2)
         DefaultListModel ModeleTest1 = new DefaultListModel();
-        for (Medecin m : h.getListMedecin()) {
+        for (Medecin m : secretaire.getSpecialite().getListeMed()) {
             ModeleTest1.addElement(m.getNomComplet());
         }
         jList2.setModel(ModeleTest1);

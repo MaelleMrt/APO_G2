@@ -81,11 +81,9 @@ public class Medecin_interface extends javax.swing.JFrame {
         jList1.setModel(ModeleTest2);
         jList1.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
-                System.out.println("nom select"+(String)jList1.getSelectedValue());
                 String valeurSelect=(String)jList1.getSelectedValue();
                 for(Patient p:med.getListPatient()){
                     if(valeurSelect.equals(p.getNom())){
-                        System.out.println("affichePatient");
                         FichePatientMed fp=new FichePatientMed(p,p.getDossierMed());
                         fp.setVisible(true);
                     }
@@ -99,13 +97,19 @@ public class Medecin_interface extends javax.swing.JFrame {
         jTextField1.setText("Recherche Patient");
         jTextField1.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
-                afficherList();
+                if(!jTextField1.getText().isEmpty()){
+                    afficherList();
+                }
             }
             public void removeUpdate(DocumentEvent e) {
-                afficherList();
+                if(!jTextField1.getText().isEmpty()){
+                    afficherList();
+                }
             }
             public void insertUpdate(DocumentEvent e) {
-                afficherList();
+                if(!jTextField1.getText().isEmpty()){
+                    afficherList();
+                }
             }
 
             public void afficherList() {
@@ -215,9 +219,11 @@ public class Medecin_interface extends javax.swing.JFrame {
                             .addComponent(jTextField2)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton2)
-                                .addGap(8, 8, 8))
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jButton2)
+                                        .addGap(8, 8, 8))
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

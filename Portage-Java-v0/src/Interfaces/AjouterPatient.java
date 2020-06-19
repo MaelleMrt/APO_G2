@@ -313,7 +313,7 @@ public class AjouterPatient extends javax.swing.JFrame {
                     long ns=Long.parseLong(jTextField5.getText());
                     String nomM = (String) jComboBox2.getSelectedItem();
 
-                    //on crée le nouveau patient
+                    //on cree le nouveau patient
                     Patient nouveauP=new Patient(nom,prenom,ns,dateNaissance,codeP);
                     System.out.println("ajout patient "+nom+" "+prenom+" "+"n° "+ns+" né le "+dateNaissance.toString()+" dans le "+codeP);
                     sa.getHospital().ajouterPatient(nouveauP);
@@ -473,7 +473,6 @@ public class AjouterPatient extends javax.swing.JFrame {
         // seuls les medecins de cette specialite sont affiche dans le jComboBox2 
         String str = (String) jComboBox1.getSelectedItem();
         jComboBox2.setModel(new DefaultComboBoxModel() );
-        System.out.println(str);
         for (Specialite spe : sa.getHospital().getSpecialite()) {
             if (str.equals(spe.getNom())) {
                 jComboBox2.addItem(" ");

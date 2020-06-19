@@ -75,7 +75,7 @@ public class EcritureXMLActes {
             if (courant.getChildText("nomS").equals(m.getSpecialite())) {
                 // La <specialite> d'interet devient notre racine: 
                 racine = courant.setName("specialite");
-                System.out.println("parcours des specialites");
+
             }
         }
 
@@ -89,7 +89,7 @@ public class EcritureXMLActes {
             if (courant2.getChildText("nomM").equals(m.getNom())) {
                 // <medecin> devient racine 
                 racine = courant2.setName("medecin");
-                System.out.println("parcours des medecins");
+
             }
         }
 
@@ -103,7 +103,7 @@ public class EcritureXMLActes {
             if (courant3.getChildText("nom").equals(p.getNom())) {
                 //<patient> devient racine
                 racine = courant3.setName("patient");
-                System.out.println("parcours fiche de soins:la racine de devient patient");
+
             }
         }
 
@@ -115,13 +115,6 @@ public class EcritureXMLActes {
         while (l.hasNext()) {
             Element courant4 = (Element) l.next();
             Date date = creerDate(courant4.getChildText("date"));
-            System.out.println("---------------");
-            System.out.println(date.getAnnee());
-            System.out.println(date.getMois());
-            System.out.println(date.getJour());
-            System.out.println(date.getHeure());
-            System.out.println(date.getMinutes());
-            System.out.println("---------------");
             if (date.compareTo(fs.getDate()) == 0) {
                 //ajout des actes
                 courant4.addContent(newActe);

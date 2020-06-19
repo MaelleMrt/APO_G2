@@ -17,6 +17,8 @@ public class TentativeConnexion {
         this.hospital = hospital;
     }
 
+    //connexion valide si les mots de passes et l'identifiants se trouvent dans la liste suivant
+    //le profil choisit
     public boolean connexionValide(String identifiant, String mdp, String statut) {
         if (statut.equals("Medecin")) {
             for (Medecin m : this.hospital.getListMedecin()) {
