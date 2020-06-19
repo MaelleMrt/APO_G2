@@ -164,47 +164,66 @@ public class LectureXMLHop {
 
                             dateNaissanceCourante = new Date(annee, mois, jour, heure, minutes);
                         }
+                        
+                        //recuperation et cryptage du mdp
                         if (parser.getLocalName().equals("mdp")) {
-                            System.out.println(Cryptage.dechiffre(6, donneesCourantes).compareTo("medA")==0);
-                            mdpCourant = Cryptage.dechiffre(6, donneesCourantes);
                             
+                            mdpCourant = Cryptage.dechiffre(6, donneesCourantes); 
                         }
+                        
+                        //recuperation des identifiants du medecin
                         if (parser.getLocalName().equals("identifiant")) {
                             identifiantCourant = donneesCourantes;
                         }
-
+                        
+                        //recuperation et cryptage du mdp
                         if (parser.getLocalName().equals("mdpSe")) {
                             System.out.println(Cryptage.dechiffre(6, donneesCourantes));
                             mdpCourantSe = Cryptage.dechiffre(6, donneesCourantes);
                         }
 
+                        //recuperation des identifiants de la secretaire admin
                         if (parser.getLocalName().equals("identifiantSe")) {
                             identifiantCourantSe = donneesCourantes;
                         }
+                        
+                        //recuperation des identifiants de la secretaire medicale
                         if (parser.getLocalName().equals("identifiantMe")) {
                             identifiantCourantMe = donneesCourantes;
                         }
+                        
+                        //recuperation et cryptage du mdp
                         if (parser.getLocalName().equals("mdpMe")) {
                             System.out.println(Cryptage.dechiffre(6, donneesCourantes));
                             mdpCourantMe = Cryptage.dechiffre(6, donneesCourantes);
                         }
+                        
+                        //recuperation code postale
                         if (parser.getLocalName().equals("codeP")) {
                             codePCourant = donneesCourantes;
                         }
-
+                        
+                        //recuperation du nom de l'hopital
                         if (parser.getLocalName().equals("nom")) {
                             nomCourant = donneesCourantes;
                         }
-
+                        
+                        //recuperation du nom de la specialite
                         if (parser.getLocalName().equals("nomS")) {
                             nomSpecialiteCourante = donneesCourantes;
                         }
+                        
+                        //recuperation du nom du medecin
                         if (parser.getLocalName().equals("nomM")) {
                             nomMedecinCourant = donneesCourantes;
                         }
+                        
+                        //recuperation du prenom du medecin
                         if (parser.getLocalName().equals("prenomM")) {
                             prenomMedecinCourant = donneesCourantes;
                         }
+                        
+                        //ajout du patient
                         if (parser.getLocalName().equals("patient")) {
                             //on l'ajoute au medecinCourant et on verifie si il n'est pas deja  dans la liste des medecins
                             boolean present = false;
@@ -220,6 +239,7 @@ public class LectureXMLHop {
                                 //on ajoute a  la liste de patient de l'hopital
                                 hospitalCourant.ajouterPatient(patientCourant);
                             }
+                            
                             //on ajoute les fiches de soins courantes
                             for (FicheDeSoins fs : fiches) {
                                 patientCourant.ajouterFicheDeSoins(fs);
@@ -232,9 +252,13 @@ public class LectureXMLHop {
                             patients.add(patientCourant);
 
                         }
+                        
+                        //
                         if (parser.getLocalName().equals("prenom")) {
                             prenomCourant = donneesCourantes;
                         }
+                        
+                        
                         if (parser.getLocalName().equals("specialite")) {
                             specialiteCourante = new Specialite(nomSpecialiteCourante, secretaireMedicaleCourante);
                             for (Medecin m : medecins) {

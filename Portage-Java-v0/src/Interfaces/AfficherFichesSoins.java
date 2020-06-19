@@ -31,7 +31,7 @@ public class AfficherFichesSoins extends javax.swing.JFrame {
      */
     public AfficherFichesSoins(SecretaireAdministrative sa) {
         //Lecture de la base de donnees avec mise a jour 
-        LectureXMLHop test = new LectureXMLHop("hopital.xml");
+        LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
         Hospital hop = test.getHospital();
         this.sa = sa;
         this.fiche = sa.getFiches();

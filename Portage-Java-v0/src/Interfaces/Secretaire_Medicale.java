@@ -73,9 +73,7 @@ public class Secretaire_Medicale extends javax.swing.JFrame implements ListSelec
         jList2.addListSelectionListener(this);
         jComboBox1.addActionListener(this);
         jComboBox2.addActionListener(this);
-        jToggleButton1.addActionListener(this);
         jToggleButton2.addActionListener(this);
-        jToggleButton3.addActionListener(this);
         jToggleButton4.addActionListener(this);
         jToggleButton5.addActionListener(this);
     }
@@ -98,9 +96,7 @@ public class Secretaire_Medicale extends javax.swing.JFrame implements ListSelec
         jList2 = new javax.swing.JList();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
         jComboBox1 = new javax.swing.JComboBox();
         jComboBox2 = new javax.swing.JComboBox();
         jToggleButton4 = new javax.swing.JToggleButton();
@@ -140,22 +136,8 @@ public class Secretaire_Medicale extends javax.swing.JFrame implements ListSelec
         jLabel3.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
         jLabel3.setText(secretaire.getSpecialite().getNom());
 
-        jToggleButton1.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
-        jToggleButton1.setText("Nouveau patient");
-        jToggleButton1.setToolTipText("");
-        jToggleButton1.setFocusable(false);
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
-            }
-        });
-
         jToggleButton2.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
         jToggleButton2.setText("Sélectionner un patient et cliquer ici pour remplir une nouvelle fiche de soin");
-
-        jToggleButton3.setFont(new java.awt.Font("Bell MT", 0, 13)); // NOI18N
-        jToggleButton3.setText("Nouveau médecin");
-        jToggleButton3.setActionCommand("");
 
         jToggleButton4.setFont(new java.awt.Font("Bell MT", 0, 11)); // NOI18N
         jToggleButton4.setText("Deconnexion");
@@ -174,29 +156,13 @@ public class Secretaire_Medicale extends javax.swing.JFrame implements ListSelec
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jToggleButton2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jToggleButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jToggleButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE))
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jToggleButton3)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(69, 69, 69)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(138, 138, 138)
@@ -204,7 +170,17 @@ public class Secretaire_Medicale extends javax.swing.JFrame implements ListSelec
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel3))))
-                            .addComponent(jLabel2))))
+                            .addComponent(jLabel2)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jToggleButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+                            .addComponent(jToggleButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2)
+                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
@@ -231,11 +207,7 @@ public class Secretaire_Medicale extends javax.swing.JFrame implements ListSelec
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToggleButton3)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jToggleButton1)
-                        .addComponent(jToggleButton5)))
+                .addComponent(jToggleButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToggleButton2)
                 .addGap(38, 38, 38))
@@ -250,7 +222,7 @@ public class Secretaire_Medicale extends javax.swing.JFrame implements ListSelec
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -275,10 +247,6 @@ public class Secretaire_Medicale extends javax.swing.JFrame implements ListSelec
         
     
     
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
-
 //    /**
 //     * @param args the command line arguments
 //     */
@@ -335,9 +303,7 @@ public class Secretaire_Medicale extends javax.swing.JFrame implements ListSelec
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JToggleButton jToggleButton5;
     // End of variables declaration//GEN-END:variables
@@ -365,18 +331,6 @@ public class Secretaire_Medicale extends javax.swing.JFrame implements ListSelec
             FicheMedecin fm = new FicheMedecin(m);
             fm.setVisible(true);
             jComboBox2.setSelectedIndex(0);
-        }
-        //Action du bouton permettant l'ajout d'un nouveau patient
-        if(jToggleButton1.isSelected()){
-            AjouterPatient nouveauPatient = new AjouterPatient(sa);
-            nouveauPatient.setVisible(true); //Ouverture de l'interface AjouterPatient pour entrer toutes les infos du patient
-            jToggleButton1.setSelected(!jToggleButton1.isSelected());
-        }
-        //Action du bouton permettant l'ajout d'un nouveau medecin 
-        if(jToggleButton3.isSelected()){
-            AjouterMedecin nouveauMedecin = new AjouterMedecin(sa,secretaire);
-            nouveauMedecin.setVisible(true); //Ouverture de l'interface AjouterMedecin pour entrer toutes les infos du médecin
-            jToggleButton3.setSelected(!jToggleButton3.isSelected());
         }
         //Action du bouton permettant l'ajout d'une nouvelle fiche de soin
         if(jToggleButton2.isSelected()){

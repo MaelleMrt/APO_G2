@@ -28,7 +28,7 @@ public class AjouterMedecin extends javax.swing.JFrame implements ActionListener
     SecretaireAdministrative sa;
     SecretaireMedicale secretaire;
 
-    public AjouterMedecin(SecretaireAdministrative sa, SecretaireMedicale secretaire) {
+    public AjouterMedecin(SecretaireAdministrative sa) {
         //Lecture de la base de donnees avec mise a jour 
         LectureXMLHop test = new LectureXMLHop("hopital_1.xml");
         Hospital hop = test.getHospital();
@@ -390,7 +390,7 @@ public class AjouterMedecin extends javax.swing.JFrame implements ActionListener
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel9)
                         .addComponent(jLabel14))
-                    .addGap(35, 35, 35))
+                    .addGap(44, 44, 44))
             );
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -403,7 +403,7 @@ public class AjouterMedecin extends javax.swing.JFrame implements ActionListener
             );
             layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 506, Short.MAX_VALUE)
+                .addGap(0, 510, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
